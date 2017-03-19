@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_medium_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.uottawa.tictactoe.medium_game"
+    tools:showIn="@layout/activity_medium_game">
+
+    <TextView
+        android:text="Tic Tac Toe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        tools:textColor="@android:color/holo_purple"
+        android:textStyle="normal|bold"
+        android:textSize="50sp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/holo_purple" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m1"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m2"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m3"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m4"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m5"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m6"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m7"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m8"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m9"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m10"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m11"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m12"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m13"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m14"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m15"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:id="@+id/button_m16"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Blue" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="Reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnReset_mgame"
+            android:layout_weight="0.55"
+            android:onClick="btnReset_mgame"/>
+
+        <Button
+            android:text="Home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnHome_mgame"
+            android:layout_weight="0.55"
+            android:onClick="btnHome_mgame"/>
+
+        <Button
+            android:text="Exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnExit_mgame"
+            android:layout_weight="0.55"
+            android:onClick="btnExit_mgame"/>
+    </LinearLayout>
+</RelativeLayout>
