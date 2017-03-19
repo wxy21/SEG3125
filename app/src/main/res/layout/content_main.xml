@@ -11,56 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.MainActivity"
-    tools:showIn="@layout/activity_main">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_height="350dp">
-
-        <Button
-            android:text="Single Player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSinglePlayer"
-            android:layout_weight="0.12"
-            android:onClick="btnSinglePlayer" />
-
-        <Button
-            android:text="Multiple Player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnMultiPlayer"
-            android:layout_weight="0.13"
-            android:onClick="btnMultiPlayer" />
-
-        <Button
-            android:text="Match History"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnMatchHistory"
-            android:layout_weight="0.13"
-            android:onClick="btnMatchHistory"/>
-
-        <Button
-            android:text="Help and Option"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnHelp"
-            android:layout_weight="0.13"
-            android:onClick="btnHelp"/>
-
-        <Button
-            android:text="Exit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnExit"
-            android:layout_weight="0.13"
-            android:onClick="btnExit" />
-    </LinearLayout>
+    tools:showIn="@layout/activity_main"
+    android:background="@drawable/background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,16 +20,102 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:text="Welcome to Tic Tac Toe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-            android:textStyle="normal|bold"
-            android:textColor="@android:color/holo_purple"
-            android:textSize="50sp" />
-
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="53dp">
+
+        <Button
+            android:text="Play"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/btnSinglePlayer"
+            android:layout_weight="0.12"
+            android:onClick="btnSinglePlayer"
+            style="@android:style/Widget.Material.Light.Button"
+            android:textSize="36sp"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            android:backgroundTint="@color/pink" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.12">
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_weight="1"
+                android:layout_height="80dp"
+                android:background="@drawable/crown"
+                android:layout_width="45dp" />
+
+            <Button
+                android:text="MultiPlayer"
+                android:layout_height="80dp"
+                android:id="@+id/btnMultiPlayer"
+                android:layout_weight="1"
+                android:onClick="btnMultiPlayer"
+                android:layout_width="200dp"
+                android:backgroundTint="@color/pink"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <Button
+            android:text="Match History"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/btnMatchHistory"
+            android:layout_weight="0.13"
+            android:onClick="btnMatchHistory"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/pink"
+            android:textSize="30sp" />
+
+        <Button
+            android:text="Help"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/btnHelp"
+            android:layout_weight="0.13"
+            android:onClick="btnHelp"
+            android:backgroundTint="@color/pink"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:text="Option"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/btnOption"
+            android:layout_weight="0.12"
+            android:backgroundTint="@color/pink"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:text="About"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/btnAbout"
+            android:layout_weight="0.13"
+            android:onClick="btnExit"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/pink" />
+    </LinearLayout>
 
 </RelativeLayout>
