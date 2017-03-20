@@ -11,54 +11,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.level_difficulty"
-    tools:showIn="@layout/activity_level_difficulty">
+    tools:showIn="@layout/activity_level_difficulty"
+    android:background="@drawable/background">
 
     <TextView
         android:text="Level Difficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textLevelDifficulty"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        tools:textColor="@android:color/holo_purple"
-        android:textStyle="normal|bold"
-        android:textSize="50sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:textColor="@color/pink"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="22dp"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_purple" />
+        android:textStyle="normal|bold"
+        android:textColor="@color/pink" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <Button
+        android:text="Easy"
         android:layout_width="match_parent"
-        android:layout_marginTop="24dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEasy"
+        android:layout_weight="0.08"
+        android:onClick="btn_easy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:backgroundTint="@color/pink"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
         android:layout_below="@+id/textLevelDifficulty"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="81dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
-        <Button
-            android:text="Easy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnEasy"
-            android:layout_weight="0.08"
-            android:onClick="btn_easy"/>
+    <Button
+        android:text="Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMedium"
+        android:layout_weight="0.05"
+        android:onClick="btn_medium"
+        android:backgroundTint="@color/pink"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:layout_alignTop="@+id/btnEasy"
+        android:layout_marginTop="112dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
-        <Button
-            android:text="Medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnMedium"
-            android:layout_weight="0.05"
-            android:onClick="btn_medium"/>
-
-        <Button
-            android:text="Hard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnHard"
-            android:layout_weight="0.09"
-            android:onClick="btn_hard"/>
-    </LinearLayout>
+    <Button
+        android:text="Hard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnHard"
+        android:layout_weight="0.09"
+        android:onClick="btn_hard"
+        android:backgroundTint="@color/pink"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="63dp"
+        android:layout_below="@+id/btnMedium"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
