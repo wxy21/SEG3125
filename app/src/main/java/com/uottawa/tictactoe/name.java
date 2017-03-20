@@ -47,8 +47,6 @@ public class name extends AppCompatActivity {
 
     public void btnOK_name(View view){
         Intent intent = new Intent(this, level_difficulty.class);
-        TextView player1_name = (TextView) findViewById(R.id.textName);
-        intent.putExtra("player1", player1_name.getText().toString());
 
         startActivityForResult(intent, 4);
     }

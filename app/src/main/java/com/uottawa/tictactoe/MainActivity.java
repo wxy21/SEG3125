@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(resultCode == 2){
-            player2 = (TextView) findViewById(R.id.textName);
         }
 
     }
