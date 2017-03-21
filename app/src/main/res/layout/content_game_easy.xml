@@ -14,22 +14,107 @@
     tools:showIn="@layout/activity_game_easy"
     android:background="@drawable/background">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/minisurrender"
-        android:id="@+id/imageButton10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/minisurrender"
+            android:id="@+id/imageButton10"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="85dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:layout_below="@+id/imageButton10"
+            android:layout_toStartOf="@+id/linearLayout13"
+            android:layout_marginEnd="22dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/mini1"
+                android:id="@+id/imageView3"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="Player 1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:backgroundTint="@android:drawable/status_bar_item_background"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="X"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:layout_marginEnd="14dp"
+            android:layout_below="@+id/imageButton10"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                app:srcCompat="@drawable/mini1"
+                android:id="@+id/imageView4" />
+
+            <TextView
+                android:text="Player 2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView13"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:backgroundTint="@android:drawable/status_bar_item_background"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="O"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView14"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/housemini64"
+            android:id="@+id/imageButton9"
+            android:layout_alignBottom="@+id/linearLayout16"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:layout_width="75dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="72dp">
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -116,81 +201,5 @@
                 android:backgroundTint="@color/pink" />
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_below="@+id/imageButton10"
-        android:layout_toStartOf="@+id/linearLayout13"
-        android:layout_marginEnd="22dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/mini1"
-            android:id="@+id/imageView3"
-            android:layout_weight="1" />
-
-        <TextView
-            android:text="Player 1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView12"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:backgroundTint="@android:drawable/status_bar_item_background" />
-
-        <TextView
-            android:text="X"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textAlignment="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_marginEnd="14dp"
-        android:layout_below="@+id/imageButton10"
-        android:layout_alignParentEnd="true">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/mini1"
-            android:id="@+id/imageView4"
-            android:layout_weight="1" />
-
-        <TextView
-            android:text="Player 2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView13"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:backgroundTint="@android:drawable/status_bar_item_background" />
-
-        <TextView
-            android:text="O"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView14"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textAlignment="center" />
-
-    </LinearLayout>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/housemini64"
-        android:id="@+id/imageButton9"
-        android:layout_alignBottom="@+id/linearLayout16"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

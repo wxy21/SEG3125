@@ -81,4 +81,6 @@
     <string name="title_activity_game_medium">game_medium</string>
     <string name="title_activity_medium_game">medium_game</string>
     <string name="title_activity_hard_game">hard_game</string>
+    <string name="title_activity_match_review">match_review</string>
+    <string name="title_activity_grid_size">grid_size</string>
 </resources>
