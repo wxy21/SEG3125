@@ -23,7 +23,6 @@
             android:name=".name"
             android:label="@string/title_activity_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".help_and_option" />
         <activity
             android:name=".level_difficulty"
             android:label="@string/title_activity_level_difficulty"
@@ -51,6 +50,14 @@
         <activity
             android:name=".grid_size"
             android:label="@string/title_activity_grid_size"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".rules"
+            android:label="@string/title_activity_rules"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".option"
+            android:label="@string/title_activity_option"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

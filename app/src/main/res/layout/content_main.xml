@@ -96,7 +96,7 @@
                     android:textSize="30sp" />
 
                 <Button
-                    android:text="Help"
+                    android:text="Rules"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnHelp"

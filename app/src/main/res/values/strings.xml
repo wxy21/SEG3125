@@ -83,4 +83,10 @@
     <string name="title_activity_hard_game">hard_game</string>
     <string name="title_activity_match_review">match_review</string>
     <string name="title_activity_grid_size">grid_size</string>
+    <string name="title_activity_rules">rules</string>
+    <string name="rules">
+        1. Choose to be a 'X' or a 'O'.\n
+    \n2. Take turn clicking the desired position in the board\n
+    \n3. When 3 same 'X' or 'O'  are in a row, you win!</string>
+    <string name="title_activity_option">option</string>
 </resources>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_option"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.uottawa.tictactoe.option"
+    tools:showIn="@layout/activity_option"
+    android:background="@drawable/background">
+
+    <TextView
+        android:text="Option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/pink"
+        android:textStyle="normal|bold"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Name:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView22"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/pink"
+                android:textStyle="normal|bold"
+                android:paddingLeft="5dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_weight="1"
+                android:text="Player 1"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Avatar:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView23"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="normal|bold"
+                android:textAlignment="textStart"
+                android:textColor="@color/pink"
+                android:paddingLeft="5dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner3"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView26"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textStyle="normal|bold"
+            android:textColor="@color/pink"
+            android:paddingLeft="5dp" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner4"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="59dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sound"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="normal|bold"
+                android:textColor="@color/pink"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar"
+                android:layout_weight="1"
+                android:paddingTop="20dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/minisound"
+                android:id="@+id/imageButton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/music"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="normal|bold"
+                android:textColor="@color/pink"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar2"
+                android:layout_weight="1"
+                android:paddingTop="20dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/minisound"
+                android:id="@+id/imageButton2" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
