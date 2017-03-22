@@ -107,7 +107,7 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:text="Option"
+                    android:text="Options"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnOption"

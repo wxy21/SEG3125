@@ -15,7 +15,7 @@
     android:background="@drawable/background6">
 
     <TextView
-        android:text="Grid Size"
+        android:text="Board Size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView19"

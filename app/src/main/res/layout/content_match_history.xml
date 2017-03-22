@@ -98,7 +98,7 @@
             android:background="@android:drawable/editbox_dropdown_light_frame">
 
             <TextView
-                android:text="Total Win"
+                android:text="Total Games: 1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView18"
@@ -106,7 +106,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <TextView
-                android:text="Total Loss"
+                android:text="Total Wins: 1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView17"

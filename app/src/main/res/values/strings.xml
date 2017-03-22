@@ -85,8 +85,8 @@
     <string name="title_activity_grid_size">grid_size</string>
     <string name="title_activity_rules">rules</string>
     <string name="rules">
-        1. Choose to be a "X" or a "O".\n
-    \n2. Take turn clicking the desired position in the board\n
-    \n3. When 3 same "X" or "O"  are in a row, you win!</string>
+        1. You are assigned a "mark", either an X or an O.\n
+    \n2. Take turns placing your "marks" on the tiles of the board.\n
+    \n3. Win by marking an entire veritical, horizontal or the largest diagonal row of the board!</string>
     <string name="title_activity_option">option</string>
 </resources>
