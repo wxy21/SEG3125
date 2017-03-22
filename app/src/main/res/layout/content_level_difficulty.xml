@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.level_difficulty"
     tools:showIn="@layout/activity_level_difficulty"
-    android:background="@drawable/background">
+    android:background="@drawable/background6">
 
     <TextView
         android:text="Level Difficulty"

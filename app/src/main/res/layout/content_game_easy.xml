@@ -12,20 +12,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.easy_game"
     tools:showIn="@layout/activity_game_easy"
-    android:background="@drawable/background">
+    android:background="@drawable/background6">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/minisurrender"
-            android:id="@+id/imageButton10"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_width="85dp" />
+        android:layout_marginBottom="61dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -39,10 +34,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="51dp"
                 app:srcCompat="@drawable/mini1"
                 android:id="@+id/imageView3"
-                android:layout_weight="1" />
+                android:background="@android:drawable/screen_background_light_transparent" />
 
             <TextView
                 android:text="Player 1"
@@ -71,13 +66,16 @@
             android:layout_marginEnd="14dp"
             android:layout_below="@+id/imageButton10"
             android:layout_alignParentEnd="true"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:backgroundTint="@color/highlight_yellow">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="31dp"
+                android:layout_height="51dp"
                 app:srcCompat="@drawable/mini1"
-                android:id="@+id/imageView4" />
+                android:id="@+id/imageView4"
+                android:background="@android:drawable/screen_background_light_transparent" />
 
             <TextView
                 android:text="Player 2"
@@ -98,22 +96,24 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/housemini64"
-            android:id="@+id/imageButton9"
-            android:layout_alignBottom="@+id/linearLayout16"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:layout_width="75dp" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:layout_marginEnd="62dp"
+        android:id="@+id/imageView2"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/imageButton10"
         android:layout_alignParentStart="true">
 
         <LinearLayout
@@ -201,5 +201,17 @@
                 android:backgroundTint="@color/pink" />
         </LinearLayout>
     </LinearLayout>
+
+    <ImageButton
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/refresh2"
+        android:id="@+id/imageButton10"
+        android:layout_width="wrap_content"
+        android:layout_weight="1.50"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

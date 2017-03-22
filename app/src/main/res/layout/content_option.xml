@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.option"
     tools:showIn="@layout/activity_option"
-    android:background="@drawable/background">
+    android:background="@drawable/background6">
 
     <TextView
         android:text="Option"
@@ -152,7 +152,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/minisound"
-                android:id="@+id/imageButton" />
+                android:id="@+id/imageButton"
+                android:background="@android:drawable/ic_lock_silent_mode_off" />
         </LinearLayout>
 
         <LinearLayout
@@ -183,7 +184,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/minisound"
-                android:id="@+id/imageButton2" />
+                android:id="@+id/imageButton2"
+                android:background="@android:drawable/ic_lock_silent_mode_off" />
         </LinearLayout>
     </LinearLayout>
 

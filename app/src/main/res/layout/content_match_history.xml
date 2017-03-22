@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.match_history"
     tools:showIn="@layout/activity_match_history"
-    android:background="@drawable/background">
+    android:background="@drawable/background6">
 
     <LinearLayout
         android:orientation="vertical"
