@@ -44,10 +44,6 @@
             android:label="@string/title_activity_hard_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".match_review"
-            android:label="@string/title_activity_match_review"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".grid_size"
             android:label="@string/title_activity_grid_size"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -8,6 +8,6 @@ public class Setting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_and_option);
+        setContentView(R.layout.activity_option);
     }
 }
