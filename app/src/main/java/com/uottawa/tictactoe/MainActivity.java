@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String player1;
     private TextView player2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,31 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, Setting.class);
-            //startActivityForResult(intent, 2);
-            startActivity(intent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -77,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void btnHelp(View view){
-        Intent intent = new Intent(this, Setting.class);
+    public void btnOption(View view){
+        Intent intent = new Intent(this, option.class);
         startActivity(intent);
     }
 
-    public void btnExit(View view){
-        System.exit(0);
+    public void btnRule(View view){
+
+        Intent intent = new Intent(this, rules.class);
+        startActivity(intent);
     }
 }

@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnHelp"
-                    android:onClick="btnHelp"
+                    android:onClick="btnRule"
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
@@ -114,7 +114,8 @@
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:onClick="btnOption" />
 
             </LinearLayout>
 
