@@ -82,9 +82,12 @@
 
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner3"
-                android:layout_weight="1" />
+                android:layout_height="70dp"
+                android:id="@+id/spinner_avatar"
+                android:layout_weight="1"
+                android:paddingBottom="5dp" />
+
+
 
         </LinearLayout>
     </LinearLayout>
@@ -110,9 +113,12 @@
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/spinner4"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:entries="@array/theme_arrays" />
+
+
     </LinearLayout>
 
     <LinearLayout
