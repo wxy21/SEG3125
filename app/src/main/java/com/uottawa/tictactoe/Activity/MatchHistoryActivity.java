@@ -1,13 +1,12 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.Activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-public class match_history extends AppCompatActivity {
+import com.uottawa.tictactoe.Activity.BaseActivity;
+import com.uottawa.tictactoe.R;
+
+public class MatchHistoryActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

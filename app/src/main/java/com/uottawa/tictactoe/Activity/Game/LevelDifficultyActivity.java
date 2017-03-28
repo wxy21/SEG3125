@@ -1,16 +1,14 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.Activity.Game;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-public class level_difficulty extends AppCompatActivity {
+import com.uottawa.tictactoe.Activity.BaseActivity;
+import com.uottawa.tictactoe.R;
+
+public class LevelDifficultyActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +20,17 @@ public class level_difficulty extends AppCompatActivity {
 
     }
     public void btn_easy(View view){
-        Intent intent = new Intent(this, easy_game.class);
+        Intent intent = new Intent(this, EasyGameActivity.class);
         startActivity(intent);
     }
 
     public void btn_medium(View view){
-        Intent intent = new Intent(this, medium_game.class);
+        Intent intent = new Intent(this, MediumGameActivity.class);
         startActivity(intent);
     }
 
     public void btn_hard(View view){
-        Intent intent = new Intent(this, hard_game.class);
+        Intent intent = new Intent(this, HardGameActivity.class);
         startActivity(intent);
     }
 }

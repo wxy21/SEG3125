@@ -1,15 +1,15 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.Activity.Game;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-public class name extends AppCompatActivity {
+import com.uottawa.tictactoe.Activity.BaseActivity;
+import com.uottawa.tictactoe.Activity.Game.LevelDifficultyActivity;
+import com.uottawa.tictactoe.R;
+
+public class NameSelectionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,8 @@ public class name extends AppCompatActivity {
 
     }
 
-
-
-
     public void btnOK_name(View view){
-        Intent intent = new Intent(this, level_difficulty.class);
+        Intent intent = new Intent(this, LevelDifficultyActivity.class);
 
         startActivityForResult(intent, 4);
     }

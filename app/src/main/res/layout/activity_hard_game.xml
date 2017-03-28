@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.uottawa.tictactoe.hard_game">
+    tools:context="com.uottawa.tictactoe.Activity.Game.HardGameActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_hard_game" />
+    <include layout="@layout/content_game_hard" />
 
 </android.support.design.widget.CoordinatorLayout>

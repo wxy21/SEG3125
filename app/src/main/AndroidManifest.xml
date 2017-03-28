@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,39 +19,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".name"
+            android:name=".Activity.Game.NameSelectionActivity"
             android:label="@string/title_activity_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".level_difficulty"
+            android:name=".Activity.Game.LevelDifficultyActivity"
             android:label="@string/title_activity_level_difficulty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".easy_game"
+            android:name=".Activity.Game.EasyGameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".match_history"
+            android:name=".Activity.MatchHistoryActivity"
             android:label="@string/title_activity_match_history"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".medium_game"
+            android:name=".Activity.Game.MediumGameActivity"
             android:label="@string/title_activity_medium_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".hard_game"
+            android:name=".Activity.Game.HardGameActivity"
             android:label="@string/title_activity_hard_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".grid_size"
+            android:name=".Activity.Game.BoardSizeActivity"
             android:label="@string/title_activity_grid_size"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".rules"
+            android:name=".Activity.RulesActivity"
             android:label="@string/title_activity_rules"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".option"
+            android:name=".Activity.OptionsActivity"
             android:label="@string/title_activity_option"
             android:theme="@style/AppTheme.NoActionBar"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
