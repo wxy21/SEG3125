@@ -11,14 +11,12 @@ import com.uottawa.tictactoe.R;
 public class LevelDifficultyActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_level_difficulty);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
+
     public void btn_easy(View view){
         Intent intent = new Intent(this, EasyGameActivity.class);
         startActivity(intent);

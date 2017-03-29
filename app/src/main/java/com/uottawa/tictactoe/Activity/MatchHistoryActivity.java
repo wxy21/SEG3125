@@ -9,13 +9,9 @@ import com.uottawa.tictactoe.R;
 public class MatchHistoryActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_match_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
-
 }

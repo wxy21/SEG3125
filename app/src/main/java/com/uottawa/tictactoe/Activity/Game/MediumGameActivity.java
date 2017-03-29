@@ -13,13 +13,10 @@ import com.uottawa.tictactoe.R;
 public class MediumGameActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_medium_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 
     public void btnReset_mgame(View view){

@@ -13,12 +13,10 @@ import com.uottawa.tictactoe.R;
 public class EasyGameActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_game_easy);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
 

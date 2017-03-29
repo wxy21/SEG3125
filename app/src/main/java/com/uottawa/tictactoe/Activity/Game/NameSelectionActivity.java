@@ -12,12 +12,10 @@ import com.uottawa.tictactoe.R;
 public class NameSelectionActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_name);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
     public void btnOK_name(View view){

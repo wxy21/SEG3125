@@ -14,23 +14,11 @@ import java.util.ArrayList;
 
 public class OptionsActivity extends BaseActivity {
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadView() {
         setContentView(R.layout.activity_option);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         ArrayList<ItemData> avatar_list = new ArrayList<>();
         avatar_list.add(new ItemData(R.drawable.mini1));
@@ -40,5 +28,6 @@ public class OptionsActivity extends BaseActivity {
         com.uottawa.tictactoe.SpinnerAdapter adapter = new com.uottawa.tictactoe.SpinnerAdapter(this, R.layout.spinner_layout, avatar_list);
         avatar_sp.setAdapter(adapter);
     }
+
 
 }
