@@ -1,9 +1,5 @@
 package com.uottawa.tictactoe;
 
-/**
- * Created by user on 2017-03-27.
- */
-
 public class ItemData {
 
     String text;

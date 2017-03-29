@@ -1,11 +1,11 @@
-package com.uottawa.tictactoe.Activity.Game;
+package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 
 import android.support.v7.widget.Toolbar;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
 import com.uottawa.tictactoe.R;
 
-public class BoardSizeActivity extends BaseActivity {
+public class MultiplayerBoardSizeActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
@@ -13,5 +13,4 @@ public class BoardSizeActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
 }

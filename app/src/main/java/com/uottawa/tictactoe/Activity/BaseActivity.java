@@ -17,7 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     String keySharedPreference = "sharedPreference";
 
-    private ApplicationSettings applicationSettings;
+    protected ApplicationSettings applicationSettings;
     private AppCompatDelegate mDelegate;
 
     @Override

@@ -19,15 +19,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.Game.NameSelectionActivity"
+            android:name=".Activity.GameActivities.Multiplayer.NameSelectionActivity"
             android:label="@string/title_activity_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Game.LevelDifficultyActivity"
+            android:name=".Activity.GameActivities.SinglePlayer.LevelDifficultyActivity"
             android:label="@string/title_activity_level_difficulty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Game.EasyGameActivity"
+            android:name=".Activity.GameActivities.EasyGameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -35,16 +35,12 @@
             android:label="@string/title_activity_match_history"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Game.MediumGameActivity"
+            android:name=".Activity.GameActivities.MediumGameActivity"
             android:label="@string/title_activity_medium_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Game.HardGameActivity"
+            android:name=".Activity.GameActivities.HardGameActivity"
             android:label="@string/title_activity_hard_game"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activity.Game.BoardSizeActivity"
-            android:label="@string/title_activity_grid_size"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.RulesActivity"

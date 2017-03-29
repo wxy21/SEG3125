@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.uottawa.tictactoe.ItemData;
+import com.uottawa.tictactoe.R;
+
 import java.util.ArrayList;
 
 public class SpinnerAdapter extends ArrayAdapter<ItemData> {
@@ -32,6 +36,5 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
 
     public View getDropDownView(int position, View convertView, ViewGroup parent){
         return getView(position,convertView,parent);
-
     }
 }
