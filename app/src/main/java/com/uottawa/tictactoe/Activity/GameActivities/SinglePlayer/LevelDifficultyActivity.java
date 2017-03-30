@@ -15,7 +15,7 @@ public class LevelDifficultyActivity extends BaseActivity {
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_level_difficulty);
-        
+
     }
 
     public void btn_easy(View view){

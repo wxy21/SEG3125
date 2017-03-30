@@ -1,5 +1,7 @@
 package com.uottawa.tictactoe;
 
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -12,6 +14,8 @@ import com.uottawa.tictactoe.R;
 public class AvatarList {
 
 
+    private static int position = 0;
+
     public static ArrayList<ItemData> getAvatarList() {
 
         ArrayList<ItemData> avatar_list = new ArrayList<>();
@@ -23,7 +27,13 @@ public class AvatarList {
     }
 
 
-    public int setAvatar(int position){
+    public static void setAvatar(int avatar_position){
+        position = avatar_position;
+    }
+
+    public static int getPosition(){
         return position;
     }
+
+
 }

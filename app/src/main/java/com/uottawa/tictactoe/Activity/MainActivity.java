@@ -14,8 +14,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     public void btnSinglePlayer(View view){

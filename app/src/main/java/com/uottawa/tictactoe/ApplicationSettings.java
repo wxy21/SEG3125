@@ -3,6 +3,8 @@ package com.uottawa.tictactoe;
 import android.content.SharedPreferences;
 import com.uottawa.tictactoe.R;
 
+import java.util.ArrayList;
+
 public class ApplicationSettings {
 
     SharedPreferences sharedPreferences;
@@ -65,11 +67,6 @@ public class ApplicationSettings {
         editor.putInt(keyPlayer2Avatar, player2Avatar);
     }
 
-    public void saveAvatar(int selectedAvatar){
-        this.selectedAvatar = selectedAvatar;
-
-        editor.putInt("selectedAvatar", selectedAvatar);
-    }
 
     public void loadSettings() {
         player1Name = sharedPreferences.getString(keyPlayer1Name, player1Name);
@@ -83,6 +80,8 @@ public class ApplicationSettings {
         levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
         soundVolume = sharedPreferences.getString(keySoundVolume, soundVolume);
         musicVolume = sharedPreferences.getString(keyMusicVolume, musicVolume);
+
+
     }
 
     public String getPlayer1Name() {
@@ -90,6 +89,8 @@ public class ApplicationSettings {
     }
 
     public int getPlayer1Avatar() {
+        int position = AvatarList.getPosition();
+        player1Avatar = AvatarList.getAvatarList().get(position).getImageId();
         return player1Avatar;
     }
 

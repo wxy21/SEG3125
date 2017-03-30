@@ -17,7 +17,6 @@ public class SinglePlayerBoardSizeActivity extends BaseActivity {
     }
 
     public void btn_grid(View view){
-
         Intent intent = new Intent(this, LevelDifficultyActivity.class);
         startActivity(intent);
     }
