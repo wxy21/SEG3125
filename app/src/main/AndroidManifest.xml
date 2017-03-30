@@ -27,6 +27,10 @@
             android:label="@string/title_activity_level_difficulty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Activity.GameActivities.SinglePlayer.SinglePlayerBoardSizeActivity"
+            android:label="@string/title_activity_rules"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activity.GameActivities.EasyGameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -49,7 +53,9 @@
         <activity
             android:name=".Activity.OptionsActivity"
             android:label="@string/title_activity_option"
-            android:theme="@style/AppTheme.NoActionBar"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"

@@ -15,7 +15,7 @@ public class ApplicationSettings {
     private int player1Avatar = R.drawable.avatar1;
     private String player2Name = "Player 2";
     private int player2Avatar = R.drawable.avatar1;
-    private String applicationTheme = "Theme1";
+    private int applicationTheme = R.drawable.background1;
     private String soundVolume = "50";
     private String musicVolume = "50";
     private String boardSize = "3x3";
@@ -33,13 +33,14 @@ public class ApplicationSettings {
     private String keyLevelDifficulty = "levelDifficulty";
 
     private int selectedAvatar = 0;
+    private AvatarList avatarList;
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
     }
 
-    public void saveSettings(String player1Name, int player1Avatar, String applicationTheme, String soundVolume, String musicVolume) {
+    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, String soundVolume, String musicVolume) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.applicationTheme = applicationTheme;
@@ -48,7 +49,7 @@ public class ApplicationSettings {
 
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
-        editor.putString(keyApplicationTheme, applicationTheme);
+        editor.putInt(keyApplicationTheme, applicationTheme);
         editor.putString(keySoundVolume, soundVolume);
         editor.putString(keyMusicVolume, musicVolume);
         editor.commit();
@@ -67,6 +68,13 @@ public class ApplicationSettings {
         editor.putInt(keyPlayer2Avatar, player2Avatar);
     }
 
+    public void savePlayerOption(String player1Name, int player1Avatar){
+        this.player1Name = player1Name;
+        this.player1Avatar = player1Avatar;
+
+        editor.putString(keyPlayer1Name, player1Name);
+        editor.putInt(keyPlayer1Avatar, player1Avatar);
+    }
 
     public void loadSettings() {
         player1Name = sharedPreferences.getString(keyPlayer1Name, player1Name);
@@ -75,7 +83,7 @@ public class ApplicationSettings {
         player2Name = sharedPreferences.getString(keyPlayer2Name, player2Name);
         player2Avatar = sharedPreferences.getInt(keyPlayer2Avatar, player2Avatar);
 
-        applicationTheme = sharedPreferences.getString(keyApplicationTheme, applicationTheme);
+        applicationTheme = sharedPreferences.getInt(keyApplicationTheme, applicationTheme);
         boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
         levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
         soundVolume = sharedPreferences.getString(keySoundVolume, soundVolume);
@@ -89,8 +97,8 @@ public class ApplicationSettings {
     }
 
     public int getPlayer1Avatar() {
-        int position = AvatarList.getPosition();
-        player1Avatar = AvatarList.getAvatarList().get(position).getImageId();
+        int position = avatarList.getPosition();
+        //player1Avatar = avatarList.getAvatarList().get(position).getImageId();
         return player1Avatar;
     }
 
@@ -102,7 +110,7 @@ public class ApplicationSettings {
         return player2Avatar;
     }
 
-    public String getApplicationTheme() {
+    public int getApplicationTheme() {
         return applicationTheme;
     }
 

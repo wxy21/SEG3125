@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity {
 
     public void btnSinglePlayer(View view){
         Intent intent = new Intent(this, SinglePlayerBoardSizeActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     public void btnMultiPlayer(View view){

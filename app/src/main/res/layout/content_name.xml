@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.Activity.GameActivities.Multiplayer.NameSelectionActivity"
     tools:showIn="@layout/activity_name"
-    android:background="@drawable/background6">
+    android:background="@drawable/background1">
 
     <LinearLayout
         android:orientation="vertical"
