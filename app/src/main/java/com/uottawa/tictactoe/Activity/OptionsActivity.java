@@ -8,7 +8,6 @@ import com.uottawa.tictactoe.*;
 import com.uottawa.tictactoe.SpinnerAdapter;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class OptionsActivity extends BaseActivity {
     int avatar_position;

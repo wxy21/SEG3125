@@ -15,8 +15,7 @@ public class LevelDifficultyActivity extends BaseActivity {
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_level_difficulty);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        
     }
 
     public void btn_easy(View view){
