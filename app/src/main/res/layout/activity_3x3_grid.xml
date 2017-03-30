@@ -14,6 +14,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_3x3Grid" />
+    <include layout="@layout/content_3x3_grid" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_5x5Grid" />
+    <include layout="@layout/content_5x5_grid" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -13,7 +13,7 @@ public class EasyGameActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
-        setContentView(R.layout.activity_3x3Grid);
+        setContentView(R.layout.activity_3x3_grid);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }

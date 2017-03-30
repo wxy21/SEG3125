@@ -6,7 +6,6 @@ import android.widget.*;
 
 import com.uottawa.tictactoe.*;
 import com.uottawa.tictactoe.SpinnerAdapter;
-import  com.uottawa.tictactoe.Avatar;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
