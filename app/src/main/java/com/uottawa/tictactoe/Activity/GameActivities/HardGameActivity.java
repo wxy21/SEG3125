@@ -13,7 +13,7 @@ public class HardGameActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
-        setContentView(R.layout.activity_hard_game);
+        setContentView(R.layout.activity_5x5Grid);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }

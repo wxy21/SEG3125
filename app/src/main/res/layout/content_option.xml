@@ -126,8 +126,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_marginBottom="59dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:layout_above="@+id/button14"
         android:layout_alignParentStart="true">
 
         <LinearLayout
@@ -194,5 +194,17 @@
                 android:background="@android:drawable/ic_lock_silent_mode_off" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:text="Apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button14"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/pink"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@ public class ApplicationSettings {
     private String player1Name = "Player 1";
     private int player1Avatar = R.drawable.avatar1;
     private String player2Name = "Player 2";
-    private String player2Avatar = "1";
+    private int player2Avatar = R.drawable.avatar1;
     private String applicationTheme = "Theme1";
     private String soundVolume = "50";
     private String musicVolume = "50";
@@ -29,6 +29,8 @@ public class ApplicationSettings {
     private String keyPlayer2Avatar = "player2Avatar";
     private String keyBoardSize = "boardSize";
     private String keyLevelDifficulty = "levelDifficulty";
+
+    private int selectedAvatar = 0;
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
@@ -51,7 +53,7 @@ public class ApplicationSettings {
         editor.apply();
     }
 
-    public void savePlayerInformation(String player1Name, int player1Avatar, String player2Name, String player2Avatar) {
+    public void savePlayerInformation(String player1Name, int player1Avatar, String player2Name, int player2Avatar) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.player2Name = player2Name;
@@ -60,7 +62,13 @@ public class ApplicationSettings {
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
         editor.putString(keyPlayer2Name, player2Name);
-        editor.putString(keyPlayer2Avatar, player2Avatar);
+        editor.putInt(keyPlayer2Avatar, player2Avatar);
+    }
+
+    public void saveAvatar(int selectedAvatar){
+        this.selectedAvatar = selectedAvatar;
+
+        editor.putInt("selectedAvatar", selectedAvatar);
     }
 
     public void loadSettings() {
@@ -68,7 +76,7 @@ public class ApplicationSettings {
         player1Avatar = sharedPreferences.getInt(keyPlayer1Avatar, player1Avatar);
 
         player2Name = sharedPreferences.getString(keyPlayer2Name, player2Name);
-        player2Avatar = sharedPreferences.getString(keyPlayer2Avatar, player2Avatar);
+        player2Avatar = sharedPreferences.getInt(keyPlayer2Avatar, player2Avatar);
 
         applicationTheme = sharedPreferences.getString(keyApplicationTheme, applicationTheme);
         boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
@@ -89,7 +97,7 @@ public class ApplicationSettings {
         return player2Name;
     }
 
-    public String getPlayer2Avatar() {
+    public int getPlayer2Avatar() {
         return player2Avatar;
     }
 

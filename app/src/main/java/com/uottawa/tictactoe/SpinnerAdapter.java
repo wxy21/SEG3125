@@ -16,12 +16,12 @@ import java.util.ArrayList;
 
 public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     int groupid;
-    Activity context;
     ArrayList<ItemData> list;
     LayoutInflater inflater;
+    private AvatarList avatarList;
 
     public SpinnerAdapter(Activity context, int groupid, ArrayList<ItemData> list){
-        super(context, groupid, list);
+        super(context, groupid);
         this.list=list;
         inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.groupid=groupid;

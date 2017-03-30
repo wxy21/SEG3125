@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.GameActivities.Multiplayer.NameSelectionActivity;
+import com.uottawa.tictactoe.Activity.GameActivities.SinglePlayer.SinglePlayerBoardSizeActivity;
 import com.uottawa.tictactoe.R;
 
 public class MainActivity extends BaseActivity {
@@ -18,7 +19,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void btnSinglePlayer(View view){
-        Intent intent = new Intent(this, NameSelectionActivity.class);
+        Intent intent = new Intent(this, SinglePlayerBoardSizeActivity.class);
         startActivity(intent);
     }
 

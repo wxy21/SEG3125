@@ -13,7 +13,7 @@ public class MediumGameActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
-        setContentView(R.layout.activity_medium_game);
+        setContentView(R.layout.activity_4x4Grid);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
