@@ -1,5 +1,9 @@
 package com.uottawa.tictactoe.GameLogic;
 
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class GameBoard {
 
     public enum Mark {
@@ -31,12 +35,13 @@ public class GameBoard {
         state = GameState.ONGOING;
     }
 
-    public boolean markPosition(int xPosition, int yPosition, Mark piece) {
+    public boolean markPosition(GameMove move) {
 
-        if (turn.equals(piece) && board[xPosition][yPosition].equals(Mark.EMPTY)) {
-            board[xPosition][yPosition] = piece;
+        if (turn.equals(move.getMark()) && board[move.getXCoordinate()][move.getYCoordinate()].equals(Mark.EMPTY)) {
+            board[move.getXCoordinate()][move.getYCoordinate()] = move.getMark();
             if (turn == Mark.X) turn = Mark.O;
             else if (turn == Mark.O) turn = Mark.X;
+            isGameFinished();
             return true;
         } else {
             return false;
@@ -125,6 +130,16 @@ public class GameBoard {
             return true;
         }
         return false;
+    }
+
+    public Queue<GameMove> findAllMoves() {
+        Queue<GameMove> potentialMoves = new LinkedBlockingQueue<GameMove>();
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if(board[row][col].equals(Mark.EMPTY)) potentialMoves.add(new GameMove(row, col, turn));
+            }
+        }
+        return potentialMoves;
     }
 
     private boolean isGameATie() {
