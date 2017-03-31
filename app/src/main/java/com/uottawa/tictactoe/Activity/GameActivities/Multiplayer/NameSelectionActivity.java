@@ -36,7 +36,7 @@ public class NameSelectionActivity extends BaseActivity {
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
         player1Avatar_name.setAdapter(adapter);
 
-
+        player1_name = applicationSettings.getPlayer1Name();
         player1_position = applicationSettings.getPlayer1Avatar();
         player1Avatar_name.setSelection(player1_position);
 
