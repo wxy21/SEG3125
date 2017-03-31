@@ -25,6 +25,6 @@ public class GameMove {
     }
 
     public String toString() {
-        return "x: " + xCoordinate + " y: " + yCoordinate + " mark: " + mark;
+        return "Move- x: " + xCoordinate + " y: " + yCoordinate + " mark: " + mark;
     }
 }
