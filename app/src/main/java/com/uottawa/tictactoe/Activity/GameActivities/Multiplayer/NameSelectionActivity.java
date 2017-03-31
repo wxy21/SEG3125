@@ -28,7 +28,7 @@ public class NameSelectionActivity extends BaseActivity {
         setContentView(R.layout.activity_name);
 
         //Avatar Spinner
-        avatarList = new AvatarList();
+        /*avatarList = new AvatarList();
 
         ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
         //avatar_id = avatarList.getImageID();
@@ -38,6 +38,10 @@ public class NameSelectionActivity extends BaseActivity {
 
         player1_name = applicationSettings.getPlayer1Name();
         player1_position = applicationSettings.getPlayer1Avatar();
+
+
+       player1_position = applicationSettings.getPlayer1Avatar();
+
         player1Avatar_name.setSelection(player1_position);
 
         player1Avatar_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -52,7 +56,7 @@ public class NameSelectionActivity extends BaseActivity {
             }
         });
 
-        Spinner player2Avatar_name = (Spinner) findViewById(R.id.name_Player2Avatar);
+        Spinner player2Avatar_name = (Spinner) findViewById(R.id.name_Player2Avatar);*/
     }
 
     public void btnOK_name(View view){

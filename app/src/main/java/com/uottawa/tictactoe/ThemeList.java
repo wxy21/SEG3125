@@ -16,7 +16,6 @@ public class ThemeList {
         theme_list.add(new ItemData(R.drawable.background1));
         theme_list.add(new ItemData(R.drawable.background2));
         theme_list.add(new ItemData(R.drawable.background3));
-        //createAvatarList(avatar_list);
     }
 
     public ArrayList<ItemData> getThemeList(){

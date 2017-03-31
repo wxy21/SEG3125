@@ -22,17 +22,8 @@ public class AvatarList {
         avatar_list.add(new ItemData(R.drawable.avatar1));
         avatar_list.add(new ItemData(R.drawable.avatar2));
         avatar_list.add(new ItemData(R.drawable.avatar3));
-        //createAvatarList(avatar_list);
     }
 
-
-    private void createAvatarList(ArrayList<ItemData> arrayList) {
-
-        avatar_list.add(new ItemData(R.drawable.avatar1));
-        avatar_list.add(new ItemData(R.drawable.avatar2));
-        avatar_list.add(new ItemData(R.drawable.avatar3));
-
-    }
 
     public ArrayList<ItemData> getAvatarList(){
         return avatar_list;

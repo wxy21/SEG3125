@@ -16,10 +16,12 @@ public class ApplicationSettings {
     private String player2Name = "Player 2";
     private int player2Avatar = R.drawable.avatar1;
     private int applicationTheme = R.drawable.background1;
-    private String soundVolume = "50";
-    private String musicVolume = "50";
+    private int soundVolume = 50;
+    private int musicVolume = 50;
     private String boardSize = "3x3";
     private String levelDifficulty = "Easy";
+    private int buttonSound = R.drawable.sound_on;
+    private int buttonMusic = R.drawable.sound_on;
 
     // Variable Keys
     private String keyPlayer1Name = "player1Name";
@@ -31,26 +33,30 @@ public class ApplicationSettings {
     private String keyPlayer2Avatar = "player2Avatar";
     private String keyBoardSize = "boardSize";
     private String keyLevelDifficulty = "levelDifficulty";
-
-    private AvatarList avatarList;
+    private String keyButtonSound = "Sound";
+    private String keyButtonMusic = "Music";
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
     }
 
-    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, String soundVolume, String musicVolume) {
+    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, int soundVolume, int musicVolume, int buttonSound, int buttonMusic) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.applicationTheme = applicationTheme;
         this.soundVolume = soundVolume;
         this.musicVolume = musicVolume;
+        this.buttonSound = buttonSound;
+        this.buttonMusic = buttonMusic;
 
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
         editor.putInt(keyApplicationTheme, applicationTheme);
-        editor.putString(keySoundVolume, soundVolume);
-        editor.putString(keyMusicVolume, musicVolume);
+        editor.putInt(keySoundVolume, soundVolume);
+        editor.putInt(keyMusicVolume, musicVolume);
+        editor.putInt(keyButtonSound, buttonSound);
+        editor.putInt(keyButtonMusic, buttonMusic);
         editor.commit();
         editor.apply();
     }
@@ -83,23 +89,21 @@ public class ApplicationSettings {
         player2Avatar = sharedPreferences.getInt(keyPlayer2Avatar, player2Avatar);
 
         applicationTheme = sharedPreferences.getInt(keyApplicationTheme, applicationTheme);
+
         boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
         levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
-        soundVolume = sharedPreferences.getString(keySoundVolume, soundVolume);
-        musicVolume = sharedPreferences.getString(keyMusicVolume, musicVolume);
 
-
+        soundVolume = sharedPreferences.getInt(keySoundVolume, soundVolume);
+        musicVolume = sharedPreferences.getInt(keyMusicVolume, musicVolume);
+        buttonSound = sharedPreferences.getInt(keyButtonSound, buttonSound);
+        buttonMusic = sharedPreferences.getInt(keyButtonMusic, buttonMusic);
     }
 
     public String getPlayer1Name() {
         return player1Name;
     }
 
-    public int getPlayer1Avatar() {
-        int position = avatarList.getPosition();
-        player1Avatar = avatarList.getAvatarList().get(position).getImageId();
-        return player1Avatar;
-    }
+    public int getPlayer1Avatar() { return player1Avatar; }
 
     public String getPlayer2Name() {
         return player2Name;
@@ -113,12 +117,20 @@ public class ApplicationSettings {
         return applicationTheme;
     }
 
-    public String getSoundVolume() {
+    public int getSoundVolume() {
         return soundVolume;
     }
 
-    public String getMusicVolume() {
+    public int getMusicVolume() {
         return musicVolume;
+    }
+
+    public int getButtonSound(){
+        return buttonSound;
+    }
+
+    public int getButtonMusic(){
+        return buttonMusic;
     }
 
     public String getBoardSize() {
