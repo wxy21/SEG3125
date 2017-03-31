@@ -32,7 +32,6 @@ public class ApplicationSettings {
     private String keyBoardSize = "boardSize";
     private String keyLevelDifficulty = "levelDifficulty";
 
-    private int selectedAvatar = 0;
     private AvatarList avatarList;
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
@@ -98,7 +97,7 @@ public class ApplicationSettings {
 
     public int getPlayer1Avatar() {
         int position = avatarList.getPosition();
-        //player1Avatar = avatarList.getAvatarList().get(position).getImageId();
+        player1Avatar = avatarList.getAvatarList().get(position).getImageId();
         return player1Avatar;
     }
 

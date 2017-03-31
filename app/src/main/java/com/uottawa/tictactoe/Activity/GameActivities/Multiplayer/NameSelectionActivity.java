@@ -17,31 +17,33 @@ import java.util.ArrayList;
 public class NameSelectionActivity extends BaseActivity {
 
     private AvatarList avatarList;
-    private int avatar_position = 0;
+
+    private int player1_avatar;
+    private String player1_name;
+    private int player1_position;
     private ApplicationSettings applicationSettings;
 
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_name);
 
+        //Avatar Spinner
+        avatarList = new AvatarList();
+
         ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
-
-        //int player1_Avatar = applicationSettings.getPlayer1Avatar();
-
+        //avatar_id = avatarList.getImageID();
         Spinner player1Avatar_name = (Spinner) findViewById(R.id.name_player1Avatar);
-        Spinner player2Avatar_name = (Spinner) findViewById(R.id.name_Player2Avatar);
-
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
         player1Avatar_name.setAdapter(adapter);
-        //player1Avatar_name.setSelection(player1_Avatar);
-        player2Avatar_name.setAdapter(adapter);
+
+
+        player1_position = applicationSettings.getPlayer1Avatar();
+        player1Avatar_name.setSelection(player1_position);
 
         player1Avatar_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
-                avatar_position = parent.getSelectedItemPosition();
-                //applicationSettings.saveAvatar(avatar_position);
-                //AvatarList.setAvatar(avatar_position);
+                player1_position = parent.getSelectedItemPosition();
             }
 
             @Override
@@ -49,6 +51,8 @@ public class NameSelectionActivity extends BaseActivity {
                 //do nothing
             }
         });
+
+        Spinner player2Avatar_name = (Spinner) findViewById(R.id.name_Player2Avatar);
     }
 
     public void btnOK_name(View view){
