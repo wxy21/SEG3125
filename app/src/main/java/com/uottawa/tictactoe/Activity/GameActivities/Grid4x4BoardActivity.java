@@ -9,7 +9,7 @@ import com.uottawa.tictactoe.Activity.BaseActivity;
 import com.uottawa.tictactoe.Activity.MainActivity;
 import com.uottawa.tictactoe.R;
 
-public class MediumGameActivity extends BaseActivity {
+public class Grid4x4BoardActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
