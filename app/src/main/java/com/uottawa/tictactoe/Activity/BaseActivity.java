@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.uottawa.tictactoe.ApplicationSettings;
-import com.uottawa.tictactoe.R;
+import com.uottawa.tictactoe.DataStorage.ApplicationSettings;
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls

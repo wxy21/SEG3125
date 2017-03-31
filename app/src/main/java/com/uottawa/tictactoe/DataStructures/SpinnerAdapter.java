@@ -1,4 +1,4 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.DataStructures;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.uottawa.tictactoe.R;
+
 import java.util.ArrayList;
 
 public class SpinnerAdapter extends ArrayAdapter<ItemData> {

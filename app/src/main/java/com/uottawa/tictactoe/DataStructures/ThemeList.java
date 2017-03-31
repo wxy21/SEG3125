@@ -1,4 +1,6 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.DataStructures;
+
+import com.uottawa.tictactoe.R;
 
 import java.util.ArrayList;
 

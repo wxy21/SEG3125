@@ -1,11 +1,7 @@
-package com.uottawa.tictactoe;
-
-import android.content.SharedPreferences;
+package com.uottawa.tictactoe.DataStructures;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-import com.uottawa.tictactoe.SpinnerAdapter;
 import com.uottawa.tictactoe.R;
 /**
  * Created by user on 2017-03-29.

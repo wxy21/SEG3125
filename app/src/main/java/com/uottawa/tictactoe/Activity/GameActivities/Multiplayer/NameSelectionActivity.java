@@ -7,11 +7,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
-import com.uottawa.tictactoe.ApplicationSettings;
-import com.uottawa.tictactoe.AvatarList;
-import com.uottawa.tictactoe.ItemData;
+import com.uottawa.tictactoe.DataStructures.AvatarList;
+import com.uottawa.tictactoe.DataStructures.ItemData;
 import com.uottawa.tictactoe.R;
-import com.uottawa.tictactoe.SpinnerAdapter;
+import com.uottawa.tictactoe.DataStructures.SpinnerAdapter;
 
 import java.util.ArrayList;
 

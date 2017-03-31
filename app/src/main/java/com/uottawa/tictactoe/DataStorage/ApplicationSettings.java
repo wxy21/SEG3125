@@ -1,4 +1,4 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.DataStorage;
 
 import android.content.SharedPreferences;
 import com.uottawa.tictactoe.R;
