@@ -5,6 +5,8 @@ import java.util.Queue;
 public class GameAI {
 
     int botDifficulty;
+    int scorePerPredictedWin = 1;
+    int scorePerWin = 10;
 
     private class GamePrediction {
         GameMove move;
@@ -30,14 +32,14 @@ public class GameAI {
     }
 
     public GameMove calculateNextMove(GameBoard game) {
-       // GameBoard game = (GameBoard) gameBoard.clone();
-        int numberOfMovesToThinkAhead = botDifficulty * 2;
+        GameBoard gameBoardToAnalyse = game.cloneGameBoard();
+        int numberOfMovesToThinkAhead = botDifficulty * 2 - 1;
 
-        Queue<GameMove> potentialMoves = game.findAllMoves();
+        Queue<GameMove> potentialMoves = gameBoardToAnalyse.findAllMoves();
         GameMove moveThatLeadsToMaxScore = potentialMoves.peek();
         int maxScore = -999999;
         for (GameMove potentialMove : potentialMoves) {
-            GamePrediction prediction = calculateNextMove(game, potentialMove, numberOfMovesToThinkAhead);
+            GamePrediction prediction = calculateNextMove(gameBoardToAnalyse, potentialMove, numberOfMovesToThinkAhead);
             if (prediction.getScore() > maxScore) {
                 maxScore = prediction.getScore();
                 moveThatLeadsToMaxScore = prediction.getMove();
@@ -50,58 +52,96 @@ public class GameAI {
 
     public GamePrediction calculateNextMove(GameBoard game, GameMove move, int depth) {
 
-        if (depth <= 0) return new GamePrediction(null, 0);
+        GameBoard gameBoardToAnalyse = game.cloneGameBoard();
+        gameBoardToAnalyse.markPosition(move);
 
-        game.markPosition(move);
-        if (!game.getState().equals(GameBoard.GameState.ONGOING)) {
-            int score = finalGameScore(game, move.getMark());
+        if (!gameBoardToAnalyse.getState().equals(GameBoard.GameState.ONGOING)) {
+            int score = finalPredictionScore(gameBoardToAnalyse, move.getMark());
             return new GamePrediction(move, score);
         }
 
-        Queue<GameMove> potentialOpponentMoves = game.findAllMoves();
+        if (depth <= 0) {
+            int xCombinations = gameBoardToAnalyse.numberOfPotentialWinningCombinationsRemaining(GameBoard.Mark.X);
+            int oCombinations = gameBoardToAnalyse.numberOfPotentialWinningCombinationsRemaining(GameBoard.Mark.O);
+
+            if (xCombinations > oCombinations && move.getMark().equals(GameBoard.Mark.X))
+                return new GamePrediction(null, scorePerPredictedWin);
+            if (xCombinations > oCombinations && move.getMark().equals(GameBoard.Mark.O))
+                return new GamePrediction(null, -scorePerPredictedWin);
+
+            if (xCombinations < oCombinations && move.getMark().equals(GameBoard.Mark.X))
+                return new GamePrediction(null, -scorePerPredictedWin);
+            if (xCombinations < oCombinations && move.getMark().equals(GameBoard.Mark.O))
+                return new GamePrediction(null, scorePerPredictedWin);
+
+            // Tie
+            return new GamePrediction(null, 0);
+        }
+
+        Queue<GameMove> potentialOpponentMoves = gameBoardToAnalyse.findAllMoves();
         int score = 0;
         for (GameMove potentialOpponentMove : potentialOpponentMoves) {
             // These are all the moves of our opponent. Our score is therefore the inverse
-            score -= calculateNextMove(game, potentialOpponentMove, depth - 1).getScore();
+            score -= calculateNextMove(gameBoardToAnalyse, potentialOpponentMove, depth - 1).getScore();
         }
 
         return new GamePrediction(move, score);
     }
 
-    public int finalGameScore(GameBoard game, GameBoard.Mark mark) {
+    public int finalPredictionScore(GameBoard game, GameBoard.Mark mark) {
         if (game.getState().equals(GameBoard.GameState.OWIN)) {
-            if (mark.equals(GameBoard.GameState.OWIN)) return 1;
-            else return -1;
+            if (mark.equals(GameBoard.Mark.O)) return scorePerWin;
+            else return -scorePerWin;
         } else if (game.getState().equals(GameBoard.GameState.XWIN)) {
-            if (mark.equals(GameBoard.GameState.XWIN)) return 1;
-            else return -1;
+            if (mark.equals(GameBoard.Mark.X)) return scorePerWin;
+            else return -scorePerWin;
         } else
             // A tie
             return 0;
     }
 
-//    public static void  main(String[] args) {
+//    public static void main(String[] args) {
 //
 //        GameBoard game = new GameBoard(3);
 //        GameAI ai = new GameAI(2);
 //
-//        System.out.println("turn 1" + game.turn);
 //        GameMove move = new GameMove(0,0, GameBoard.Mark.X);
+//        System.out.println(move);
 //        game.markPosition(move);
 //
-//        System.out.println("turn 2" + game.turn);
+////        while(!game.isGameFinished()) {
+////
+////            GameMove aiMove = ai.calculateNextMove(game);
+////            System.out.println("**************************************");
+////            game.markPosition(aiMove);
+////            System.out.println(aiMove);
+////            System.out.println(game);
+////            System.out.println();
+////        }
+//
+//        move = new GameMove(1,1, GameBoard.Mark.O);
+//        System.out.println(move);
+//        game.markPosition(move);
+//
+//        System.out.println(game);
+//
+//        move = new GameMove(0,2, GameBoard.Mark.X);
+//        System.out.println(move);
+//        game.markPosition(move);
+//
+//        System.out.println(game);
+//
+//        move = new GameMove(0,1, GameBoard.Mark.O);
+//        System.out.println(move);
+//        game.markPosition(move);
+//
+//        System.out.println(game);
+//
 //        GameMove aiMove = ai.calculateNextMove(game);
 //        System.out.println(aiMove);
 //        game.markPosition(aiMove);
-//        System.out.println(aiMove);
 //
-//        move = new GameMove(1,1, GameBoard.Mark.X);
-//        game.markPosition(move);
-//
-//        aiMove = ai.calculateNextMove(game);
-//        game.markPosition(aiMove);
-//        System.out.println(aiMove);
-//
+//        System.out.println(game);
 //    }
 }
 

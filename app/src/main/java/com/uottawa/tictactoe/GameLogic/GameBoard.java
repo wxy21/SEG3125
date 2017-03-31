@@ -10,7 +10,9 @@ public class GameBoard {
         EMPTY,
         X,
         O
-    };
+    }
+
+    ;
 
     public enum GameState {
         XWIN,
@@ -19,9 +21,9 @@ public class GameBoard {
         ONGOING
     }
 
-    Mark[][] board;
-    Mark turn;
-    GameState state;
+    private Mark[][] board;
+    private Mark turn;
+    private GameState state;
 
     public GameBoard(int rowSize) {
         board = new Mark[rowSize][rowSize];
@@ -115,7 +117,8 @@ public class GameBoard {
         for (int diag = 0; diag < board.length; diag++) {
             if (board[diag][diag] != winningMarkDiag1) {
                 diag1IsWinner = false;
-            } else if (board[diag][board.length - 1 - diag] != winningMarkDiag2) {
+            }
+            if (board[diag][board.length - 1 - diag] != winningMarkDiag2) {
                 diag2IsWinner = false;
             }
         }
@@ -136,7 +139,8 @@ public class GameBoard {
         Queue<GameMove> potentialMoves = new LinkedBlockingQueue<GameMove>();
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-                if(board[row][col].equals(Mark.EMPTY)) potentialMoves.add(new GameMove(row, col, turn));
+                if (board[row][col].equals(Mark.EMPTY))
+                    potentialMoves.add(new GameMove(row, col, turn));
             }
         }
         return potentialMoves;
@@ -147,15 +151,107 @@ public class GameBoard {
         boolean gameIsATie = true;
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-                if(board[row][col] == Mark.EMPTY) gameIsATie = false;
+                if (board[row][col] == Mark.EMPTY) gameIsATie = false;
             }
         }
         if (gameIsATie) state = GameState.TIE;
         return gameIsATie;
     }
 
+    public int numberOfPotentialWinningCombinationsRemaining(Mark mark) {
+
+        int combinations = 0;
+
+        // Count rows for potential combinations
+        for (int row = 0; row < board.length; row++) {
+            boolean potentialCombination = true;
+            for (int col = 0; col < board[row].length; col++) {
+                if (board[row][col] != mark && board[row][col] != Mark.EMPTY) {
+                    potentialCombination = false;
+                }
+            }
+            if (potentialCombination) combinations++;
+        }
+
+        // Count cols for potential combinations
+        for (int col = 0; col < board.length; col++) {
+            boolean potentialCombination = true;
+            for (int row = 0; row < board.length; row++) {
+                if (board[row][col] != mark && board[row][col] != Mark.EMPTY) {
+                    potentialCombination = false;
+                }
+            }
+            if (potentialCombination) combinations++;
+        }
+
+        boolean diag1PotentialCombination = true;
+        boolean diag2PotentialCombination = true;
+        // Count diags for potential combinations
+        for (int row = 0; row < board.length; row++) {
+            if (board[row][row] != mark && board[row][row] != Mark.EMPTY) {
+                diag1PotentialCombination = false;
+            }
+            if (board[row][board.length - row - 1] != mark && board[row][board.length - row - 1] != Mark.EMPTY) {
+                diag2PotentialCombination = false;
+            }
+        }
+        if (diag1PotentialCombination) combinations++;
+        if (diag2PotentialCombination) combinations++;
+
+        return combinations;
+    }
+
+    protected void setGameBoard(Mark[][] board) {
+        this.board = board;
+    }
+
+    protected void setTurn(Mark turn) {
+        this.turn = turn;
+    }
+
+    protected void setState(GameState state) {
+        this.state = state;
+    }
+
     public GameState getState() {
         return state;
+    }
+
+    public GameBoard cloneGameBoard() {
+
+        GameBoard cloneBoard = new GameBoard(board.length);
+        cloneBoard.setTurn(turn);
+        cloneBoard.setState(state);
+
+        Mark[][] newBoard = new Mark[board.length][board.length];
+
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board.length; col++) {
+                newBoard[row][col] = board[row][col];
+            }
+        }
+
+        cloneBoard.setGameBoard(newBoard);
+
+        return cloneBoard;
+    }
+
+    public String toString() {
+
+        String toPrint = "";
+
+        for (int row = 0; row < board.length; row++) {
+            toPrint += "\n";
+            for (int col = 0; col < board[row].length; col++) {
+                if (board[row][col].equals(Mark.EMPTY)) {
+                    toPrint += "- ";
+                } else {
+                    toPrint += board[row][col] + " ";
+                }
+            }
+        }
+
+        return toPrint;
     }
 
 }
