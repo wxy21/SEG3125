@@ -16,8 +16,8 @@ public class ApplicationSettings {
     private String player2Name = "Player 2";
     private int player2Avatar = R.drawable.avatar1;
     private int applicationTheme = R.drawable.background1;
-    private String soundVolume = "50";
-    private String musicVolume = "50";
+    private int soundVolume = 50;
+    private int musicVolume = 50;
     private String boardSize = "3x3";
     private String levelDifficulty = "Easy";
 
@@ -32,14 +32,12 @@ public class ApplicationSettings {
     private String keyBoardSize = "boardSize";
     private String keyLevelDifficulty = "levelDifficulty";
 
-    private AvatarList avatarList;
-
     public ApplicationSettings(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
     }
 
-    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, String soundVolume, String musicVolume) {
+    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, int soundVolume, int musicVolume) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.applicationTheme = applicationTheme;
@@ -49,8 +47,8 @@ public class ApplicationSettings {
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
         editor.putInt(keyApplicationTheme, applicationTheme);
-        editor.putString(keySoundVolume, soundVolume);
-        editor.putString(keyMusicVolume, musicVolume);
+        editor.putInt(keySoundVolume, soundVolume);
+        editor.putInt(keyMusicVolume, musicVolume);
         editor.commit();
         editor.apply();
     }
@@ -85,9 +83,8 @@ public class ApplicationSettings {
         applicationTheme = sharedPreferences.getInt(keyApplicationTheme, applicationTheme);
         boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
         levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
-        soundVolume = sharedPreferences.getString(keySoundVolume, soundVolume);
-        musicVolume = sharedPreferences.getString(keyMusicVolume, musicVolume);
-
+        soundVolume = sharedPreferences.getInt(keySoundVolume, soundVolume);
+        musicVolume = sharedPreferences.getInt(keyMusicVolume, musicVolume);
 
     }
 
@@ -95,11 +92,7 @@ public class ApplicationSettings {
         return player1Name;
     }
 
-    public int getPlayer1Avatar() {
-        int position = avatarList.getPosition();
-        player1Avatar = avatarList.getAvatarList().get(position).getImageId();
-        return player1Avatar;
-    }
+    public int getPlayer1Avatar() { return player1Avatar; }
 
     public String getPlayer2Name() {
         return player2Name;
@@ -113,11 +106,11 @@ public class ApplicationSettings {
         return applicationTheme;
     }
 
-    public String getSoundVolume() {
+    public int getSoundVolume() {
         return soundVolume;
     }
 
-    public String getMusicVolume() {
+    public int getMusicVolume() {
         return musicVolume;
     }
 

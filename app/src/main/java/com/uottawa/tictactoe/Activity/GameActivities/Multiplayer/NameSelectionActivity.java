@@ -37,7 +37,7 @@ public class NameSelectionActivity extends BaseActivity {
         player1Avatar_name.setAdapter(adapter);
 
 
-        player1_position = applicationSettings.getPlayer1Avatar();
+//        player1_position = applicationSettings.getPlayer1Avatar();
         player1Avatar_name.setSelection(player1_position);
 
         player1Avatar_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -10,16 +10,15 @@ import java.util.ArrayList;
 
 public class OptionsActivity extends BaseActivity {
     private AvatarList avatarList;
-    private int avatar_position;
-    private int avatar_id;
+    int avatar_position = 0;
 
     private ThemeList themeList;
     private int theme_position;
     private int theme_id;
 
-    private TextView player1;
-    private String player1_name;
-
+    private TextView player1Name;
+    private SeekBar soundVolume;
+    private SeekBar musicVolume;
     int sound;
     int music;
 
@@ -27,19 +26,25 @@ public class OptionsActivity extends BaseActivity {
     protected void loadView() {
         setContentView(R.layout.activity_option);
 
-        //Player 1 Name
-        player1 = (TextView) findViewById(R.id.options_Player1Name);
-        player1_name = player1.getText().toString();
+        /**************************************
+         *  Load GUI components with application setting variables
+         */
+        // Player's Name
+        player1Name = (TextView) findViewById(R.id.options_Player1Name);
+        player1Name.setText(applicationSettings.getPlayer1Name());
 
         //Avatar Spinner
         avatarList = new AvatarList();
 
         ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
-        avatar_id = avatarList.getImageID();
-
         Spinner player1Avatar_option = (Spinner) findViewById(R.id.options_Player1Avatar);
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
         player1Avatar_option.setAdapter(adapter);
+
+        // Set Avatar spinner based on previous application settings
+        int selectedPlayer1AvatarId = applicationSettings.getPlayer1Avatar();
+        int avatarPosition = adapter.getPosition(new ItemData(selectedPlayer1AvatarId));
+        player1Avatar_option.setSelection(avatarPosition);
 
         player1Avatar_option.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -76,8 +81,8 @@ public class OptionsActivity extends BaseActivity {
         });
 
         //Sound Volume
-        SeekBar soundVolume = (SeekBar) findViewById(R.id.options_SoundVolume);
-        sound = soundVolume.getProgress();
+        soundVolume = (SeekBar) findViewById(R.id.options_SoundVolume);
+        soundVolume.setProgress(applicationSettings.getSoundVolume());
 
         soundVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -97,8 +102,8 @@ public class OptionsActivity extends BaseActivity {
         });
 
         //Music Volume
-        SeekBar musicVolume = (SeekBar) findViewById(R.id.options_MusicVolume);
-        music = musicVolume.getProgress();
+        musicVolume = (SeekBar) findViewById(R.id.options_MusicVolume);
+        musicVolume.setProgress(applicationSettings.getMusicVolume());
 
         musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -116,24 +121,6 @@ public class OptionsActivity extends BaseActivity {
 
             }
         });
-    }
-
-    private String getPlayer1_Name(){
-        //TextView player1 = (TextView) findViewById(R.id.options_Player1Name);
-        player1_name = player1.getText().toString();
-        return player1_name;
-    }
-
-    private int getImageID(){
-        avatarList.setAvatar(avatar_position);
-        avatar_id = avatarList.getImageID();
-        return avatar_id;
-    }
-
-    private int getThemeID(){
-        themeList.setTheme(theme_position);
-        theme_id = themeList.getImageID();
-        return theme_id;
     }
 
     public void btnSound(View view){
@@ -155,8 +142,10 @@ public class OptionsActivity extends BaseActivity {
     }
 
     public void btnApply(View view){
-        player1_name = getPlayer1_Name();
-        applicationSettings.saveSettings(player1_name, avatar_id, theme_id, Integer.toString(sound), Integer.toString(music));
+
+        int avatarId = avatarList.getAvatarList().get(avatar_position).getImageId();
+
+        applicationSettings.saveSettings(player1Name.getText().toString(), avatarId, themeList.getImageID(), soundVolume.getProgress(), musicVolume.getProgress());
         super.onBackPressed();
     }
 }
