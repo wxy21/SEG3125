@@ -146,7 +146,7 @@ public class OptionsActivity extends BaseActivity {
     }
 
     public void btnSound(View view){
-        if(buttonMusicID == R.drawable.sound_on){
+        if(buttonSoundID == R.drawable.sound_on ){
             buttonSoundID = R.drawable.sound_off;
             buttonSound.setImageResource(buttonSoundID);
             sound = 0;
@@ -161,7 +161,7 @@ public class OptionsActivity extends BaseActivity {
     }
 
     public void btnMusic(View view){
-        if(buttonMusicID == R.drawable.sound_on){
+        if(buttonMusicID == R.drawable.sound_on ){
             buttonMusicID = R.drawable.sound_off;
             buttonMusic.setImageResource(buttonMusicID);
             music = 0;
