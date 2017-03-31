@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
 import com.uottawa.tictactoe.ApplicationSettings;
@@ -18,32 +19,38 @@ public class NameSelectionActivity extends BaseActivity {
 
     private AvatarList avatarList;
 
-    private int player1_avatar;
-    private String player1_name;
-    private int player1_position;
-    private ApplicationSettings applicationSettings;
+    private TextView player1_name;
+    private int avatarPosition1;
+
+    private TextView player2_name;
+    private int avatarPosition2;
 
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_name);
 
+        //Player1 Name
+        player1_name = (TextView) findViewById(R.id.name_Player1Name);
+        player1_name.setText(applicationSettings.getPlayer1Name());
+
         //Avatar Spinner
         avatarList = new AvatarList();
-
         ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
-        //avatar_id = avatarList.getImageID();
-        Spinner player1Avatar_name = (Spinner) findViewById(R.id.name_player1Avatar);
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
-        player1Avatar_name.setAdapter(adapter);
 
+        //Player 1 Avatar
+        Spinner player1_avatar = (Spinner) findViewById(R.id.name_player1Avatar);
+        player1_avatar.setAdapter(adapter);
 
-//        player1_position = applicationSettings.getPlayer1Avatar();
-        player1Avatar_name.setSelection(player1_position);
+        // Set Avatar spinner based on previous application settings
+        int selectedPlayer1AvatarId = applicationSettings.getPlayer1Avatar();
+        avatarPosition1 = adapter.getPosition(new ItemData(selectedPlayer1AvatarId));
+        player1_avatar.setSelection(avatarPosition1);
 
-        player1Avatar_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        player1_avatar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
-                player1_position = parent.getSelectedItemPosition();
+                avatarPosition1 = parent.getSelectedItemPosition();
             }
 
             @Override
@@ -52,11 +59,39 @@ public class NameSelectionActivity extends BaseActivity {
             }
         });
 
-        Spinner player2Avatar_name = (Spinner) findViewById(R.id.name_Player2Avatar);
+        //Player 2 Name
+        player2_name = (TextView) findViewById(R.id.name_Player2Name);
+        player2_name.setText(applicationSettings.getPlayer2Name());
+
+        //Player 2 Avatar
+        Spinner player2_avatar = (Spinner) findViewById(R.id.name_Player2Avatar);
+        player2_avatar.setAdapter(adapter);
+
+        // Set Avatar spinner based on previous application settings
+        int selectedPlayer2AvatarId = applicationSettings.getPlayer2Avatar();
+        avatarPosition2 = adapter.getPosition(new ItemData(selectedPlayer2AvatarId));
+        player2_avatar.setSelection(avatarPosition2);
+
+        player2_avatar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
+                avatarPosition2 = parent.getSelectedItemPosition();
+            }
+
+            @Override
+            public void onNothingSelected (AdapterView < ? > parent){
+                //do nothing
+            }
+        });
     }
 
     public void btnOK_name(View view){
+        String player1Name = player1_name.getText().toString();
+        int player1AvatarID = avatarList.getAvatarList().get(avatarPosition1).getImageId();
+        String player2Name = player2_name.getText().toString();
+        int player2AvatarID = avatarList.getAvatarList().get(avatarPosition2).getImageId();
+        applicationSettings.savePlayerInformation(player1Name, player1AvatarID, player2Name, player2AvatarID);
         Intent intent = new Intent(this, MultiplayerBoardSizeActivity.class);
-        startActivityForResult(intent, 4);
+        startActivity(intent);
     }
 }

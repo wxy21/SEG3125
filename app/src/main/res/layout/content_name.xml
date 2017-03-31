@@ -14,77 +14,6 @@
     tools:showIn="@layout/activity_name"
     android:background="@drawable/background1">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/editbox_dropdown_light_frame"
-        android:layout_above="@+id/btnNext_name"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="41dp">
-
-        <TextView
-            android:text="Player 2 "
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:layout_weight="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="normal|bold"
-            android:textColor="@color/pink"
-            android:paddingLeft="5dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:text="Name:"
-                android:layout_width="88dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView7"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Player 2"
-                android:ems="10"
-                android:id="@+id/name_Player2Name"
-                android:layout_weight="1"
-                android:textAlignment="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:text="Avatar:"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViews"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_width="180dp"
-                android:textAlignment="textStart"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="5dp" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:id="@+id/name_Player2Avatar"
-                android:layout_weight="1"
-                android:layout_height="50dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
     <TextView
         android:text="Player Information"
         android:layout_width="wrap_content"
@@ -101,7 +30,7 @@
         android:text="OK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnNext_name"
+        android:id="@+id/name_btnOK"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="13dp"
@@ -174,6 +103,77 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:id="@+id/name_player1Avatar"
+                android:layout_weight="1"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:layout_marginBottom="41dp"
+        android:layout_above="@+id/name_btnOK"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Player 2 "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textStyle="normal|bold"
+            android:textColor="@color/pink"
+            android:paddingLeft="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Name:"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:paddingLeft="5dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Player 2"
+                android:ems="10"
+                android:id="@+id/name_Player2Name"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Avatar:"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViews"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="180dp"
+                android:textAlignment="textStart"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:id="@+id/name_Player2Avatar"
                 android:layout_weight="1"
                 android:layout_height="50dp" />
 

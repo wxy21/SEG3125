@@ -213,6 +213,7 @@
             android:layout_height="70dp"
             android:id="@+id/options_ApplicationTheme"
             android:layout_weight="1"
+            android:overlapAnchor="false"
             android:spinnerMode="dialog" />
 
 
