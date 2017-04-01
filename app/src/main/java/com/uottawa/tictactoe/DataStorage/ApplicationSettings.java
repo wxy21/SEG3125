@@ -49,12 +49,7 @@ public class ApplicationSettings {
         editor = sharedPreferences.edit();
     }
 
-<<<<<<< HEAD
-    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme,
-                             int soundVolume, int musicVolume, int buttonSound, int buttonMusic, String backgroundMusicCommand) {
-=======
     public void saveSettings(String player1Name, int player1Avatar, int themeSampleImageId, int themeBackgroundId, int themeColor, int soundVolume, int musicVolume, int buttonSound, int buttonMusic) {
->>>>>>> 45828872da4c2599632452ed8183fcca5e831fa7
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.themeSampleImageId = themeSampleImageId;
