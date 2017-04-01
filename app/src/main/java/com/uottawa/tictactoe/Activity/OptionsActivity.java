@@ -197,11 +197,9 @@ public class OptionsActivity extends BaseActivity {
         int themeBackgroundId = themeList.getThemeList().get(theme_position).getBackgroundId();
         int themeColor = themeList.getThemeList().get(theme_position).getThemeColor();
 
-<<<<<<< HEAD
-        applicationSettings.saveSettings(player1NameStr, avatarId, themeID, sound, music, buttonSoundID, buttonMusicID, background_music_command);
-=======
-        applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor, sound, music, buttonSoundID, buttonMusicID);
->>>>>>> 45828872da4c2599632452ed8183fcca5e831fa7
+        applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
+                sound, music, buttonSoundID, buttonMusicID, background_music_command);
+
         super.onBackPressed();
     }
 

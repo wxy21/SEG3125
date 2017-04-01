@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_main);
-        backgroundMusic();
+        //backgroundMusic();
     }
 
     @Override
