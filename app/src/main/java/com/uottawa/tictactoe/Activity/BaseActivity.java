@@ -62,14 +62,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void collectThemeElements(){};
 
     public void changeTheme() {
-
-        //int color = Color.rgb(255, 36, 226);
-        int color = Color.RED;
+        
+        int backgroundImage = applicationSettings.getTheme().getBackgroundId();
+        int color = applicationSettings.getTheme().getThemeColor();
 
         // Change the background
         RelativeLayout background = (RelativeLayout) findViewById(content);
         if(background != null) {
-            background.setBackground(ContextCompat.getDrawable(getApplicationContext(), applicationSettings.getApplicationTheme()));
+            background.setBackground(ContextCompat.getDrawable(getApplicationContext(), backgroundImage));
         }
 
         // Change the buttons

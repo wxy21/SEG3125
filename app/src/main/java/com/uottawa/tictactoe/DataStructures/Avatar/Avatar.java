@@ -1,10 +1,10 @@
-package com.uottawa.tictactoe.DataStructures;
+package com.uottawa.tictactoe.DataStructures.Avatar;
 
-public class ItemData {
+public class Avatar {
 
     Integer imageId;
 
-    public ItemData(Integer imageId){
+    public Avatar(Integer imageId){
         this.imageId=imageId;
     }
 
@@ -20,7 +20,7 @@ public class ItemData {
             return false;
         }
 
-        ItemData data = (ItemData) obj;
+        Avatar data = (Avatar) obj;
 
         if (imageId.equals(data.getImageId())) {
             return true;

@@ -1,4 +1,4 @@
-package com.uottawa.tictactoe.DataStructures;
+package com.uottawa.tictactoe.DataStructures.Avatar;
 
 import java.util.ArrayList;
 
@@ -9,19 +9,19 @@ import com.uottawa.tictactoe.R;
 
 public class AvatarList {
 
-    private ArrayList<ItemData> avatar_list;
+    private ArrayList<Avatar> avatar_list;
     private int position = 0;
     private int imageID;
 
     public AvatarList(){
         avatar_list = new ArrayList<>();
-        avatar_list.add(new ItemData(R.drawable.avatar1));
-        avatar_list.add(new ItemData(R.drawable.avatar2));
-        avatar_list.add(new ItemData(R.drawable.avatar3));
+        avatar_list.add(new Avatar(R.drawable.avatar1));
+        avatar_list.add(new Avatar(R.drawable.avatar2));
+        avatar_list.add(new Avatar(R.drawable.avatar3));
     }
 
 
-    public ArrayList<ItemData> getAvatarList(){
+    public ArrayList<Avatar> getAvatarList(){
         return avatar_list;
     }
 

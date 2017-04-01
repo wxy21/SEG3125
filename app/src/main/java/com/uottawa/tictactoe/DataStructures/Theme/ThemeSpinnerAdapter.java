@@ -1,4 +1,4 @@
-package com.uottawa.tictactoe.DataStructures;
+package com.uottawa.tictactoe.DataStructures.Theme;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,12 +12,13 @@ import com.uottawa.tictactoe.R;
 
 import java.util.ArrayList;
 
-public class SpinnerAdapter extends ArrayAdapter<ItemData> {
+public class ThemeSpinnerAdapter extends ArrayAdapter<Theme> {
+
     int groupid;
-    ArrayList<ItemData> list;
+    ArrayList<Theme> list;
     LayoutInflater inflater;
 
-    public SpinnerAdapter(Activity context, int groupid, ArrayList<ItemData> list){
+    public ThemeSpinnerAdapter(Activity context, int groupid, ArrayList<Theme> list){
         super(context, groupid, list);
         this.list=list;
         inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -27,7 +28,7 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     public View getView(int position, View convertView, ViewGroup parent ){
         View itemView=inflater.inflate(groupid,parent,false);
         ImageView imageView=(ImageView)itemView.findViewById(R.id.img);
-        imageView.setImageResource(list.get(position).getImageId());
+        imageView.setImageResource(list.get(position).getSampleImageId());
         return itemView;
     }
 
