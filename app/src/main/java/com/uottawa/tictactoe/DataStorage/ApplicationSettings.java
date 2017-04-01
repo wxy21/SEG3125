@@ -1,9 +1,10 @@
 package com.uottawa.tictactoe.DataStorage;
 
 import android.content.SharedPreferences;
-import com.uottawa.tictactoe.R;
+import android.graphics.Color;
 
-import java.util.ArrayList;
+import com.uottawa.tictactoe.DataStructures.Theme.Theme;
+import com.uottawa.tictactoe.R;
 
 public class ApplicationSettings {
 
@@ -15,7 +16,9 @@ public class ApplicationSettings {
     private int player1Avatar = R.drawable.avatar1;
     private String player2Name = "Player 2";
     private int player2Avatar = R.drawable.avatar1;
-    private int applicationTheme = R.drawable.background1;
+    private int themeSampleImageId = R.drawable.background1;
+    private int themeBackgroundId = R.drawable.background1;
+    private int themeColor = Color.rgb(255, 36, 226);
     private int soundVolume = 50;
     private int musicVolume = 50;
     private String boardSize = "3x3";
@@ -26,7 +29,9 @@ public class ApplicationSettings {
     // Variable Keys
     private String keyPlayer1Name = "player1Name";
     private String keyPlayer1Avatar = "player1Avatar";
-    private String keyApplicationTheme = "applicationTheme";
+    private String keyThemeSampleImadId = "themeSampleImageId";
+    private String keyThemeBackgroundId = "themeBackgroundId";
+    private String keyThemeColor = "themeColor";
     private String keySoundVolume = "soundVolume";
     private String keyMusicVolume = "musicVolume";
     private String keyPlayer2Name = "player2Name";
@@ -41,10 +46,12 @@ public class ApplicationSettings {
         editor = sharedPreferences.edit();
     }
 
-    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, int soundVolume, int musicVolume, int buttonSound, int buttonMusic) {
+    public void saveSettings(String player1Name, int player1Avatar, int themeSampleImageId, int themeBackgroundId, int themeColor, int soundVolume, int musicVolume, int buttonSound, int buttonMusic) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
-        this.applicationTheme = applicationTheme;
+        this.themeSampleImageId = themeSampleImageId;
+        this.themeBackgroundId = themeBackgroundId;
+        this.themeColor = themeColor;
         this.soundVolume = soundVolume;
         this.musicVolume = musicVolume;
         this.buttonSound = buttonSound;
@@ -52,7 +59,9 @@ public class ApplicationSettings {
 
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
-        editor.putInt(keyApplicationTheme, applicationTheme);
+        editor.putInt(keyThemeSampleImadId, themeSampleImageId);
+        editor.putInt(keyThemeBackgroundId, themeBackgroundId);
+        editor.putInt(keyThemeColor, themeColor);
         editor.putInt(keySoundVolume, soundVolume);
         editor.putInt(keyMusicVolume, musicVolume);
         editor.putInt(keyButtonSound, buttonSound);
@@ -90,7 +99,9 @@ public class ApplicationSettings {
         player2Name = sharedPreferences.getString(keyPlayer2Name, player2Name);
         player2Avatar = sharedPreferences.getInt(keyPlayer2Avatar, player2Avatar);
 
-        applicationTheme = sharedPreferences.getInt(keyApplicationTheme, applicationTheme);
+        themeSampleImageId = sharedPreferences.getInt(keyThemeSampleImadId, themeSampleImageId);
+        themeBackgroundId = sharedPreferences.getInt(keyThemeBackgroundId, themeBackgroundId);
+        themeColor = sharedPreferences.getInt(keyThemeColor, themeColor);
 
         boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
         levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
@@ -115,8 +126,8 @@ public class ApplicationSettings {
         return player2Avatar;
     }
 
-    public int getApplicationTheme() {
-        return applicationTheme;
+    public Theme getTheme() {
+        return new Theme(themeSampleImageId, themeBackgroundId, themeColor);
     }
 
     public int getSoundVolume() {

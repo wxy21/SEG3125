@@ -8,10 +8,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
-import com.uottawa.tictactoe.DataStructures.AvatarList;
-import com.uottawa.tictactoe.DataStructures.ItemData;
+import com.uottawa.tictactoe.DataStructures.Avatar.AvatarList;
+import com.uottawa.tictactoe.DataStructures.Avatar.Avatar;
 import com.uottawa.tictactoe.R;
-import com.uottawa.tictactoe.DataStructures.SpinnerAdapter;
+import com.uottawa.tictactoe.DataStructures.Avatar.AvatarSpinnerAdapter;
 
 import java.util.ArrayList;
 
@@ -36,8 +36,8 @@ public class NameSelectionActivity extends BaseActivity {
 
         //Avatar Spinner
         avatarList = new AvatarList();
-        ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
-        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
+        ArrayList<Avatar> avatar_list = avatarList.getAvatarList();
+        AvatarSpinnerAdapter adapter = new AvatarSpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
 
         //Player 1 Avatar
         Spinner player1_avatar = (Spinner) findViewById(R.id.name_player1Avatar);
@@ -45,7 +45,7 @@ public class NameSelectionActivity extends BaseActivity {
 
         // Set Avatar spinner based on previous application settings
         int selectedPlayer1AvatarId = applicationSettings.getPlayer1Avatar();
-        avatarPosition1 = adapter.getPosition(new ItemData(selectedPlayer1AvatarId));
+        avatarPosition1 = adapter.getPosition(new Avatar(selectedPlayer1AvatarId));
         player1_avatar.setSelection(avatarPosition1);
 
         player1_avatar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -70,7 +70,7 @@ public class NameSelectionActivity extends BaseActivity {
 
         // Set Avatar spinner based on previous application settings
         int selectedPlayer2AvatarId = applicationSettings.getPlayer2Avatar();
-        avatarPosition2 = adapter.getPosition(new ItemData(selectedPlayer2AvatarId));
+        avatarPosition2 = adapter.getPosition(new Avatar(selectedPlayer2AvatarId));
         player2_avatar.setSelection(avatarPosition2);
 
         player2_avatar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

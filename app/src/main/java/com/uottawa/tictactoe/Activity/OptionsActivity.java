@@ -4,10 +4,12 @@ import android.view.View;
 import android.widget.*;
 
 import com.uottawa.tictactoe.*;
-import com.uottawa.tictactoe.DataStructures.AvatarList;
-import com.uottawa.tictactoe.DataStructures.ItemData;
-import com.uottawa.tictactoe.DataStructures.SpinnerAdapter;
-import com.uottawa.tictactoe.DataStructures.ThemeList;
+import com.uottawa.tictactoe.DataStructures.Avatar.AvatarList;
+import com.uottawa.tictactoe.DataStructures.Avatar.Avatar;
+import com.uottawa.tictactoe.DataStructures.Avatar.AvatarSpinnerAdapter;
+import com.uottawa.tictactoe.DataStructures.Theme.Theme;
+import com.uottawa.tictactoe.DataStructures.Theme.ThemeList;
+import com.uottawa.tictactoe.DataStructures.Theme.ThemeSpinnerAdapter;
 
 import java.util.ArrayList;
 
@@ -45,14 +47,14 @@ public class OptionsActivity extends BaseActivity {
         //Avatar Spinner
         avatarList = new AvatarList();
 
-        ArrayList<ItemData> avatar_list = avatarList.getAvatarList();
+        ArrayList<Avatar> avatar_list = avatarList.getAvatarList();
         Spinner player1Avatar_option = (Spinner) findViewById(R.id.options_Player1Avatar);
-        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
+        AvatarSpinnerAdapter adapter = new AvatarSpinnerAdapter(this, R.layout.spinner_avatar_layout, avatar_list);
         player1Avatar_option.setAdapter(adapter);
 
         // Set Avatar spinner based on previous application settings
         int selectedPlayer1AvatarId = applicationSettings.getPlayer1Avatar();
-        int avatarPosition = adapter.getPosition(new ItemData(selectedPlayer1AvatarId));
+        int avatarPosition = adapter.getPosition(new Avatar(selectedPlayer1AvatarId));
         player1Avatar_option.setSelection(avatarPosition);
 
         player1Avatar_option.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -70,15 +72,15 @@ public class OptionsActivity extends BaseActivity {
 
         //Theme Spinner
         themeList = new ThemeList();
-        ArrayList<ItemData> theme_list = themeList.getThemeList();
+        ArrayList<Theme> theme_list = themeList.getThemeList();
 
         Spinner applicationTheme = (Spinner) findViewById(R.id.options_ApplicationTheme);
-        SpinnerAdapter theme_adapter = new SpinnerAdapter(this, R.layout.spinner_theme_layout, theme_list);
+        ThemeSpinnerAdapter theme_adapter = new ThemeSpinnerAdapter(this, R.layout.spinner_theme_layout, theme_list);
         applicationTheme.setAdapter(theme_adapter);
 
         //Set Theme from ApplicationSetting
-        int selectedPlayer1ThemeId = applicationSettings.getApplicationTheme();
-        int themePosition = theme_adapter.getPosition(new ItemData(selectedPlayer1ThemeId));
+        Theme selectedTheme = applicationSettings.getTheme();
+        int themePosition = theme_adapter.getPosition(selectedTheme);
         applicationTheme.setSelection(themePosition);
 
         applicationTheme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,9 +184,11 @@ public class OptionsActivity extends BaseActivity {
 
         String player1NameStr = player1Name.getText().toString();
         int avatarId = avatarList.getAvatarList().get(avatar_position).getImageId();
-        int themeID = themeList.getThemeList().get(theme_position).getImageId();
+        int themeSampleImageId = themeList.getThemeList().get(theme_position).getSampleImageId();
+        int themeBackgroundId = themeList.getThemeList().get(theme_position).getBackgroundId();
+        int themeColor = themeList.getThemeList().get(theme_position).getThemeColor();
 
-        applicationSettings.saveSettings(player1NameStr, avatarId, themeID, sound, music, buttonSoundID, buttonMusicID);
+        applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor, sound, music, buttonSoundID, buttonMusicID);
         super.onBackPressed();
     }
 
