@@ -13,9 +13,8 @@ public class Grid5x5BoardActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_5x5_grid;
         setContentView(R.layout.activity_5x5_grid);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     public void btnReset_hgame(View view){

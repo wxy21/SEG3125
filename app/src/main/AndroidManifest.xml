@@ -31,7 +31,7 @@
             android:label="@string/title_activity_rules"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.GameActivities.Multiplayer.MultiPlayerBoardSizeActivity"
+            android:name=".Activity.GameActivities.Multiplayer.MultiplayerBoardSizeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

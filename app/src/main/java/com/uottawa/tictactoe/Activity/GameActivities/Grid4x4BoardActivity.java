@@ -13,9 +13,8 @@ public class Grid4x4BoardActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_4x4_grid;
         setContentView(R.layout.activity_4x4_grid);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     public void btnReset_mgame(View view){

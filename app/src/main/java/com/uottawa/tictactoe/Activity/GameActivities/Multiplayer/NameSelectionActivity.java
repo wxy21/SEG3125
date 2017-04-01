@@ -3,6 +3,7 @@ package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class NameSelectionActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_name;
         setContentView(R.layout.activity_name);
 
         //Player1 Name
@@ -84,13 +86,23 @@ public class NameSelectionActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void collectThemeElements() {
+        content = R.id.content_name;
+        textViews.add((TextView) findViewById(R.id.name_title));
+        textViews.add((TextView) findViewById(R.id.name_player1Title));
+        textViews.add((TextView) findViewById(R.id.name_player2Title));
+        buttons.add((Button) findViewById(R.id.name_btnOK));
+    }
+
     public void btnOK_name(View view){
         String player1Name = player1_name.getText().toString();
         int player1AvatarID = avatarList.getAvatarList().get(avatarPosition1).getImageId();
         String player2Name = player2_name.getText().toString();
         int player2AvatarID = avatarList.getAvatarList().get(avatarPosition2).getImageId();
         applicationSettings.savePlayerInformation(player1Name, player1AvatarID, player2Name, player2AvatarID);
-        Intent intent = new Intent(this, MultiPlayerBoardSizeActivity.class);
+
+        Intent intent = new Intent(this, MultiplayerBoardSizeActivity.class);
         startActivity(intent);
     }
 }
