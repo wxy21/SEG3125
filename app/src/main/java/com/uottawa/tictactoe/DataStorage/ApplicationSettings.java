@@ -50,9 +50,11 @@ public class ApplicationSettings {
     }
 
 
+
     public void saveSettings(String player1Name, int player1Avatar, int themeSampleImageId, int themeBackgroundId,
                              int themeColor, int soundVolume, int musicVolume, int buttonSound, int buttonMusic,
                              String backgroundMusicCommand) {
+
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.themeSampleImageId = themeSampleImageId;

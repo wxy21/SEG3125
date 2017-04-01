@@ -197,6 +197,7 @@ public class OptionsActivity extends BaseActivity {
         int themeBackgroundId = themeList.getThemeList().get(theme_position).getBackgroundId();
         int themeColor = themeList.getThemeList().get(theme_position).getThemeColor();
 
+
         applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
                 sound, music, buttonSoundID, buttonMusicID, background_music_command);
 
