@@ -36,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static MediaPlayer background_music;
     private String background_music_command;
     private int musicVolume;
+    private float musicVolumeFloat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,14 +99,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             background_music = MediaPlayer.create(this, R.raw.background_music);
         background_music_command = applicationSettings.getBackgroundMusicCommand();
         musicVolume = applicationSettings.getMusicVolume();
+        musicVolumeFloat = (float)(1 - (Math.log(100-musicVolume)/Math.log(100)));
 
 
         if (background_music_command.equals("start") && !background_music.isPlaying()) {
-            background_music.setVolume(musicVolume, musicVolume);
+            background_music.setVolume(musicVolumeFloat, musicVolumeFloat);
             background_music.setLooping(true);
             background_music.start();
         } else if (background_music_command.equals("start") && background_music.isPlaying()) {
-            background_music.setVolume(musicVolume, musicVolume);
+            background_music.setVolume(musicVolumeFloat, musicVolumeFloat);
         } else if (background_music_command.equals("stop") && background_music.isPlaying()) {
             background_music.stop();
             background_music.release();
