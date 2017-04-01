@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
         buttons.add((Button) findViewById(R.id.main_options));
     }
 
-    protected void backgroundMusic(){
+   /* protected void backgroundMusic(){
         background_music = MediaPlayer.create(this, R.raw.background_music);
         background_music_command = applicationSettings.getBackgroundMusicCommand();
         musicVolume = applicationSettings.getMusicVolume();
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
             background_music.stop();
             background_music.release();
         }
-    }
+    }*/
     public void btnSinglePlayer(View view){
         Intent intent = new Intent(this, SinglePlayerBoardSizeActivity.class);
         startActivity(intent);
