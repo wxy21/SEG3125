@@ -18,26 +18,25 @@ public class EasyGameActivity extends BaseActivity {
         setContentView(R.layout.activity_3x3_grid);
     }
 
-
     public void btnReset_egame(View view){
-        Button btn = (Button) findViewById(R.id.button);
-        btn.setText("");
-        Button btn2 = (Button) findViewById(R.id.button2);
-        btn2.setText("");
-        Button btn3 = (Button) findViewById(R.id.button3);
-        btn3.setText("");
-        Button btn4 = (Button) findViewById(R.id.button4);
-        btn4.setText("");
-        Button btn5 = (Button) findViewById(R.id.button5);
-        btn5.setText("");
-        Button btn6 = (Button) findViewById(R.id.button6);
-        btn6.setText("");
-        Button btn7 = (Button) findViewById(R.id.button7);
-        btn7.setText("");
-        Button btn8 = (Button) findViewById(R.id.button8);
-        btn8.setText("");
-        Button btn9 = (Button) findViewById(R.id.button9);
-        btn9.setText("");
+//        Button btn = (Button) findViewById(R.id.button);
+//        btn.setText("");
+//        Button btn2 = (Button) findViewById(R.id.button2);
+//        btn2.setText("");
+//        Button btn3 = (Button) findViewById(R.id.button3);
+//        btn3.setText("");
+//        Button btn4 = (Button) findViewById(R.id.button4);
+//        btn4.setText("");
+//        Button btn5 = (Button) findViewById(R.id.button5);
+//        btn5.setText("");
+//        Button btn6 = (Button) findViewById(R.id.button6);
+//        btn6.setText("");
+//        Button btn7 = (Button) findViewById(R.id.button7);
+//        btn7.setText("");
+//        Button btn8 = (Button) findViewById(R.id.button8);
+//        btn8.setText("");
+//        Button btn9 = (Button) findViewById(R.id.button9);
+//        btn9.setText("");
         
     }
 

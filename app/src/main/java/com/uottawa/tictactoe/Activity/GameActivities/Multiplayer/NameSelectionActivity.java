@@ -101,6 +101,7 @@ public class NameSelectionActivity extends BaseActivity {
         String player2Name = player2_name.getText().toString();
         int player2AvatarID = avatarList.getAvatarList().get(avatarPosition2).getImageId();
         applicationSettings.savePlayerInformation(player1Name, player1AvatarID, player2Name, player2AvatarID);
+
         Intent intent = new Intent(this, MultiplayerBoardSizeActivity.class);
         startActivity(intent);
     }

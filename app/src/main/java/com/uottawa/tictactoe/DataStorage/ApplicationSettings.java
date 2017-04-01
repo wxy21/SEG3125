@@ -71,6 +71,8 @@ public class ApplicationSettings {
         editor.putInt(keyPlayer1Avatar, player1Avatar);
         editor.putString(keyPlayer2Name, player2Name);
         editor.putInt(keyPlayer2Avatar, player2Avatar);
+        editor.commit();
+        editor.apply();
     }
 
     public void savePlayerOption(String player1Name, int player1Avatar){

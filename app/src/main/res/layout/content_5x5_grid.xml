@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.uottawa.tictactoe.Activity.GameActivities.HardGameActivity"
+    tools:context="com.uottawa.tictactoe.Activity.GameActivities.Grid5x5BoardActivity"
     tools:showIn="@layout/activity_5x5_grid">
 
     <TextView
@@ -229,7 +229,6 @@
             android:text="Reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnReset_hgame"
             android:layout_weight="0.55"
             android:onClick="btnReset_hgame"/>
 
@@ -237,7 +236,6 @@
             android:text="Home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnHome_hgame"
             android:layout_weight="0.55"
             android:onClick="btnHome_hgame"/>
 
@@ -245,7 +243,6 @@
             android:text="Exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnExit_hgame"
             android:layout_weight="0.55"
             android:onClick="btnExit_hgame"/>
     </LinearLayout>

@@ -60,7 +60,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // Change the background
         RelativeLayout background = (RelativeLayout) findViewById(content);
-        background.setBackground(ContextCompat.getDrawable(getApplicationContext(), applicationSettings.getApplicationTheme()));
+        if(background != null) {
+            background.setBackground(ContextCompat.getDrawable(getApplicationContext(), applicationSettings.getApplicationTheme()));
+        }
 
         // Change the buttons
         for (Button button : buttons) {

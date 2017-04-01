@@ -31,7 +31,6 @@
                 android:text="Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView9"
                 android:layout_weight="2.35"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -40,7 +39,6 @@
                 android:text="Opponent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView8"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -49,7 +47,6 @@
                 android:text="Result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView24"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -67,7 +64,6 @@
                 android:text="20/03/16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView16"
                 android:layout_weight="0.40"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -76,7 +72,6 @@
                 android:text="EasyBot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView15"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -85,7 +80,6 @@
                 android:text="Win"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView25"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center" />
@@ -101,7 +95,6 @@
                 android:text="Total Games: 1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView18"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -109,7 +102,6 @@
                 android:text="Total Wins: 1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView17"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
         </LinearLayout>

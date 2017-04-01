@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.uottawa.tictactoe.Activity.GameActivities.MediumGameActivity"
+    tools:context="com.uottawa.tictactoe.Activity.GameActivities.Grid4x4BoardActivity"
     tools:showIn="@layout/activity_4x4_grid">
 
     <TextView
@@ -199,7 +199,6 @@
             android:text="Reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnReset_mgame"
             android:layout_weight="0.55"
             android:onClick="btnReset_mgame"/>
 
@@ -207,7 +206,6 @@
             android:text="Home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnHome_mgame"
             android:layout_weight="0.55"
             android:onClick="btnHome_mgame"/>
 
@@ -215,7 +213,6 @@
             android:text="Exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnExit_mgame"
             android:layout_weight="0.55"
             android:onClick="btnExit_mgame"/>
     </LinearLayout>
