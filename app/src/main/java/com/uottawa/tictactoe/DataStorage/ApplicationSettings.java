@@ -22,6 +22,7 @@ public class ApplicationSettings {
     private String levelDifficulty = "Easy";
     private int buttonSound = R.drawable.sound_on;
     private int buttonMusic = R.drawable.sound_on;
+    private String backgroundMusicCommand = "start";
 
     // Variable Keys
     private String keyPlayer1Name = "player1Name";
@@ -35,13 +36,16 @@ public class ApplicationSettings {
     private String keyLevelDifficulty = "levelDifficulty";
     private String keyButtonSound = "Sound";
     private String keyButtonMusic = "Music";
+    private String keyBackgroundMusicCommand = "backgroundMusic";
+
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
     }
 
-    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme, int soundVolume, int musicVolume, int buttonSound, int buttonMusic) {
+    public void saveSettings(String player1Name, int player1Avatar, int applicationTheme,
+                             int soundVolume, int musicVolume, int buttonSound, int buttonMusic, String backgroundMusicCommand) {
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
         this.applicationTheme = applicationTheme;
@@ -49,6 +53,7 @@ public class ApplicationSettings {
         this.musicVolume = musicVolume;
         this.buttonSound = buttonSound;
         this.buttonMusic = buttonMusic;
+        this.backgroundMusicCommand = backgroundMusicCommand;
 
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
@@ -57,9 +62,11 @@ public class ApplicationSettings {
         editor.putInt(keyMusicVolume, musicVolume);
         editor.putInt(keyButtonSound, buttonSound);
         editor.putInt(keyButtonMusic, buttonMusic);
+        editor.putString(keyBackgroundMusicCommand, backgroundMusicCommand);
         editor.commit();
         editor.apply();
     }
+
 
     public void savePlayerInformation(String player1Name, int player1Avatar, String player2Name, int player2Avatar) {
         this.player1Name = player1Name;
@@ -73,14 +80,6 @@ public class ApplicationSettings {
         editor.putInt(keyPlayer2Avatar, player2Avatar);
         editor.commit();
         editor.apply();
-    }
-
-    public void savePlayerOption(String player1Name, int player1Avatar){
-        this.player1Name = player1Name;
-        this.player1Avatar = player1Avatar;
-
-        editor.putString(keyPlayer1Name, player1Name);
-        editor.putInt(keyPlayer1Avatar, player1Avatar);
     }
 
     public void loadSettings() {
@@ -99,6 +98,7 @@ public class ApplicationSettings {
         musicVolume = sharedPreferences.getInt(keyMusicVolume, musicVolume);
         buttonSound = sharedPreferences.getInt(keyButtonSound, buttonSound);
         buttonMusic = sharedPreferences.getInt(keyButtonMusic, buttonMusic);
+        backgroundMusicCommand = sharedPreferences.getString(keyBackgroundMusicCommand, backgroundMusicCommand);
     }
 
     public String getPlayer1Name() {
@@ -133,6 +133,10 @@ public class ApplicationSettings {
 
     public int getButtonMusic(){
         return buttonMusic;
+    }
+
+    public String getBackgroundMusicCommand(){
+        return backgroundMusicCommand;
     }
 
     public String getBoardSize() {

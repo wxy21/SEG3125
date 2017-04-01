@@ -1,5 +1,6 @@
 package com.uottawa.tictactoe.Activity;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.*;
 
@@ -29,6 +30,8 @@ public class OptionsActivity extends BaseActivity {
 
     private int sound;
     private int music;
+
+    private String background_music_command;
 
     @Override
     protected void loadView() {
@@ -147,6 +150,10 @@ public class OptionsActivity extends BaseActivity {
         buttonMusic = (ImageButton) findViewById(R.id.options_MusicMute);
         buttonMusicID = applicationSettings.getButtonMusic();
         buttonMusic.setImageResource(buttonMusicID);
+
+        //Background Music
+        background_music_command = applicationSettings.getBackgroundMusicCommand();
+
     }
 
     public void btnSound(View view){
@@ -170,11 +177,13 @@ public class OptionsActivity extends BaseActivity {
             buttonMusic.setImageResource(buttonMusicID);
             music = 0;
             musicVolume.setProgress(music);
+            background_music_command = "stop";
         }else{
             buttonMusicID = R.drawable.sound_on;
             buttonMusic.setImageResource(buttonMusicID);
             music = 50;
             musicVolume.setProgress(music);
+            background_music_command = "start";
         }
     }
 
@@ -184,7 +193,7 @@ public class OptionsActivity extends BaseActivity {
         int avatarId = avatarList.getAvatarList().get(avatar_position).getImageId();
         int themeID = themeList.getThemeList().get(theme_position).getImageId();
 
-        applicationSettings.saveSettings(player1NameStr, avatarId, themeID, sound, music, buttonSoundID, buttonMusicID);
+        applicationSettings.saveSettings(player1NameStr, avatarId, themeID, sound, music, buttonSoundID, buttonMusicID, background_music_command);
         super.onBackPressed();
     }
 
