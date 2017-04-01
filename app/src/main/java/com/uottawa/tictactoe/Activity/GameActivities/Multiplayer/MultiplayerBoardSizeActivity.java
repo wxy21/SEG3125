@@ -1,6 +1,8 @@
 package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
 import com.uottawa.tictactoe.R;
@@ -11,5 +13,14 @@ public class MultiplayerBoardSizeActivity extends BaseActivity {
     protected void loadView() {
         content = R.id.content_grid_size;
         setContentView(R.layout.activity_grid_size);
+    }
+
+    @Override
+    protected void collectThemeElements() {
+        content = R.id.content_grid_size;
+        textViews.add((TextView) findViewById(R.id.grid_size_title));
+        buttons.add((Button) findViewById(R.id.grid_size_btn_3x3));
+        buttons.add((Button) findViewById(R.id.grid_size_btn_4x4));
+        buttons.add((Button) findViewById(R.id.grid_size_btn_5x5));
     }
 }

@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textMatchHistory"
+        android:layout_below="@+id/matchHistory_title"
         android:layout_alignParentEnd="true">
 
         <LinearLayout
@@ -120,7 +120,7 @@
         android:text="Match History"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textMatchHistory"
+        android:id="@+id/matchHistory_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:textColor="@color/pink"
         android:layout_alignParentTop="true"

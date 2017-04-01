@@ -187,4 +187,16 @@ public class OptionsActivity extends BaseActivity {
         applicationSettings.saveSettings(player1NameStr, avatarId, themeID, sound, music, buttonSoundID, buttonMusicID);
         super.onBackPressed();
     }
+
+    @Override
+    protected void collectThemeElements() {
+        content = R.id.content_option;
+        textViews.add((TextView) findViewById(R.id.options_title));
+        textViews.add((TextView) findViewById(R.id.options_name_text));
+        textViews.add((TextView) findViewById(R.id.options_avatar_text));
+        textViews.add((TextView) findViewById(R.id.options_theme_text));
+        textViews.add((TextView) findViewById(R.id.options_sound_text));
+        textViews.add((TextView) findViewById(R.id.options_music_text));
+        buttons.add((Button) findViewById(R.id.options_apply));
+    }
 }

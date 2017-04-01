@@ -50,7 +50,7 @@
                     android:text="Single Player"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnSinglePlayer"
+                    android:id="@+id/main_single_player"
                     android:onClick="btnSinglePlayer"
                     android:textSize="30sp"
                     android:textColor="@android:color/white"
@@ -64,19 +64,12 @@
                     android:layout_weight="0.12">
 
                     <Button
-                        android:id="@+id/button10"
-                        android:layout_weight="1"
-                        android:layout_height="80dp"
-                        android:background="@drawable/crown"
-                        android:layout_width="45dp" />
-
-                    <Button
                         android:text="MultiPlayer"
-                        android:layout_height="80dp"
-                        android:id="@+id/btnMultiPlayer"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/main_multiplayer"
                         android:layout_weight="1"
                         android:onClick="btnMultiPlayer"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:backgroundTint="@color/pink"
                         android:textStyle="normal|bold"
                         android:textColor="@android:color/white"
@@ -88,7 +81,7 @@
                     android:text="Match History"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnMatchHistory"
+                    android:id="@+id/main_match_history"
                     android:onClick="btnMatchHistory"
                     android:textStyle="normal|bold"
                     android:textColor="@android:color/white"
@@ -99,7 +92,7 @@
                     android:text="Rules"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnHelp"
+                    android:id="@+id/main_rules"
                     android:onClick="btnRule"
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
@@ -110,7 +103,7 @@
                     android:text="Options"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnOption"
+                    android:id="@+id/main_options"
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
                     android:textStyle="normal|bold"

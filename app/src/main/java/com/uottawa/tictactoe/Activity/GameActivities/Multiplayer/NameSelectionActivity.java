@@ -3,6 +3,7 @@ package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -83,6 +84,15 @@ public class NameSelectionActivity extends BaseActivity {
                 //do nothing
             }
         });
+    }
+
+    @Override
+    protected void collectThemeElements() {
+        content = R.id.content_name;
+        textViews.add((TextView) findViewById(R.id.name_title));
+        textViews.add((TextView) findViewById(R.id.name_player1Title));
+        textViews.add((TextView) findViewById(R.id.name_player2Title));
+        buttons.add((Button) findViewById(R.id.name_btnOK));
     }
 
     public void btnOK_name(View view){

@@ -2,6 +2,7 @@ package com.uottawa.tictactoe.Activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.uottawa.tictactoe.Activity.GameActivities.Multiplayer.NameSelectionActivity;
@@ -12,8 +13,17 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
-        content = R.id.content_main;
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void collectThemeElements() {
+        content = R.id.content_main;
+        buttons.add((Button) findViewById(R.id.main_single_player));
+        buttons.add((Button) findViewById(R.id.main_multiplayer));
+        buttons.add((Button) findViewById(R.id.main_match_history));
+        buttons.add((Button) findViewById(R.id.main_rules));
+        buttons.add((Button) findViewById(R.id.main_options));
     }
 
     public void btnSinglePlayer(View view){
