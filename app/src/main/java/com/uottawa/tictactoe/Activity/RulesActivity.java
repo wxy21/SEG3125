@@ -10,9 +10,8 @@ public class RulesActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_rules;
         setContentView(R.layout.activity_rules);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
 }

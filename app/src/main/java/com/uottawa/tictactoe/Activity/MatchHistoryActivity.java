@@ -10,8 +10,7 @@ public class MatchHistoryActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_match_history;
         setContentView(R.layout.activity_match_history);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 }

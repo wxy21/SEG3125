@@ -12,6 +12,7 @@ public class SinglePlayerBoardSizeActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_grid_size;
         setContentView(R.layout.activity_grid_size);
     }
 

@@ -32,6 +32,7 @@ public class OptionsActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_option;
         setContentView(R.layout.activity_option);
 
         /**************************************

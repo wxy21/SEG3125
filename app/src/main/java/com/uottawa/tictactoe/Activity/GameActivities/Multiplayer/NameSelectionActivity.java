@@ -26,6 +26,7 @@ public class NameSelectionActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_name;
         setContentView(R.layout.activity_name);
 
         //Player1 Name

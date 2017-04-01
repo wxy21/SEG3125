@@ -9,8 +9,7 @@ public class MultiplayerBoardSizeActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_grid_size;
         setContentView(R.layout.activity_grid_size);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 }

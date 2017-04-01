@@ -1,9 +1,8 @@
 package com.uottawa.tictactoe.Activity;
 
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import com.uottawa.tictactoe.Activity.GameActivities.Multiplayer.NameSelectionActivity;
 import com.uottawa.tictactoe.Activity.GameActivities.SinglePlayer.SinglePlayerBoardSizeActivity;
@@ -13,6 +12,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void loadView() {
+        content = R.id.content_main;
         setContentView(R.layout.activity_main);
     }
 
