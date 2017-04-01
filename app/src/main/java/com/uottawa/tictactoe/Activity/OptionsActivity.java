@@ -4,7 +4,10 @@ import android.view.View;
 import android.widget.*;
 
 import com.uottawa.tictactoe.*;
-import com.uottawa.tictactoe.SpinnerAdapter;
+import com.uottawa.tictactoe.DataStructures.AvatarList;
+import com.uottawa.tictactoe.DataStructures.ItemData;
+import com.uottawa.tictactoe.DataStructures.SpinnerAdapter;
+import com.uottawa.tictactoe.DataStructures.ThemeList;
 
 import java.util.ArrayList;
 

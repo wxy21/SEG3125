@@ -1,4 +1,4 @@
-package com.uottawa.tictactoe;
+package com.uottawa.tictactoe.DataStructures;
 
 public class ItemData {
 

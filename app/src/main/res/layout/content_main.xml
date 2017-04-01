@@ -61,17 +61,11 @@
                     android:layout_weight="0.12">
 
                     <Button
-                        android:layout_weight="1"
-                        android:layout_height="80dp"
-                        android:background="@drawable/crown"
-                        android:layout_width="45dp" />
-
-                    <Button
                         android:text="MultiPlayer"
-                        android:layout_height="80dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="btnMultiPlayer"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:backgroundTint="@color/pink"
                         android:textStyle="normal|bold"
                         android:textColor="@android:color/white"
