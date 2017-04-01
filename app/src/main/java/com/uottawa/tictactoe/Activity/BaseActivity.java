@@ -17,6 +17,7 @@ import com.uottawa.tictactoe.DataStorage.ApplicationSettings;
 import com.uottawa.tictactoe.DataStorage.MatchHistory;
 import com.uottawa.tictactoe.R;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private AppCompatDelegate mDelegate;
 
-    private MediaPlayer background_music;
+    private static MediaPlayer background_music;
     private String background_music_command;
     private int musicVolume;
 
@@ -59,16 +60,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void loadView();
 
 
-    protected void collectThemeElements(){};
+    protected void collectThemeElements() {
+    }
+
+    ;
 
     public void changeTheme() {
-        
+
         int backgroundImage = applicationSettings.getTheme().getBackgroundId();
         int color = applicationSettings.getTheme().getThemeColor();
 
         // Change the background
         RelativeLayout background = (RelativeLayout) findViewById(content);
-        if(background != null) {
+        if (background != null) {
             background.setBackground(ContextCompat.getDrawable(getApplicationContext(), backgroundImage));
         }
 
@@ -89,18 +93,23 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-   private void backgroundMusic(){
-        background_music = MediaPlayer.create(this, R.raw.background_music);
+    private void backgroundMusic() {
+        if (background_music == null)
+            background_music = MediaPlayer.create(this, R.raw.background_music);
         background_music_command = applicationSettings.getBackgroundMusicCommand();
         musicVolume = applicationSettings.getMusicVolume();
 
-        if(background_music_command == "start"){
+
+        if (background_music_command.equals("start") && !background_music.isPlaying()) {
             background_music.setVolume(musicVolume, musicVolume);
-            //background_music.setLooping(true);
+            background_music.setLooping(true);
             background_music.start();
-        }else if (background_music_command == "stop"){
+        } else if (background_music_command.equals("start") && background_music.isPlaying()) {
+            background_music.setVolume(musicVolume, musicVolume);
+        } else if (background_music_command.equals("stop") && background_music.isPlaying()) {
             background_music.stop();
             background_music.release();
+            background_music = null;
         }
     }
 
