@@ -67,6 +67,7 @@ public class OptionsActivity extends BaseActivity {
         player1Avatar_option.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
+
                 avatar_position = parent.getSelectedItemPosition();
             }
 
@@ -111,7 +112,9 @@ public class OptionsActivity extends BaseActivity {
         soundVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    sound = progress;
+                    //sound = progress;
+                sound = seekBar.getProgress();
+
             }
 
             @Override
@@ -133,7 +136,8 @@ public class OptionsActivity extends BaseActivity {
         musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                music = progress;
+                //music = progress;
+                music = seekBar.getProgress();
             }
 
             @Override
@@ -183,19 +187,19 @@ public class OptionsActivity extends BaseActivity {
     }
 
 
+
     public void btnSound(View view){
-        if(buttonSoundID == R.drawable.sound_on ){
+        if(buttonSoundID == R.drawable.sound_on  || sound > 0){
             buttonSoundID = R.drawable.sound_off;
             buttonSound.setImageResource(buttonSoundID);
             sound = 0;
             soundVolume.setProgress(sound);
-        }else{
+        }else if(buttonSoundID == R.drawable.sound_off  || sound == 0){
             buttonSoundID = R.drawable.sound_on;
             buttonSound.setImageResource(buttonSoundID);
             sound = 50;
             soundVolume.setProgress(sound);
         }
-
         clickSound();
 
     }
@@ -207,7 +211,7 @@ public class OptionsActivity extends BaseActivity {
             music = 0;
             musicVolume.setProgress(music);
             background_music_command = "stop";
-        }else{
+        }else if(buttonMusicID == R.drawable.sound_off){
             buttonMusicID = R.drawable.sound_on;
             buttonMusic.setImageResource(buttonMusicID);
             music = 50;

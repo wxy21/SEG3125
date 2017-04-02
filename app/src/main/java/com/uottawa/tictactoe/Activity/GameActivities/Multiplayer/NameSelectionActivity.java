@@ -1,6 +1,7 @@
 package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,6 +25,11 @@ public class NameSelectionActivity extends BaseActivity {
 
     private TextView player2_name;
     private int avatarPosition2;
+
+    private static MediaPlayer click_sound;
+    private  int soundVolume;
+    private String click_sound_command;
+    private float soundVolumeFloat;
 
     @Override
     protected void loadView() {
@@ -49,9 +55,11 @@ public class NameSelectionActivity extends BaseActivity {
         player1_avatar.setSelection(avatarPosition1);
 
         player1_avatar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
                 avatarPosition1 = parent.getSelectedItemPosition();
+                clickSound();
             }
 
             @Override
@@ -77,6 +85,7 @@ public class NameSelectionActivity extends BaseActivity {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
                 avatarPosition2 = parent.getSelectedItemPosition();
+                //clickSound();
             }
 
             @Override
@@ -84,6 +93,10 @@ public class NameSelectionActivity extends BaseActivity {
                 //do nothing
             }
         });
+
+        //Click Sound
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
     }
 
     @Override
@@ -95,7 +108,27 @@ public class NameSelectionActivity extends BaseActivity {
         buttons.add((Button) findViewById(R.id.name_btnOK));
     }
 
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
+    }
+
     public void btnOK_name(View view){
+        clickSound();
+
         String player1Name = player1_name.getText().toString();
         int player1AvatarID = avatarList.getAvatarList().get(avatarPosition1).getImageId();
         String player2Name = player2_name.getText().toString();

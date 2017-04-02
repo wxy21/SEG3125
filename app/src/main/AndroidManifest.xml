@@ -21,6 +21,7 @@
         <activity
             android:name=".Activity.GameActivities.Multiplayer.NameSelectionActivity"
             android:label="@string/title_activity_name"
+
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.GameActivities.SinglePlayer.LevelDifficultyActivity"
@@ -57,7 +58,7 @@
         <activity
             android:name=".Activity.OptionsActivity"
             android:label="@string/title_activity_option"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->

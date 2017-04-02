@@ -107,7 +107,8 @@
                 android:layout_width="match_parent"
                 android:id="@+id/name_player1Avatar"
                 android:layout_weight="1"
-                android:layout_height="70dp" />
+                android:layout_height="70dp"
+                android:soundEffectsEnabled="false"/>
 
         </LinearLayout>
 
@@ -179,7 +180,8 @@
                 android:layout_width="match_parent"
                 android:id="@+id/name_Player2Avatar"
                 android:layout_weight="1"
-                android:layout_height="70dp" />
+                android:layout_height="70dp"
+                android:soundEffectsEnabled="false"/>
 
         </LinearLayout>
 
