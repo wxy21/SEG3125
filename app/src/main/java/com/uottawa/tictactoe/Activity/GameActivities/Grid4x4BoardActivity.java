@@ -1,10 +1,12 @@
 package com.uottawa.tictactoe.Activity.GameActivities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -36,9 +38,11 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
     TextView Grid4x4_board_3_2;
     TextView Grid4x4_board_3_3;
 
+    LinearLayout player1Layout;
     TextView player1Name;
     ImageView player1Avatar;
 
+    LinearLayout player2Layout;
     TextView player2Name;
     ImageView player2Avatar;
 
@@ -86,6 +90,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
         Grid4x4_board_3_3.setOnClickListener(this);
 
         //Player 1
+        player1Layout = (LinearLayout) findViewById(R.id.Grid4x4_Player1);
         player1Name = (TextView) findViewById(R.id.Grid4x4_Player1Name);
         player1Name.setText(applicationSettings.getPlayer1Name());
 
@@ -93,6 +98,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
         player1Avatar.setImageResource(applicationSettings.getPlayer1Avatar());
 
         //Player 2
+        player2Layout = (LinearLayout) findViewById(R.id.Grid4x4_Player2);
         if (applicationSettings.getBotDifficulty() > 0) {
             game = new SinglePlayerGame(4, applicationSettings.getBotDifficulty());
 
@@ -214,10 +220,14 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
                 GameBoard.Mark[][] board = game.getGameBoard();
 
                 if (game.isPlayer1Turn()) {
+                    player1Layout.setBackgroundColor(Color.YELLOW);
+                    player2Layout.setBackgroundColor(Color.WHITE);
                     StarPlayer1.setVisibility(View.VISIBLE);
                     StarPlayer2.setVisibility(View.INVISIBLE);
                     thinkingBar.setVisibility(View.INVISIBLE);
                 } else if (!game.isPlayer1Turn()) {
+                    player1Layout.setBackgroundColor(Color.WHITE);
+                    player2Layout.setBackgroundColor(Color.YELLOW);
                     StarPlayer1.setVisibility(View.INVISIBLE);
                     StarPlayer2.setVisibility(View.VISIBLE);
                     thinkingBar.setVisibility(View.VISIBLE);

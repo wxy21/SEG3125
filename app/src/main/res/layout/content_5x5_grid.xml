@@ -301,7 +301,6 @@
             android:layout_marginEnd="22dp"
             android:layout_weight="1"
             android:id="@+id/Grid5x5_Player1"
-            android:backgroundTint="@color/highlight_yellow"
             >
 
             <ImageView
@@ -339,7 +338,6 @@
             android:layout_alignParentEnd="true"
             android:layout_weight="1"
             android:weightSum="1"
-            android:backgroundTint="@android:color/white"
             android:id="@+id/Grid5x5_Player2">
 
             <ImageView
