@@ -1,8 +1,7 @@
 package com.uottawa.tictactoe.Activity.GameActivities;
 
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.graphics.Color;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +19,12 @@ import com.uottawa.tictactoe.R;
 
 import java.util.concurrent.Semaphore;
 
-public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickListener{
+public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickListener {
+
+    private static MediaPlayer click_sound;
+    private int soundVolume;
+    private String click_sound_command;
+    private float soundVolumeFloat;
 
     GameInterface game;
     TextView Grid4x4_board_0_0;
@@ -56,6 +60,9 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_4x4_grid);
+
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
 
         Grid4x4_board_0_0 = (TextView) findViewById(R.id.Grid4x4_board_0_0);
         Grid4x4_board_0_1 = (TextView) findViewById(R.id.Grid4x4_board_0_1);
@@ -114,8 +121,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
 
             player2Avatar = (ImageView) findViewById(R.id.Grid4x4_Player2Avatar);
             player2Avatar.setImageResource(R.drawable.avatar_bot);
-        }
-        else {
+        } else {
             game = new MultiplayerGame(4);
 
             player2Name = (TextView) findViewById(R.id.Grid4x4_Player2Name);
@@ -158,6 +164,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
                     return;
                 }
                 setGameClickable(false);
+                clickSound();
 
                 switch (v.getId()) {
                     case R.id.Grid4x4_board_0_0:
@@ -228,7 +235,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void collectThemeElements() {
-        //content = R.id.content_4x4_grid;
+        content = R.id.content_4x4_grid;
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_0));
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_1));
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_2));
@@ -248,6 +255,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void Grid4x4_ResetButton(View view) {
+        clickSound();
         game.resetGame();
         updateScreen();
     }
@@ -295,27 +303,45 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
         });
     }
 
-            public void setGameClickable(final boolean clickable) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ((Button) findViewById(R.id.Grid4x4_board_0_0)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_0_1)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_0_2)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_0_3)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_1_0)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_1_1)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_1_2)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_1_3)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_2_0)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_2_1)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_2_2)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_2_3)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_3_0)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_3_1)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_3_2)).setEnabled(clickable);
-                        ((Button) findViewById(R.id.Grid4x4_board_3_3)).setEnabled(clickable);
-                    }
-                });
+    public void setGameClickable(final boolean clickable) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ((Button) findViewById(R.id.Grid4x4_board_0_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_0_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_0_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_0_3)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_1_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_1_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_1_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_1_3)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_2_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_2_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_2_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_2_3)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_3_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_3_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_3_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid4x4_board_3_3)).setEnabled(clickable);
             }
+        });
+    }
+
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float) (1 - (Math.log(100 - soundVolume) / Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
+    }
 }

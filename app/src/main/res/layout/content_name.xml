@@ -38,8 +38,7 @@
         android:backgroundTint="@color/pink"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:soundEffectsEnabled="false"/>
+        android:textColor="@android:color/white"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -107,8 +106,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/name_player1Avatar"
                 android:layout_weight="1"
-                android:layout_height="70dp"
-                android:soundEffectsEnabled="false"/>
+                android:layout_height="70dp"/>
 
         </LinearLayout>
 
@@ -180,8 +178,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/name_Player2Avatar"
                 android:layout_weight="1"
-                android:layout_height="70dp"
-                android:soundEffectsEnabled="false"/>
+                android:layout_height="70dp"/>
 
         </LinearLayout>
 

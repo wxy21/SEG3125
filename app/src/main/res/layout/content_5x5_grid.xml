@@ -375,7 +375,6 @@
         android:id="@+id/Grid5x5_btnRefresh"
         android:onClick="Grid5x5_ResetButton"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:soundEffectsEnabled="false"
         android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
