@@ -26,6 +26,8 @@ public class MatchHistory {
     String keyNumberOfMoves = "keyNumberOfMoves";
     String keyXCoordinate = "XCoordinate";
     String keyYCoordinate = "YCoordinate";
+    String keyDate = "date";
+    String keyOpponent = "opponent";
 
     public MatchHistory(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
@@ -33,7 +35,11 @@ public class MatchHistory {
         matchDetails = new LinkedList<>();
     }
 
-    public void saveMatch(GameBoard.GameState state, Queue<GameMove> player1Moves, Queue<GameMove> player2Moves) {
+    public void saveMatch(MatchDetails matchDetails) {
+
+        GameBoard.GameState state = matchDetails.getResult();
+        List<GameMove> player1Moves = matchDetails.getPlayer1Moves();
+        List<GameMove> player2Moves = matchDetails.getPlayer2Moves();
 
         int matchId = totalMatches;
 
@@ -54,6 +60,12 @@ public class MatchHistory {
             editor.putInt(keyMatchId + matchId + keyPlayer2 + keyXCoordinate, move.getXCoordinate());
             editor.putInt(keyMatchId + matchId + keyPlayer2 + keyXCoordinate, move.getXCoordinate());
         }
+
+        // Put opponentName
+        editor.putString(keyMatchId + matchId + keyOpponent, matchDetails.getOpponentName());
+
+        // Put in the date
+        editor.putLong(keyMatchId + matchId + keyDate, matchDetails.getDate());
 
         // Commit/Save the settings
         editor.commit();
@@ -85,10 +97,18 @@ public class MatchHistory {
                 player2Moves.add(move);
             }
 
-            MatchDetails newMatchDetail = new MatchDetails(matchResult, player1Moves, player2Moves);
+            long date = sharedPreferences.getLong(keyMatchId + matchId + keyDate, 0);
+
+            String opponentName = sharedPreferences.getString(keyMatchId + matchId + keyOpponent, new String(""));
+
+            MatchDetails newMatchDetail = new MatchDetails(date, matchResult, player1Moves, player2Moves, opponentName);
             matchDetails.add(newMatchDetail);
         }
 
+    }
+
+    public List<MatchDetails> getMatchDetails() {
+        return matchDetails;
     }
 
 }

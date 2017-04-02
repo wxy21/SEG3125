@@ -1,5 +1,7 @@
 package com.uottawa.tictactoe.GameLogic;
 
+import com.uottawa.tictactoe.DataStructures.MatchDetails;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -52,6 +54,11 @@ public class MultiplayerGame implements GameInterface{
 
     public boolean isGameFinished() {
         return gameBoard.isGameFinished();
+    }
+
+    public MatchDetails getMatchDetails(String opponent) {
+        MatchDetails details = new MatchDetails(gameBoard.getState(), player1Move, player2Move, opponent);
+        return details;
     }
 
 }

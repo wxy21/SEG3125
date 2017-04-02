@@ -134,6 +134,9 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 break;
         }
         updateScreen();
+        if (game.isGameFinished()) {
+            matchHistory.saveMatch(game.getMatchDetails(applicationSettings.getPlayer2Name()));
+        }
     }
 
     public void Grid3x3_ResetButton(View view) {

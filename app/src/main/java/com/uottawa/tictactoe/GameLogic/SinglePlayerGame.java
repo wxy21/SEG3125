@@ -1,5 +1,8 @@
 package com.uottawa.tictactoe.GameLogic;
 
+import com.uottawa.tictactoe.DataStorage.ApplicationSettings;
+import com.uottawa.tictactoe.DataStructures.MatchDetails;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -68,4 +71,8 @@ public class SinglePlayerGame implements GameInterface {
         return gameBoard.isGameFinished();
     }
 
+    public MatchDetails getMatchDetails(String opponent) {
+        MatchDetails details = new MatchDetails(gameBoard.getState(), playerMove, aiMove, opponent);
+        return details;
+    }
 }

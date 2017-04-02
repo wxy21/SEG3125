@@ -31,7 +31,7 @@
                 android:text="Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.35"
+                android:layout_weight="2.05"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
                 android:background="@android:drawable/gallery_thumb"
@@ -42,7 +42,7 @@
                 android:text="Opponent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.14"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
                 android:background="@android:drawable/gallery_thumb"
@@ -69,29 +69,31 @@
             android:layout_weight="1"
             android:background="@android:drawable/editbox_dropdown_light_frame">
 
-            <TextView
-                android:text="20/03/16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="122dp"
+                android:layout_height="match_parent"
+                android:id="@+id/matchHistory_date">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:id="@+id/matchHistory_Opponent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="0.40"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textAlignment="center" />
+                android:id="@+id/matchHistory_result">
 
-            <TextView
-                android:text="EasyBot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textAlignment="center" />
+            </LinearLayout>
 
-            <TextView
-                android:text="Win"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout

@@ -173,15 +173,11 @@ public class ApplicationSettings {
         return backgroundMusicCommand;
     }
 
-<<<<<<< HEAD
     public String getClickSoundCommand(){
         return clickSoundCommand;
     }
 
-    public String getBoardSize() {
-=======
     public int getBoardSize() {
->>>>>>> 2ecbf936d27738700ee667a9cbcf57975c3053d3
         return boardSize;
     }
 

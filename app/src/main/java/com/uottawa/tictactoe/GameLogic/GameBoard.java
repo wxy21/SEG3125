@@ -24,7 +24,16 @@ public class GameBoard {
         XWIN,
         OWIN,
         TIE,
-        ONGOING
+        ONGOING;
+
+        public String print(){
+            switch(this){
+                case XWIN: return "WIN";
+                case OWIN: return "LOSS";
+                case TIE: return "TIE";
+                default: return this.name();
+            }
+        }
     }
 
     private Mark[][] board;
