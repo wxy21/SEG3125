@@ -36,25 +36,27 @@ public class SinglePlayerGame implements GameInterface {
             gameBoard.markPosition(playerNextMove);
             playerMove.add(playerNextMove);
         }
-        if (!gameBoard.isGameFinished() && !isPlayer1Turn()) {
+        return gameBoard.getBoard();
+    }
+
+    public GameBoard.Mark[][] markBoardAI() {
+
+        // Simulate the ai is thinking
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (!gameBoard.isGameFinished()) {
             GameAI gameAI = new GameAI(aiDifficulty);
             GameMove aiNextMove = gameAI.calculateNextMove(gameBoard);
             gameBoard.markPosition(aiNextMove);
             aiMove.add(aiNextMove);
         }
+
         return gameBoard.getBoard();
     }
-
-//    public GameBoard.Mark[][] markBoardAI() {
-//        if (!gameBoard.isGameFinished()) {
-//            GameAI gameAI = new GameAI(aiDifficulty);
-//            GameMove aiNextMove = gameAI.calculateNextMove(gameBoard);
-//            gameBoard.markPosition(aiNextMove);
-//            aiMove.add(aiNextMove);
-//        }
-//
-//        return gameBoard.getBoard();
-//    }
 
     public boolean isPlayer1Turn() {
         if(gameBoard.getTurn().equals(GameBoard.Mark.X)) {

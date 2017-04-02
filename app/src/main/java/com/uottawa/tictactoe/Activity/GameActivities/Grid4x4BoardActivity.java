@@ -18,6 +18,8 @@ import com.uottawa.tictactoe.GameLogic.MultiplayerGame;
 import com.uottawa.tictactoe.GameLogic.SinglePlayerGame;
 import com.uottawa.tictactoe.R;
 
+import java.util.concurrent.Semaphore;
+
 public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickListener{
 
     GameInterface game;
@@ -126,65 +128,102 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
         StarPlayer1 = (ImageView) findViewById(R.id.Grid4x4_Star_Player1);
         StarPlayer2 = (ImageView) findViewById(R.id.Grid4x4_Star_Player2);
         thinkingBar = (ProgressBar) findViewById(R.id.Grid4x4_loading);
-        updateScreen();
+
+        gameMutex = new Semaphore(1);
+        updateScreenHandler = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!Thread.interrupted()) {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        System.out.println("Recycling thread");
+                    }
+                    updateScreen();
+                }
+            }
+        });
+        updateScreenHandler.start();
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.Grid4x4_board_0_0:
-                game.markBoard(0, 0);
-                break;
-            case R.id.Grid4x4_board_0_1:
-                game.markBoard(0, 1);
-                break;
-            case R.id.Grid4x4_board_0_2:
-                game.markBoard(0, 2);
-                break;
-            case R.id.Grid4x4_board_0_3:
-                game.markBoard(0, 3);
-                break;
-            case R.id.Grid4x4_board_1_0:
-                game.markBoard(1, 0);
-                break;
-            case R.id.Grid4x4_board_1_1:
-                game.markBoard(1, 1);
-                break;
-            case R.id.Grid4x4_board_1_2:
-                game.markBoard(1, 2);
-                break;
-            case R.id.Grid4x4_board_1_3:
-                game.markBoard(1, 3);
-                break;
-            case R.id.Grid4x4_board_2_0:
-                game.markBoard(2, 0);
-                break;
-            case R.id.Grid4x4_board_2_1:
-                game.markBoard(2, 1);
-                break;
-            case R.id.Grid4x4_board_2_2:
-                game.markBoard(2, 2);
-                break;
-            case R.id.Grid4x4_board_2_3:
-                game.markBoard(2, 3);
-                break;
-            case R.id.Grid4x4_board_3_0:
-                game.markBoard(3, 0);
-                break;
-            case R.id.Grid4x4_board_3_1:
-                game.markBoard(3, 1);
-                break;
-            case R.id.Grid4x4_board_3_2:
-                game.markBoard(3, 2);
-                break;
-            case R.id.Grid4x4_board_3_3:
-                game.markBoard(3, 3);
-                break;
-        }
-        updateScreen();
-        if (game.isGameFinished()) {
-            matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
-        }
+    public void onClick(final View v) {
+
+        Thread backgroundThread = new Thread(new Runnable() {
+            public void run() {
+                // Lock the game
+                boolean acquired = gameMutex.tryAcquire();
+                if (!acquired) {
+                    gameMutex.release();
+                    return;
+                }
+                setGameClickable(false);
+
+                switch (v.getId()) {
+                    case R.id.Grid4x4_board_0_0:
+                        game.markBoard(0, 0);
+                        break;
+                    case R.id.Grid4x4_board_0_1:
+                        game.markBoard(0, 1);
+                        break;
+                    case R.id.Grid4x4_board_0_2:
+                        game.markBoard(0, 2);
+                        break;
+                    case R.id.Grid4x4_board_0_3:
+                        game.markBoard(0, 3);
+                        break;
+                    case R.id.Grid4x4_board_1_0:
+                        game.markBoard(1, 0);
+                        break;
+                    case R.id.Grid4x4_board_1_1:
+                        game.markBoard(1, 1);
+                        break;
+                    case R.id.Grid4x4_board_1_2:
+                        game.markBoard(1, 2);
+                        break;
+                    case R.id.Grid4x4_board_1_3:
+                        game.markBoard(1, 3);
+                        break;
+                    case R.id.Grid4x4_board_2_0:
+                        game.markBoard(2, 0);
+                        break;
+                    case R.id.Grid4x4_board_2_1:
+                        game.markBoard(2, 1);
+                        break;
+                    case R.id.Grid4x4_board_2_2:
+                        game.markBoard(2, 2);
+                        break;
+                    case R.id.Grid4x4_board_2_3:
+                        game.markBoard(2, 3);
+                        break;
+                    case R.id.Grid4x4_board_3_0:
+                        game.markBoard(3, 0);
+                        break;
+                    case R.id.Grid4x4_board_3_1:
+                        game.markBoard(3, 1);
+                        break;
+                    case R.id.Grid4x4_board_3_2:
+                        game.markBoard(3, 2);
+                        break;
+                    case R.id.Grid4x4_board_3_3:
+                        game.markBoard(3, 3);
+                        break;
+                }
+                gameMutex.release();
+
+                if (game instanceof SinglePlayerGame) {
+                    ((SinglePlayerGame) game).markBoardAI();
+                }
+
+                if (game.isGameFinished()) {
+                    matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+                }
+
+                // Unlock
+                setGameClickable(true);
+            }
+        });
+        backgroundThread.start();
     }
 
     @Override
@@ -255,4 +294,28 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
             }
         });
     }
+
+            public void setGameClickable(final boolean clickable) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((Button) findViewById(R.id.Grid4x4_board_0_0)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_0_1)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_0_2)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_0_3)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_1_0)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_1_1)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_1_2)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_1_3)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_2_0)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_2_1)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_2_2)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_2_3)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_3_0)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_3_1)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_3_2)).setEnabled(clickable);
+                        ((Button) findViewById(R.id.Grid4x4_board_3_3)).setEnabled(clickable);
+                    }
+                });
+            }
 }

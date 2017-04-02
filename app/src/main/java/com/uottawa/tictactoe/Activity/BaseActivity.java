@@ -20,6 +20,7 @@ import com.uottawa.tictactoe.R;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -37,6 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private String background_music_command;
     private int musicVolume;
     private float musicVolumeFloat;
+
+    protected Thread updateScreenHandler;
+    protected Semaphore gameMutex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +102,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             background_music = MediaPlayer.create(this, R.raw.background_music);
         background_music_command = applicationSettings.getBackgroundMusicCommand();
         musicVolume = applicationSettings.getMusicVolume();
-        musicVolumeFloat = (float)(1 - (Math.log(100-musicVolume)/Math.log(100)));
+        musicVolumeFloat = (float) (1 - (Math.log(100 - musicVolume) / Math.log(100)));
 
 
         if (background_music_command.equals("start") && !background_music.isPlaying()) {
@@ -118,5 +122,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent mainActivity = new Intent(this, MainActivity.class);
         startActivity(mainActivity);
+    }
+
+    @Override
+    public void onStop() {
+        if (updateScreenHandler != null) {
+            updateScreenHandler.interrupt();
+        }
+        super.onStop();
     }
 }
