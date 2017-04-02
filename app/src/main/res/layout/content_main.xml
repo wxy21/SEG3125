@@ -54,7 +54,8 @@
                     android:textSize="30sp"
                     android:textColor="@android:color/white"
                     android:textStyle="normal|bold"
-                    android:backgroundTint="@color/pink" />
+                    android:backgroundTint="@color/pink"
+                    android:soundEffectsEnabled="false" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -73,7 +74,8 @@
                         android:textStyle="normal|bold"
                         android:textColor="@android:color/white"
                         android:textSize="30sp"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:soundEffectsEnabled="false"/>
                 </LinearLayout>
 
                 <Button
@@ -85,7 +87,8 @@
                     android:textStyle="normal|bold"
                     android:textColor="@android:color/white"
                     android:backgroundTint="@color/pink"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:soundEffectsEnabled="false"/>
 
                 <Button
                     android:text="Rules"
@@ -96,7 +99,8 @@
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:soundEffectsEnabled="false"/>
 
                 <Button
                     android:text="Options"
@@ -107,7 +111,8 @@
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
                     android:textColor="@android:color/white"
-                    android:onClick="btnOption" />
+                    android:onClick="btnOption"
+                    android:soundEffectsEnabled="false"/>
 
             </LinearLayout>
 

@@ -35,6 +35,10 @@ public class OptionsActivity extends BaseActivity {
 
     private String background_music_command;
 
+    private static MediaPlayer click_sound;
+    private String click_sound_command;
+    private float soundVolumeFloat;
+
     @Override
     protected void loadView() {
         content = R.id.content_option;
@@ -156,7 +160,28 @@ public class OptionsActivity extends BaseActivity {
         //Background Music
         background_music_command = applicationSettings.getBackgroundMusicCommand();
 
+        //Sound
+        click_sound_command = applicationSettings.getClickSoundCommand();
     }
+
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float)(1 - (Math.log(100 - sound)/Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
+    }
+
 
     public void btnSound(View view){
         if(buttonSoundID == R.drawable.sound_on ){
@@ -170,6 +195,8 @@ public class OptionsActivity extends BaseActivity {
             sound = 50;
             soundVolume.setProgress(sound);
         }
+
+        clickSound();
 
     }
 
@@ -187,6 +214,7 @@ public class OptionsActivity extends BaseActivity {
             musicVolume.setProgress(music);
             background_music_command = "start";
         }
+        clickSound();
     }
 
     public void btnApply(View view){
@@ -197,9 +225,10 @@ public class OptionsActivity extends BaseActivity {
         int themeBackgroundId = themeList.getThemeList().get(theme_position).getBackgroundId();
         int themeColor = themeList.getThemeList().get(theme_position).getThemeColor();
 
+        clickSound();
 
         applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
-                sound, music, buttonSoundID, buttonMusicID, background_music_command);
+                sound, music, buttonSoundID, buttonMusicID, background_music_command, click_sound_command);
 
         super.onBackPressed();
     }

@@ -120,21 +120,24 @@
                 android:id="@+id/Grid3x3_board_0_0"
                 android:layout_weight="1"
                 android:layout_height="80dp"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_0_1"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_0_2"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -147,7 +150,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_1_0"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:text=""
@@ -155,7 +159,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_1_1"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:text=""
@@ -163,7 +168,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_1_2"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -176,7 +182,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_2_0"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:text=""
@@ -184,7 +191,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_2_1"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:text=""
@@ -192,7 +200,8 @@
                 android:layout_height="80dp"
                 android:id="@+id/Grid3x3_board_2_2"
                 android:layout_weight="1"
-                android:backgroundTint="@color/pink" />
+                android:backgroundTint="@color/pink"
+                android:soundEffectsEnabled="false"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -206,7 +215,8 @@
         android:layout_marginStart="19dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="13dp"
+        android:soundEffectsEnabled="false"/>
 
     <ImageView
         android:layout_width="60dp"

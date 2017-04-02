@@ -39,7 +39,8 @@
         android:layout_below="@+id/grid_size_title"
         android:layout_alignParentStart="true"
         android:layout_marginTop="67dp"
-        android:onClick="grid_btn3x3" />
+        android:onClick="grid_btn3x3"
+        android:soundEffectsEnabled="false"/>
 
     <Button
         android:text="4 x 4"
@@ -53,7 +54,8 @@
         android:layout_below="@+id/grid_size_btn_3x3"
         android:layout_alignParentStart="true"
         android:layout_marginTop="72dp"
-        android:onClick="grid_btn4x4" />
+        android:onClick="grid_btn4x4"
+        android:soundEffectsEnabled="false"/>
 
     <Button
         android:text="5 x 5"
@@ -67,6 +69,7 @@
         android:layout_below="@+id/grid_size_btn_4x4"
         android:layout_alignParentStart="true"
         android:layout_marginTop="63dp"
-        android:onClick="grid_btn5x5" />
+        android:onClick="grid_btn5x5"
+        android:soundEffectsEnabled="false"/>
 
 </RelativeLayout>

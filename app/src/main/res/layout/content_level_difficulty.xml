@@ -43,7 +43,8 @@
         android:layout_below="@+id/levelDifficulty_title"
         android:layout_marginTop="81dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:soundEffectsEnabled="false"/>
 
     <Button
         android:text="Medium"
@@ -59,7 +60,8 @@
         android:layout_alignTop="@+id/levelDifficulty_btnEasy"
         android:layout_marginTop="112dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:soundEffectsEnabled="false"/>
 
     <Button
         android:text="Hard"
@@ -75,6 +77,7 @@
         android:layout_marginTop="63dp"
         android:layout_below="@+id/levelDifficulty_btnMedium"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:soundEffectsEnabled="false"/>
 
 </RelativeLayout>

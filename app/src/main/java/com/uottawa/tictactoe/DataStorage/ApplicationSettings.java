@@ -26,6 +26,7 @@ public class ApplicationSettings {
     private int buttonSound = R.drawable.sound_on;
     private int buttonMusic = R.drawable.sound_on;
     private String backgroundMusicCommand = "start";
+    private String clickSoundCommand = "start";
 
     // Variable Keys
     private String keyPlayer1Name = "player1Name";
@@ -42,6 +43,7 @@ public class ApplicationSettings {
     private String keyButtonSound = "Sound";
     private String keyButtonMusic = "Music";
     private String keyBackgroundMusicCommand = "backgroundMusic";
+    private String keyClickSoundCommand = "clickSound";
 
 
     public ApplicationSettings(SharedPreferences sharedPreferences) {
@@ -53,7 +55,7 @@ public class ApplicationSettings {
 
     public void saveSettings(String player1Name, int player1Avatar, int themeSampleImageId, int themeBackgroundId,
                              int themeColor, int soundVolume, int musicVolume, int buttonSound, int buttonMusic,
-                             String backgroundMusicCommand) {
+                             String backgroundMusicCommand, String clickSoundCommand) {
 
         this.player1Name = player1Name;
         this.player1Avatar = player1Avatar;
@@ -65,6 +67,7 @@ public class ApplicationSettings {
         this.buttonSound = buttonSound;
         this.buttonMusic = buttonMusic;
         this.backgroundMusicCommand = backgroundMusicCommand;
+        this.clickSoundCommand = clickSoundCommand;
 
         editor.putString(keyPlayer1Name, player1Name);
         editor.putInt(keyPlayer1Avatar, player1Avatar);
@@ -76,6 +79,7 @@ public class ApplicationSettings {
         editor.putInt(keyButtonSound, buttonSound);
         editor.putInt(keyButtonMusic, buttonMusic);
         editor.putString(keyBackgroundMusicCommand, backgroundMusicCommand);
+        editor.putString(keyClickSoundCommand, clickSoundCommand);
         editor.commit();
         editor.apply();
     }
@@ -114,6 +118,7 @@ public class ApplicationSettings {
         buttonSound = sharedPreferences.getInt(keyButtonSound, buttonSound);
         buttonMusic = sharedPreferences.getInt(keyButtonMusic, buttonMusic);
         backgroundMusicCommand = sharedPreferences.getString(keyBackgroundMusicCommand, backgroundMusicCommand);
+        clickSoundCommand = sharedPreferences.getString(keyClickSoundCommand, clickSoundCommand);
     }
 
     public String getPlayer1Name() {
@@ -152,6 +157,10 @@ public class ApplicationSettings {
 
     public String getBackgroundMusicCommand(){
         return backgroundMusicCommand;
+    }
+
+    public String getClickSoundCommand(){
+        return clickSoundCommand;
     }
 
     public String getBoardSize() {

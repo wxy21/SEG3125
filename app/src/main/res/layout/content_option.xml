@@ -183,7 +183,8 @@
         android:textStyle="normal|bold"
         android:textSize="30sp"
         android:textColor="@android:color/white"
-        android:onClick="btnApply" />
+        android:onClick="btnApply"
+        android:soundEffectsEnabled="false"/>
 
     <LinearLayout
         android:orientation="horizontal"
