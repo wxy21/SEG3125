@@ -67,7 +67,7 @@ public class OptionsActivity extends BaseActivity {
         player1Avatar_option.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
-
+                clickSound();
                 avatar_position = parent.getSelectedItemPosition();
             }
 
@@ -94,60 +94,13 @@ public class OptionsActivity extends BaseActivity {
         applicationTheme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
+                clickSound();
                 theme_position = parent.getSelectedItemPosition();
-                //theme_position = position;
             }
 
             @Override
             public void onNothingSelected (AdapterView < ? > parent){
                 //do nothing
-            }
-        });
-
-        //Sound Volume
-        soundVolume = (SeekBar) findViewById(R.id.options_SoundVolume);
-        sound = applicationSettings.getSoundVolume();
-        soundVolume.setProgress(sound);
-
-        soundVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    //sound = progress;
-                sound = seekBar.getProgress();
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        //Music Volume
-        musicVolume = (SeekBar) findViewById(R.id.options_MusicVolume);
-        music = applicationSettings.getMusicVolume();
-        musicVolume.setProgress(music);
-
-        musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //music = progress;
-                music = seekBar.getProgress();
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -166,6 +119,60 @@ public class OptionsActivity extends BaseActivity {
 
         //Sound
         click_sound_command = applicationSettings.getClickSoundCommand();
+
+        //Sound Volume
+        soundVolume = (SeekBar) findViewById(R.id.options_SoundVolume);
+        sound = applicationSettings.getSoundVolume();
+        soundVolume.setProgress(sound);
+
+        changeSoundPicture();
+
+        soundVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sound = seekBar.getProgress();
+                clickSound();
+                changeSoundPicture();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //Music Volume
+        musicVolume = (SeekBar) findViewById(R.id.options_MusicVolume);
+        music = applicationSettings.getMusicVolume();
+        musicVolume.setProgress(music);
+
+        changeMusicPicture();
+
+        musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                music = seekBar.getProgress();
+                clickSound();
+                changeMusicPicture();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
     }
 
     private void clickSound() {
@@ -187,18 +194,43 @@ public class OptionsActivity extends BaseActivity {
     }
 
 
+    private void changeSoundPicture(){
+        if(soundVolume.getProgress() == 0){
+            buttonSoundID = R.drawable.sound_off;
+            buttonSound.setImageResource(buttonSoundID);
+            click_sound_command = "stop";
+        }else{
+            buttonSoundID = R.drawable.sound_on;
+            buttonSound.setImageResource(buttonSoundID);
+            click_sound_command = "start";
+        }
+    }
+
+    private void changeMusicPicture(){
+        if(musicVolume.getProgress() == 0){
+            buttonMusicID = R.drawable.sound_off;
+            buttonMusic.setImageResource(buttonMusicID);
+            background_music_command = "stop";
+        }else{
+            buttonMusicID = R.drawable.sound_on;
+            buttonMusic.setImageResource(buttonMusicID);
+            background_music_command = "start";
+        }
+    }
 
     public void btnSound(View view){
-        if(buttonSoundID == R.drawable.sound_on  || sound > 0){
+        if(buttonSoundID == R.drawable.sound_on ){
             buttonSoundID = R.drawable.sound_off;
             buttonSound.setImageResource(buttonSoundID);
             sound = 0;
             soundVolume.setProgress(sound);
-        }else if(buttonSoundID == R.drawable.sound_off  || sound == 0){
+            click_sound_command = "stop";
+        }else if(buttonSoundID == R.drawable.sound_off){
             buttonSoundID = R.drawable.sound_on;
             buttonSound.setImageResource(buttonSoundID);
             sound = 50;
             soundVolume.setProgress(sound);
+            click_sound_command = "start";
         }
         clickSound();
 

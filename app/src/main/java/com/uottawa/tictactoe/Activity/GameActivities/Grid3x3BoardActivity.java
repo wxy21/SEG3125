@@ -1,5 +1,6 @@
 package com.uottawa.tictactoe.Activity.GameActivities;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,11 @@ import com.uottawa.tictactoe.GameLogic.SinglePlayerGame;
 import com.uottawa.tictactoe.R;
 
 public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickListener {
+
+    private static MediaPlayer click_sound;
+    private  int soundVolume;
+    private String click_sound_command;
+    private float soundVolumeFloat;
 
     GameInterface game;
     TextView Grid3x3_board_0_0;
@@ -32,7 +38,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     TextView player2Name;
     ImageView player2Avatar;
 
-
     ImageView StarPlayer1;
     ImageView StarPlayer2;
     ProgressBar thinkingBar;
@@ -40,6 +45,9 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_3x3_grid);
+
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
 
         Grid3x3_board_0_0 = (TextView) findViewById(R.id.Grid3x3_board_0_0);
         Grid3x3_board_0_1 = (TextView) findViewById(R.id.Grid3x3_board_0_1);
@@ -81,7 +89,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
             player2Avatar = (ImageView) findViewById(R.id.Grid3x3_Player2Avatar);
             player2Avatar.setImageResource(R.drawable.avatar_bot);
-            //  player2Mark = (TextView) findViewById(R.id.Grid3x3_Player2Name);
         }
         else {
             game = new MultiplayerGame(3);
@@ -91,7 +98,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
             player2Avatar = (ImageView) findViewById(R.id.Grid3x3_Player2Avatar);
             player2Avatar.setImageResource(applicationSettings.getPlayer2Avatar());
-            //  player2Mark = (TextView) findViewById(R.id.Grid3x3_Player2Name);
         }
 
         StarPlayer1 = (ImageView) findViewById(R.id.Grid3x3_Star_Player1);
@@ -101,7 +107,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-
+        clickSound();
         switch (v.getId()) {
             case R.id.Grid3x3_board_0_0:
                 game.markBoard(0, 0);
@@ -138,6 +144,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void Grid3x3_ResetButton(View view) {
+        clickSound();
         game.resetGame();
         updateScreen();
     }
@@ -174,9 +181,26 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         });
     }
 
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
+    }
+
     @Override
     public void collectThemeElements() {
-        content = R.id.content_3x3_grid;
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_0));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_1));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_2));

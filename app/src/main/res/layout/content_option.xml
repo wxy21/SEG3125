@@ -85,8 +85,7 @@
                 android:layout_height="70dp"
                 android:id="@+id/options_Player1Avatar"
                 android:layout_weight="1"
-                android:paddingBottom="5dp"
-                android:soundEffectsEnabled="false"/>
+                android:paddingBottom="5dp"/>
 
 
 
@@ -134,8 +133,7 @@
                 app:srcCompat="@drawable/sound_on"
                 android:id="@+id/options_SoundMute"
                 android:background="@android:drawable/screen_background_light_transparent"
-                android:onClick="btnSound"
-                android:soundEffectsEnabled="false"/>
+                android:onClick="btnSound"/>
         </LinearLayout>
 
         <LinearLayout
@@ -170,8 +168,7 @@
                 android:id="@+id/options_MusicMute"
                 android:onClick="btnMusic"
                 android:background="@android:drawable/screen_background_light_transparent"
-                app:srcCompat="@drawable/sound_on"
-                android:soundEffectsEnabled="false"/>
+                app:srcCompat="@drawable/sound_on"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -186,8 +183,7 @@
         android:textStyle="normal|bold"
         android:textSize="30sp"
         android:textColor="@android:color/white"
-        android:onClick="btnApply"
-        android:soundEffectsEnabled="false"/>
+        android:onClick="btnApply"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -218,8 +214,7 @@
             android:id="@+id/options_ApplicationTheme"
             android:layout_weight="1"
             android:overlapAnchor="false"
-            android:spinnerMode="dialog"
-            android:soundEffectsEnabled="false"/>
+            android:spinnerMode="dialog"/>
 
 
     </LinearLayout>

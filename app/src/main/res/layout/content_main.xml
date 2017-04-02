@@ -54,8 +54,7 @@
                     android:textSize="30sp"
                     android:textColor="@android:color/white"
                     android:textStyle="normal|bold"
-                    android:backgroundTint="@color/pink"
-                    android:soundEffectsEnabled="false" />
+                    android:backgroundTint="@color/pink" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -74,8 +73,7 @@
                         android:textStyle="normal|bold"
                         android:textColor="@android:color/white"
                         android:textSize="30sp"
-                        android:textAlignment="center"
-                        android:soundEffectsEnabled="false"/>
+                        android:textAlignment="center"/>
                 </LinearLayout>
 
                 <Button
@@ -87,8 +85,7 @@
                     android:textStyle="normal|bold"
                     android:textColor="@android:color/white"
                     android:backgroundTint="@color/pink"
-                    android:textSize="30sp"
-                    android:soundEffectsEnabled="false"/>
+                    android:textSize="30sp"/>
 
                 <Button
                     android:text="Rules"
@@ -99,8 +96,7 @@
                     android:backgroundTint="@color/pink"
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
-                    android:textColor="@android:color/white"
-                    android:soundEffectsEnabled="false"/>
+                    android:textColor="@android:color/white"/>
 
                 <Button
                     android:text="Options"
@@ -111,8 +107,7 @@
                     android:textSize="30sp"
                     android:textStyle="normal|bold"
                     android:textColor="@android:color/white"
-                    android:onClick="btnOption"
-                    android:soundEffectsEnabled="false"/>
+                    android:onClick="btnOption"/>
 
             </LinearLayout>
 

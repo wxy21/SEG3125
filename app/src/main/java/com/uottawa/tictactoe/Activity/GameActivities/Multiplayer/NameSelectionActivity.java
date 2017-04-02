@@ -85,7 +85,7 @@ public class NameSelectionActivity extends BaseActivity {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
                 avatarPosition2 = parent.getSelectedItemPosition();
-                //clickSound();
+                clickSound();
             }
 
             @Override

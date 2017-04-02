@@ -1,6 +1,7 @@
 package com.uottawa.tictactoe.Activity.GameActivities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,11 @@ import com.uottawa.tictactoe.GameLogic.SinglePlayerGame;
 import com.uottawa.tictactoe.R;
 
 public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickListener{
+
+    private static MediaPlayer click_sound;
+    private  int soundVolume;
+    private String click_sound_command;
+    private float soundVolumeFloat;
 
     GameInterface game;
     TextView Grid5x5_board_0_0;
@@ -59,6 +65,9 @@ public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_5x5_grid);
+
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
 
         Grid5x5_board_0_0 = (TextView) findViewById(R.id.Grid5x5_board_0_0);
         Grid5x5_board_0_1 = (TextView) findViewById(R.id.Grid5x5_board_0_1);
@@ -153,6 +162,7 @@ public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        clickSound();
         switch (v.getId()) {
             case R.id.Grid5x5_board_0_0:
                 game.markBoard(0, 0);
@@ -238,7 +248,6 @@ public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void collectThemeElements() {
-        //content = R.id.content_5x5_grid;
         buttons.add((Button) findViewById(R.id.Grid5x5_board_0_0));
         buttons.add((Button) findViewById(R.id.Grid5x5_board_0_1));
         buttons.add((Button) findViewById(R.id.Grid5x5_board_0_2));
@@ -267,6 +276,7 @@ public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void Grid5x5_ResetButton(View view) {
+        clickSound();
         game.resetGame();
         updateScreen();
     }
@@ -317,5 +327,23 @@ public class Grid5x5BoardActivity extends BaseActivity implements View.OnClickLi
                 Grid5x5_board_4_4.setText(board[4][4].toString());
             }
         });
+    }
+
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
     }
 }
