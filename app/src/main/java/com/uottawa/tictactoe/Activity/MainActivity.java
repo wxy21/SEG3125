@@ -23,6 +23,11 @@ public class MainActivity extends BaseActivity {
         soundVolume = applicationSettings.getSoundVolume();
         click_sound_command = applicationSettings.getClickSoundCommand();
 
+        if (matchHistory.getMatchDetails().isEmpty()) {
+            Button matchHistoryButton = (Button) findViewById(R.id.main_match_history);
+            matchHistoryButton.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

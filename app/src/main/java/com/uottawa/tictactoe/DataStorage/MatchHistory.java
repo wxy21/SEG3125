@@ -99,7 +99,7 @@ public class MatchHistory {
 
             long date = sharedPreferences.getLong(keyMatchId + matchId + keyDate, 0);
 
-            String opponentName = sharedPreferences.getString(keyMatchId + matchId + keyOpponent, new String(""));
+            String opponentName = sharedPreferences.getString(keyMatchId + matchId + keyOpponent, new String("Player 2"));
 
             MatchDetails newMatchDetail = new MatchDetails(date, matchResult, player1Moves, player2Moves, opponentName);
             matchDetails.add(newMatchDetail);
