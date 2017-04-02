@@ -183,7 +183,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void collectThemeElements() {
-        content = R.id.content_4x4_grid;
+        //content = R.id.content_4x4_grid;
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_0));
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_1));
         buttons.add((Button) findViewById(R.id.Grid4x4_board_0_2));
