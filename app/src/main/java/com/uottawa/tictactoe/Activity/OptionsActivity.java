@@ -34,10 +34,7 @@ public class OptionsActivity extends BaseActivity {
     private int music;
 
     private String background_music_command;
-
-    private static MediaPlayer click_sound;
     private String click_sound_command;
-    private float soundVolumeFloat;
 
     @Override
     protected void loadView() {
@@ -175,25 +172,6 @@ public class OptionsActivity extends BaseActivity {
 
     }
 
-    private void clickSound() {
-        if (click_sound == null)
-            click_sound = MediaPlayer.create(this, R.raw.button_sound);
-
-        soundVolumeFloat = (float)(1 - (Math.log(100 - sound)/Math.log(100)));
-
-        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-            click_sound.start();
-        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
-            click_sound.stop();
-            click_sound.release();
-            click_sound = null;
-        }
-    }
-
-
     private void changeSoundPicture(){
         if(soundVolume.getProgress() == 0){
             buttonSoundID = R.drawable.sound_off;
@@ -265,8 +243,8 @@ public class OptionsActivity extends BaseActivity {
 
         applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
                 sound, music, buttonSoundID, buttonMusicID, background_music_command, click_sound_command);
-
-        super.onBackPressed();
+        changeTheme();
+        Toast.makeText(this, "Your Settings Have Been Applied!", Toast.LENGTH_LONG).show();
     }
 
     @Override

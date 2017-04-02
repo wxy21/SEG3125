@@ -20,12 +20,10 @@ import com.uottawa.tictactoe.GameLogic.MultiplayerGame;
 import com.uottawa.tictactoe.GameLogic.SinglePlayerGame;
 import com.uottawa.tictactoe.R;
 
-public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickListener {
+import java.util.List;
+import java.util.concurrent.Semaphore;
 
-    private static MediaPlayer click_sound;
-    private  int soundVolume;
-    private String click_sound_command;
-    private float soundVolumeFloat;
+public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickListener {
 
     GameInterface game;
     TextView Grid3x3_board_0_0;
@@ -58,9 +56,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_3x3_grid);
-
-        soundVolume = applicationSettings.getSoundVolume();
-        click_sound_command = applicationSettings.getClickSoundCommand();
 
         Grid3x3_board_0_0 = (TextView) findViewById(R.id.Grid3x3_board_0_0);
         Grid3x3_board_0_1 = (TextView) findViewById(R.id.Grid3x3_board_0_1);
@@ -103,8 +98,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
             player2Avatar = (ImageView) findViewById(R.id.Grid3x3_Player2Avatar);
             player2Avatar.setImageResource(R.drawable.avatar_bot);
-        }
-        else {
+        } else {
             game = new MultiplayerGame(3);
 
             player2Name = (TextView) findViewById(R.id.Grid3x3_Player2Name);
@@ -117,57 +111,98 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         StarPlayer1 = (ImageView) findViewById(R.id.Grid3x3_Star_Player1);
         StarPlayer2 = (ImageView) findViewById(R.id.Grid3x3_Star_Player2);
         thinkingBar = (ProgressBar) findViewById(R.id.Grid3x3_loading);
-        updateScreen();
+
+        gameMutex = new Semaphore(1);
+        updateScreenHandler = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!Thread.interrupted()) {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        System.out.println("Recycling thread");
+                    }
+                    updateScreen();
+                }
+            }
+        });
+        updateScreenHandler.start();
     }
 
-    public void onClick(View v) {
-        clickSound();
-        switch (v.getId()) {
-            case R.id.Grid3x3_board_0_0:
-                game.markBoard(0, 0);
-                break;
-            case R.id.Grid3x3_board_0_1:
-                game.markBoard(0, 1);
-                break;
-            case R.id.Grid3x3_board_0_2:
-                game.markBoard(0, 2);
-                break;
-            case R.id.Grid3x3_board_1_0:
-                game.markBoard(1, 0);
-                break;
-            case R.id.Grid3x3_board_1_1:
-                game.markBoard(1, 1);
-                break;
-            case R.id.Grid3x3_board_1_2:
-                game.markBoard(1, 2);
-                break;
-            case R.id.Grid3x3_board_2_0:
-                game.markBoard(2, 0);
-                break;
-            case R.id.Grid3x3_board_2_1:
-                game.markBoard(2, 1);
-                break;
-            case R.id.Grid3x3_board_2_2:
-                game.markBoard(2, 2);
-                break;
-        }
-        updateScreen();
-        if (game.isGameFinished()) {
-            matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
-        }
+    public void onClick(final View v) {
+
+        Thread backgroundThread = new Thread(new Runnable() {
+            public void run() {
+                // Lock the game
+                boolean acquired = gameMutex.tryAcquire();
+                if (!acquired) {
+                    gameMutex.release();
+                    return;
+                }
+                setGameClickable(false);
+                clickSound();
+
+                switch (v.getId()) {
+                    case R.id.Grid3x3_board_0_0:
+                        game.markBoard(0, 0);
+                        break;
+                    case R.id.Grid3x3_board_0_1:
+                        game.markBoard(0, 1);
+                        break;
+                    case R.id.Grid3x3_board_0_2:
+                        game.markBoard(0, 2);
+                        break;
+                    case R.id.Grid3x3_board_1_0:
+                        game.markBoard(1, 0);
+                        break;
+                    case R.id.Grid3x3_board_1_1:
+                        game.markBoard(1, 1);
+                        break;
+                    case R.id.Grid3x3_board_1_2:
+                        game.markBoard(1, 2);
+                        break;
+                    case R.id.Grid3x3_board_2_0:
+                        game.markBoard(2, 0);
+                        break;
+                    case R.id.Grid3x3_board_2_1:
+                        game.markBoard(2, 1);
+                        break;
+                    case R.id.Grid3x3_board_2_2:
+                        game.markBoard(2, 2);
+                        break;
+                }
+                gameMutex.release();
+
+                if (game instanceof SinglePlayerGame) {
+                    ((SinglePlayerGame) game).markBoardAI();
+                }
+
+                if (game.isGameFinished()) {
+                    setGameClickable(false);
+                    return;
+                }
+
+                // Unlock
+                setGameClickable(true);
+            }
+        });
+        backgroundThread.start();
     }
 
     public void Grid3x3_ResetButton(View view) {
         clickSound();
         displayResetAlert();
-        game.resetGame();
-        updateScreen();
+        //game.resetGame();
+        //updateScreen();
     }
 
     public void updateScreen() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                boolean acquired = gameMutex.tryAcquire();
+                if (!acquired) return;
+
                 GameBoard.Mark[][] board = game.getGameBoard();
 
                 if (game.isPlayer1Turn()) {
@@ -196,27 +231,13 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 Grid3x3_board_2_0.setText(board[2][0].toString());
                 Grid3x3_board_2_1.setText(board[2][1].toString());
                 Grid3x3_board_2_2.setText(board[2][2].toString());
+
+                gameMutex.release();
             }
         });
     }
 
-    private void clickSound() {
-        if (click_sound == null)
-            click_sound = MediaPlayer.create(this, R.raw.button_sound);
 
-        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
-
-        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-            click_sound.start();
-        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
-            click_sound.stop();
-            click_sound.release();
-            click_sound = null;
-        }
-    }
 
     public void displayResetAlert(){
         ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
@@ -228,13 +249,14 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
                         game.resetGame();
+                        setGameClickable(true);
                         updateScreen();
                     }
                 })
                 .setPositiveButton("No", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id) {
 
-                        Grid3x3BoardActivity.this.finish();
+                        //Grid3x3BoardActivity.this.finish();
                         dialog.cancel();
                     }
                 });
@@ -249,15 +271,21 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void displayResult(){
+        matchHistory.loadMatches();
+        List<MatchDetails> details = matchHistory.getMatchDetails();
+        MatchDetails currentMatch = details.get(details.size() - 1);
+        System.out.println(currentMatch.getResult());
+        gameResult= currentMatch.getResult().print();
+
         ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
         AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
         alertDialogbuilder
                 .setTitle(gameResult)
-                .setMessage(gameMessage)
+                .setMessage("Msg")
                 .setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
-                        displayResetAlert();
+                        //displayResetAlert();
                     }
                 });
 
@@ -272,6 +300,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void collectThemeElements() {
+        content = R.id.content_3x3_grid;
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_0));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_1));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_0_2));
@@ -281,6 +310,28 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_0));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_1));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_2));
+    }
+
+    public void setGameClickable(final boolean clickable) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (game.isGameFinished()) {
+                    matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+                    displayResult();
+                }
+
+                ((Button) findViewById(R.id.Grid3x3_board_0_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_0_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_0_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_1_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_1_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_1_2)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_2_0)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_2_1)).setEnabled(clickable);
+                ((Button) findViewById(R.id.Grid3x3_board_2_2)).setEnabled(clickable);
+            }
+        });
     }
 
 }

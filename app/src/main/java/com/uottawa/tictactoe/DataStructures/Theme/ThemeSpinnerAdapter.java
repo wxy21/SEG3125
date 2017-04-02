@@ -2,11 +2,13 @@ package com.uottawa.tictactoe.DataStructures.Theme;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.uottawa.tictactoe.R;
 
@@ -34,6 +36,5 @@ public class ThemeSpinnerAdapter extends ArrayAdapter<Theme> {
 
     public View getDropDownView(int position, View convertView, ViewGroup parent){
         return getView(position,convertView,parent);
-
     }
 }

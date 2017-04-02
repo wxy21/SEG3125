@@ -82,7 +82,6 @@ public class MatchHistoryActivity extends BaseActivity {
         dateEntry.setLayoutParams(new TableRow.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        dateEntry.setHeight(100);
         dateEntry.setTextSize(textSize);
         dateEntry.setAllCaps(true);
         dateEntry.setPadding(10,10,10,10);

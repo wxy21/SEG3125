@@ -26,11 +26,6 @@ public class NameSelectionActivity extends BaseActivity {
     private TextView player2_name;
     private int avatarPosition2;
 
-    private static MediaPlayer click_sound;
-    private  int soundVolume;
-    private String click_sound_command;
-    private float soundVolumeFloat;
-
     @Override
     protected void loadView() {
         content = R.id.content_name;
@@ -93,10 +88,6 @@ public class NameSelectionActivity extends BaseActivity {
                 //do nothing
             }
         });
-
-        //Click Sound
-        soundVolume = applicationSettings.getSoundVolume();
-        click_sound_command = applicationSettings.getClickSoundCommand();
     }
 
     @Override
@@ -106,24 +97,6 @@ public class NameSelectionActivity extends BaseActivity {
         textViews.add((TextView) findViewById(R.id.name_player1Title));
         textViews.add((TextView) findViewById(R.id.name_player2Title));
         buttons.add((Button) findViewById(R.id.name_btnOK));
-    }
-
-    private void clickSound() {
-        if (click_sound == null)
-            click_sound = MediaPlayer.create(this, R.raw.button_sound);
-
-        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
-
-        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-            click_sound.start();
-        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
-            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
-        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
-            click_sound.stop();
-            click_sound.release();
-            click_sound = null;
-        }
     }
 
     public void btnOK_name(View view){
