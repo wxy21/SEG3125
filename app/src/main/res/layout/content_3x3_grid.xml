@@ -201,6 +201,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/refresh2"
         android:id="@+id/Grid3x3_btnRefresh"
+        android:onClick="Grid3x3_ResetButton"
         android:background="@android:drawable/screen_background_light_transparent"
         android:layout_marginStart="19dp"
         android:layout_alignParentTop="true"
@@ -211,11 +212,30 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:srcCompat="@android:drawable/btn_star_big_on"
-        android:id="@+id/Grid3x3_Star"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/Grid3x3_btnRefresh"
+        android:id="@+id/Grid3x3_Star_Player1"
         android:layout_marginStart="26dp"
         android:background="@android:drawable/picture_frame"
-        android:backgroundTint="@android:color/black"/>
+        android:backgroundTint="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/Grid3x3_btnRefresh" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Grid3x3_loading"
+        android:layout_alignTop="@+id/Grid3x3_Star_Player1"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:id="@+id/Grid3x3_Star_Player2"
+        android:background="@android:drawable/picture_frame"
+        android:backgroundTint="@android:color/black"
+        android:layout_marginStart="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/Grid3x3_loading" />
 
 </RelativeLayout>

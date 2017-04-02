@@ -9,10 +9,16 @@ public class GameBoard {
     public enum Mark {
         EMPTY,
         X,
-        O
-    }
+        O;
 
-    ;
+        @Override
+        public String toString(){
+            switch(this){
+                case EMPTY: return " ";
+                default: return this.name();
+            }
+        }
+    }
 
     public enum GameState {
         XWIN,
@@ -234,6 +240,14 @@ public class GameBoard {
         cloneBoard.setGameBoard(newBoard);
 
         return cloneBoard;
+    }
+
+    public Mark getTurn() {
+        return turn;
+    }
+
+    public Mark[][] getBoard(){
+        return board;
     }
 
     public String toString() {

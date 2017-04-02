@@ -63,8 +63,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void collectThemeElements() {
     }
 
-    ;
-
     public void changeTheme() {
 
         int backgroundImage = applicationSettings.getTheme().getBackgroundId();
