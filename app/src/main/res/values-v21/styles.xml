@@ -1,4 +1,5 @@
-<resources>
+<?xml version= "1.0" encoding ="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -7,4 +8,48 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:soundEffectsEnabled">false</item>
     </style>
+
+
+    <style name="Widget.Sphinx.ActionBar.Solid" parent="@android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">#FFA500</item>
+    </style>
+
+
+    <!-- Local copy of android:Theme.Holo.Dialog.Alert -->
+    <style name="Theme_Holo_Dialog_Alert" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle_Holo</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Local copy of android:DialogWindowTitle.Holo -->
+    <style name="DialogWindowTitle_Holo">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.DialogWindowTitle</item>
+    </style>
+
+    <style name="Theme.Sphinx" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/Widget.Sphinx.ActionBar.Solid</item>
+        <item name="android:alertDialogTheme">@style/Theme_Sphinx_Dialog_Alert</item>
+    </style>
+
+    <style name="Theme_Sphinx_Dialog_Alert" parent="@style/Theme_Holo_Dialog_Alert">
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Sphinx</item>
+    </style>
+
+    <style name="DialogWindowTitle.Sphinx" parent="@style/DialogWindowTitle_Holo">
+        <item name="android:textAppearance">@style/TextAppearance.Sphinx.DialogWindowTitle</item>
+    </style>
+
+    <style name="TextAppearance.Sphinx.DialogWindowTitle" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12pt</item>
+    </style>
+
+
 </resources>

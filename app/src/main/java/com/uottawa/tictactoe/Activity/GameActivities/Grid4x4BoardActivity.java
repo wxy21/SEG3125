@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
-import com.uottawa.tictactoe.Activity.MainActivity;
 import com.uottawa.tictactoe.GameLogic.GameBoard;
 import com.uottawa.tictactoe.GameLogic.GameInterface;
 import com.uottawa.tictactoe.GameLogic.MultiplayerGame;

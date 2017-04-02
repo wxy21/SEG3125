@@ -1,7 +1,10 @@
 package com.uottawa.tictactoe.Activity.GameActivities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.graphics.Color;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.uottawa.tictactoe.Activity.BaseActivity;
+import com.uottawa.tictactoe.DataStructures.MatchDetails;
 import com.uottawa.tictactoe.GameLogic.GameBoard;
 import com.uottawa.tictactoe.GameLogic.GameInterface;
 import com.uottawa.tictactoe.GameLogic.MultiplayerGame;
@@ -46,6 +50,11 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     ImageView StarPlayer2;
     ProgressBar thinkingBar;
 
+    private String gameResult;
+    private String gameMessage;
+
+    private MatchDetails matchDetails;
+
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_3x3_grid);
@@ -79,7 +88,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
         player1Avatar = (ImageView) findViewById(R.id.Grid3x3_Player1Avatar);
         player1Avatar.setImageResource(applicationSettings.getPlayer1Avatar());
-        //  player1Mark = (TextView) findViewById(R.id.Grid3x3_Player1Name);
 
         player2Layout = (LinearLayout) findViewById(R.id.Grid3x3_Player2);
         if (applicationSettings.getBotDifficulty() > 0) {
@@ -151,6 +159,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
     public void Grid3x3_ResetButton(View view) {
         clickSound();
+        displayResetAlert();
         game.resetGame();
         updateScreen();
     }
@@ -207,6 +216,58 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
             click_sound.release();
             click_sound = null;
         }
+    }
+
+    public void displayResetAlert(){
+        ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
+        AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
+        alertDialogbuilder
+                .setTitle("Confirm Restart")
+                .setMessage("Do You Want to Play Again?")
+                .setCancelable(false)
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        game.resetGame();
+                        updateScreen();
+                    }
+                })
+                .setPositiveButton("No", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        Grid3x3BoardActivity.this.finish();
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = alertDialogbuilder.create();
+        alert.show();
+
+        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
+        View titleDivider = alert.findViewById(titleDividerId);
+        if (titleDivider != null)
+            titleDivider.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+    }
+
+    public void displayResult(){
+        ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
+        AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
+        alertDialogbuilder
+                .setTitle(gameResult)
+                .setMessage(gameMessage)
+                .setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        displayResetAlert();
+                    }
+                });
+
+        AlertDialog alert = alertDialogbuilder.create();
+        alert.show();
+
+        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
+        View titleDivider = alert.findViewById(titleDividerId);
+        if (titleDivider != null)
+            titleDivider.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
     }
 
     @Override
