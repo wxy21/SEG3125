@@ -60,12 +60,5 @@ public class Grid5x5BoardActivity extends BaseActivity {
         btn20.setText("");*/
     }
 
-    public void btnHome_hgame(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
-    public void btnExit_hgame(View view){
-        System.exit(0);
-    }
 }

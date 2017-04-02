@@ -29,7 +29,7 @@
     <ImageButton
         app:srcCompat="@drawable/refresh2"
         android:id="@+id/Grid4x4_btnRefresh"
-        android:onClick="Grid3x3_ResetButton"
+        android:onClick="Grid4x4_ResetButton"
         android:background="@android:drawable/screen_background_light_transparent"
         android:layout_marginStart="5dp"
         android:soundEffectsEnabled="false"

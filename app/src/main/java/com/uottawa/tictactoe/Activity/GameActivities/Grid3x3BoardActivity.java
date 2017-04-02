@@ -28,11 +28,9 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
     TextView player1Name;
     ImageView player1Avatar;
-    TextView player1Mark;
 
     TextView player2Name;
     ImageView player2Avatar;
-    TextView player2Mark;
 
 
     ImageView StarPlayer1;
