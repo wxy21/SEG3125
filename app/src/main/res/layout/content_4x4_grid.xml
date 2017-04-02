@@ -216,7 +216,6 @@
             android:layout_toStartOf="@+id/linearLayout13"
             android:layout_marginEnd="22dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/highlight_yellow"
             android:id="@+id/Grid4x4_Player1">
 
             <ImageView
@@ -254,7 +253,6 @@
             android:layout_alignParentEnd="true"
             android:layout_weight="1"
             android:weightSum="1"
-            android:backgroundTint="@android:color/white"
             android:id="@+id/Grid4x4_Player2">
 
             <ImageView
