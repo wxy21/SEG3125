@@ -181,6 +181,7 @@ public class ApplicationSettings {
         return boardSize;
     }
 
+
     public int getBotDifficulty() { return botDifficulty; }
 
 }

@@ -12,9 +12,17 @@ import com.uottawa.tictactoe.R;
 
 public class MainActivity extends BaseActivity {
 
+    private static MediaPlayer click_sound;
+    private  int soundVolume;
+    private String click_sound_command;
+    private float soundVolumeFloat;
+
     @Override
     protected void loadView() {
         setContentView(R.layout.activity_main);
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
+
     }
 
     @Override
@@ -27,28 +35,50 @@ public class MainActivity extends BaseActivity {
         buttons.add((Button) findViewById(R.id.main_options));
     }
 
+    private void clickSound() {
+        if (click_sound == null)
+            click_sound = MediaPlayer.create(this, R.raw.button_sound);
+
+        soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
+
+        if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+            click_sound.start();
+        } else if (click_sound_command.equals("start") && click_sound.isPlaying()) {
+            click_sound.setVolume(soundVolumeFloat, soundVolumeFloat);
+        } else if (click_sound_command.equals("stop") && click_sound.isPlaying()) {
+            click_sound.stop();
+            click_sound.release();
+            click_sound = null;
+        }
+    }
 
     public void btnSinglePlayer(View view){
+        clickSound();
         Intent intent = new Intent(this, SinglePlayerBoardSizeActivity.class);
         startActivity(intent);
     }
 
     public void btnMultiPlayer(View view){
+        clickSound();
         Intent intent = new Intent(this, NameSelectionActivity.class);
         startActivity(intent);
     }
 
     public void btnMatchHistory(View view){
+        clickSound();
         Intent intent = new Intent(this, MatchHistoryActivity.class);
         startActivity(intent);
     }
 
     public void btnOption(View view){
+        clickSound();
         Intent intent = new Intent(this, OptionsActivity.class);
         startActivity(intent);
     }
 
     public void btnRule(View view){
+        clickSound();
         Intent intent = new Intent(this, RulesActivity.class);
         startActivity(intent);
     }
