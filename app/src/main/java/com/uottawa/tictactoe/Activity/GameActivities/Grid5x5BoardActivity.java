@@ -18,7 +18,7 @@ public class Grid5x5BoardActivity extends BaseActivity {
     }
 
     public void btnReset_hgame(View view){
-        Button btn1 = (Button) findViewById(R.id.button_h1);
+        /*Button btn1 = (Button) findViewById(R.id.button_h1);
         btn1.setText("");
         Button btn2 = (Button) findViewById(R.id.button_h2);
         btn2.setText("");
@@ -57,7 +57,7 @@ public class Grid5x5BoardActivity extends BaseActivity {
         Button btn19 = (Button) findViewById(R.id.button_h19);
         btn19.setText("");
         Button btn20 = (Button) findViewById(R.id.button_h20);
-        btn20.setText("");
+        btn20.setText("");*/
     }
 
     public void btnHome_hgame(View view){

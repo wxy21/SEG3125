@@ -1,250 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_5x5_grid"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.uottawa.tictactoe.Activity.GameActivities.Grid5x5BoardActivity"
-    tools:showIn="@layout/activity_5x5_grid">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/content_5x5_grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context="com.uottawa.tictactoe.Activity.GameActivities.Grid5x5BoardActivity"
+                tools:showIn="@layout/activity_5x5_grid"
+                android:background="@drawable/background1">
 
-    <TextView
-        android:text="Tic Tac Toe"
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:id="@+id/Grid5x5_Star_Player1"
+        android:layout_marginStart="50dp"
+        android:background="@android:drawable/picture_frame"
+        android:backgroundTint="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_marginBottom="61dp"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        tools:textColor="@android:color/holo_purple"
-        android:textStyle="normal|bold"
-        android:textSize="50sp"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@android:color/holo_purple" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:layout_below="@+id/Grid3x3_btnRefresh"
+            android:layout_toStartOf="@+id/linearLayout13"
+            android:layout_marginEnd="22dp"
+            android:layout_weight="1"
+            android:id="@+id/Grid5x5_Player1"
+            android:backgroundTint="@color/highlight_yellow"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/avatar1"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:layout_height="60dp"
+                android:id="@+id/Grid5x5_Player1Avatar"/>
+
+            <TextView
+                android:text="Player 1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:backgroundTint="@android:drawable/status_bar_item_background"
+                android:textAlignment="center"
+                android:id="@+id/Grid5x5_Player1Name"/>
+
+            <TextView
+                android:text="X"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textAlignment="center"
+                android:id="@+id/Grid5x5_Player1Symbol"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:layout_marginEnd="14dp"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:backgroundTint="@android:color/white"
+            android:id="@+id/Grid5x5_Player2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/avatar1"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:layout_height="60dp"
+                android:id="@+id/Grid5x5_Player2Avatar"/>
+
+            <TextView
+                android:text="Player 2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:backgroundTint="@android:drawable/status_bar_item_background"
+                android:textAlignment="center"
+                android:id="@+id/Grid5x5_Player2Name"/>
+
+            <TextView
+                android:text="O"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textAlignment="center"
+                android:id="@+id/Grid5x5_Player2Symbol"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h1"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h2"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue"/>
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h3"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h4"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h5"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h6"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h7"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h8"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h9"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h10"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h11"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h12"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h13"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h14"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h15"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h16"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h17"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h18"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h19"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/button_h20"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Blue" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_alignParentBottom="true"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <Button
-            android:text="Reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.55"
-            android:onClick="btnReset_hgame"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:text="Home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.55"
-            android:onClick="btnHome_hgame"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/Grid5x5_board_0_0"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:layout_height="70dp"/>
 
-        <Button
-            android:text="Exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.55"
-            android:onClick="btnExit_hgame"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/Grid5x5_board_0_1"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:id="@+id/Grid5x5_board_0_2"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:id="@+id/Grid5x5_board_0_3"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:id="@+id/Grid5x5_board_0_4"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"
+                android:layout_height="70dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_1_0"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_1_1"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_1_2"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_1_3"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_1_4"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_2_0"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_2_1"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_2_2"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_2_3"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_2_4"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_3_0"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_3_1"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_3_2"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_3_3"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+
+            <Button
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:id="@+id/Grid5x5_board_3_4"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pink"/>
+        </LinearLayout>
     </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/refresh2"
+        android:id="@+id/Grid5x5_btnRefresh"
+        android:onClick="Grid3x3_ResetButton"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:soundEffectsEnabled="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:id="@+id/Grid5x5_Star_Player2"
+        android:background="@android:drawable/picture_frame"
+        android:backgroundTint="@android:color/black"
+        android:layout_marginEnd="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Grid5x5_loading"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/Grid5x5_Star_Player1"
+        android:layout_marginStart="31dp"/>
 
 </RelativeLayout>

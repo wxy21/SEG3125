@@ -18,7 +18,7 @@ public class Grid4x4BoardActivity extends BaseActivity {
     }
 
     public void btnReset_mgame(View view){
-        String test = "test";
+        /*String test = "test";
         Button btn1 = (Button) findViewById(R.id.button_m1);
         btn1.setText("");
         Button btn2 = (Button) findViewById(R.id.button_m2);
@@ -50,7 +50,7 @@ public class Grid4x4BoardActivity extends BaseActivity {
         Button btn15 = (Button) findViewById(R.id.button_m15);
         btn15.setText("");
         Button btn16 = (Button) findViewById(R.id.button_m16);
-        btn16.setText("");
+        btn16.setText("");*/
     }
 
     public void btnHome_mgame(View view){
