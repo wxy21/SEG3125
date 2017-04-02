@@ -80,6 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (button != null) {
                 button.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
                 button.setTextColor(Color.WHITE);
+                button.setTextSize(30);
                 button.invalidate();
             }
         }

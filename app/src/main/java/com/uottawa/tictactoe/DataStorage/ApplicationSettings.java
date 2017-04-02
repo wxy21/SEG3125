@@ -12,6 +12,7 @@ public class ApplicationSettings {
     SharedPreferences.Editor editor;
 
     // Application variables and their default settings
+    private int botDifficulty = -1;
     private String player1Name = "Player 1";
     private int player1Avatar = R.drawable.avatar1;
     private String player2Name = "Player 2";
@@ -21,13 +22,13 @@ public class ApplicationSettings {
     private int themeColor = Color.rgb(255, 36, 226);
     private int soundVolume = 50;
     private int musicVolume = 50;
-    private String boardSize = "3x3";
-    private String levelDifficulty = "Easy";
+    private int boardSize = 3;
     private int buttonSound = R.drawable.sound_on;
     private int buttonMusic = R.drawable.sound_on;
     private String backgroundMusicCommand = "start";
 
     // Variable Keys
+    private String keyBotDifficulty = "botDifficulty";
     private String keyPlayer1Name = "player1Name";
     private String keyPlayer1Avatar = "player1Avatar";
     private String keyThemeSampleImadId = "themeSampleImageId";
@@ -38,7 +39,6 @@ public class ApplicationSettings {
     private String keyPlayer2Name = "player2Name";
     private String keyPlayer2Avatar = "player2Avatar";
     private String keyBoardSize = "boardSize";
-    private String keyLevelDifficulty = "levelDifficulty";
     private String keyButtonSound = "Sound";
     private String keyButtonMusic = "Music";
     private String keyBackgroundMusicCommand = "backgroundMusic";
@@ -48,8 +48,6 @@ public class ApplicationSettings {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
     }
-
-
 
     public void saveSettings(String player1Name, int player1Avatar, int themeSampleImageId, int themeBackgroundId,
                              int themeColor, int soundVolume, int musicVolume, int buttonSound, int buttonMusic,
@@ -80,6 +78,21 @@ public class ApplicationSettings {
         editor.apply();
     }
 
+    public void saveBotDiffuculty(int botDifficulty) {
+        this.botDifficulty = botDifficulty;
+
+        editor.putInt(keyBotDifficulty, botDifficulty);
+        editor.commit();
+        editor.apply();
+    }
+
+    public void saveBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+
+        editor.putInt(keyBoardSize, boardSize);
+        editor.commit();
+        editor.apply();
+    }
 
     public void savePlayerInformation(String player1Name, int player1Avatar, String player2Name, int player2Avatar) {
         this.player1Name = player1Name;
@@ -96,6 +109,8 @@ public class ApplicationSettings {
     }
 
     public void loadSettings() {
+        botDifficulty = sharedPreferences.getInt(keyBotDifficulty, botDifficulty);
+
         player1Name = sharedPreferences.getString(keyPlayer1Name, player1Name);
         player1Avatar = sharedPreferences.getInt(keyPlayer1Avatar, player1Avatar);
 
@@ -106,8 +121,7 @@ public class ApplicationSettings {
         themeBackgroundId = sharedPreferences.getInt(keyThemeBackgroundId, themeBackgroundId);
         themeColor = sharedPreferences.getInt(keyThemeColor, themeColor);
 
-        boardSize = sharedPreferences.getString(keyBoardSize, boardSize);
-        levelDifficulty = sharedPreferences.getString(keyLevelDifficulty, levelDifficulty);
+        boardSize = sharedPreferences.getInt(keyBoardSize, boardSize);
 
         soundVolume = sharedPreferences.getInt(keySoundVolume, soundVolume);
         musicVolume = sharedPreferences.getInt(keyMusicVolume, musicVolume);
@@ -154,13 +168,11 @@ public class ApplicationSettings {
         return backgroundMusicCommand;
     }
 
-    public String getBoardSize() {
+    public int getBoardSize() {
         return boardSize;
     }
 
-    public String getLevelDifficulty() {
-        return levelDifficulty;
-    }
+    public int getBotDifficulty() { return botDifficulty; }
 
 }
 

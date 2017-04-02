@@ -29,17 +29,25 @@ public class LevelDifficultyActivity extends BaseActivity {
     }
 
     public void btn_easy(View view){
-        Intent intent = new Intent(this, Grid3x3BoardActivity.class);
-        startActivity(intent);
+        applicationSettings.saveBotDiffuculty(1);
+        moveToNextActivity();
     }
 
     public void btn_medium(View view){
-        Intent intent = new Intent(this, Grid4x4BoardActivity.class);
-        startActivity(intent);
+        applicationSettings.saveBotDiffuculty(2);
+        moveToNextActivity();
     }
 
     public void btn_hard(View view){
-        Intent intent = new Intent(this, Grid5x5BoardActivity.class);
+        applicationSettings.saveBotDiffuculty(3);
+        moveToNextActivity();
+    }
+
+    public void moveToNextActivity() {
+        Intent intent = new Intent(this, Grid3x3BoardActivity.class); // Filler
+        if (applicationSettings.getBoardSize() <= 3) intent = new Intent(this, Grid3x3BoardActivity.class);
+        else if (applicationSettings.getBoardSize() == 4) intent = new Intent(this, Grid4x4BoardActivity.class);
+        else if (applicationSettings.getBoardSize() >= 5) intent = new Intent(this, Grid5x5BoardActivity.class);
         startActivity(intent);
     }
 }
