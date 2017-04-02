@@ -26,16 +26,19 @@ public class SinglePlayerBoardSizeActivity extends BaseActivity {
     }
 
     public void grid_btn3x3(View view){
+        applicationSettings.saveBoardSize(3);
         Intent intent = new Intent(this, LevelDifficultyActivity.class);
         startActivity(intent);
     }
 
     public void grid_btn4x4(View view){
+        applicationSettings.saveBoardSize(4);
         Intent intent = new Intent(this, LevelDifficultyActivity.class);
         startActivity(intent);
     }
 
     public void grid_btn5x5(View view){
+        applicationSettings.saveBoardSize(5);
         Intent intent = new Intent(this, LevelDifficultyActivity.class);
         startActivity(intent);
     }

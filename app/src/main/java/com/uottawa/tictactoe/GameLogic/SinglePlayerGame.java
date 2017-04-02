@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class SinglePlayerGame {
+public class SinglePlayerGame implements GameInterface {
 
     int boardSize;
     int aiDifficulty;
@@ -27,32 +27,31 @@ public class SinglePlayerGame {
         return gameBoard.getBoard();
     }
 
-    public GameBoard.Mark[][] markBoardPlayer(int xCoordinate, int yCoordinate) {
-        if (!gameBoard.isGameFinished()) {
+    public GameBoard.Mark[][] markBoard(int xCoordinate, int yCoordinate) {
+        if (!gameBoard.isGameFinished() && isPlayer1Turn()) {
             GameMove playerNextMove = new GameMove(xCoordinate, yCoordinate, gameBoard.getTurn());
             gameBoard.markPosition(playerNextMove);
             playerMove.add(playerNextMove);
         }
-
-        return gameBoard.getBoard();
-    }
-
-    public GameBoard.Mark[][] markBoardAI() {
-        if (!gameBoard.isGameFinished()) {
+        if (!gameBoard.isGameFinished() && !isPlayer1Turn()) {
             GameAI gameAI = new GameAI(aiDifficulty);
             GameMove aiNextMove = gameAI.calculateNextMove(gameBoard);
             gameBoard.markPosition(aiNextMove);
             aiMove.add(aiNextMove);
         }
-
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         return gameBoard.getBoard();
     }
+
+//    public GameBoard.Mark[][] markBoardAI() {
+//        if (!gameBoard.isGameFinished()) {
+//            GameAI gameAI = new GameAI(aiDifficulty);
+//            GameMove aiNextMove = gameAI.calculateNextMove(gameBoard);
+//            gameBoard.markPosition(aiNextMove);
+//            aiMove.add(aiNextMove);
+//        }
+//
+//        return gameBoard.getBoard();
+//    }
 
     public boolean isPlayer1Turn() {
         if(gameBoard.getTurn().equals(GameBoard.Mark.X)) {
