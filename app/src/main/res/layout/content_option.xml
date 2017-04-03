@@ -57,6 +57,7 @@
                 android:id="@+id/options_Player1Name"
                 android:layout_weight="1"
                 android:text="Player 1"
+                android:maxLength="8"
                 android:inputType="text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textStyle="normal|bold" />

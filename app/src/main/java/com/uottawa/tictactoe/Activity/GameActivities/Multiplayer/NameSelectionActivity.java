@@ -2,6 +2,7 @@ package com.uottawa.tictactoe.Activity.GameActivities.Multiplayer;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class NameSelectionActivity extends BaseActivity {
         //Player1 Name
         player1_name = (TextView) findViewById(R.id.name_Player1Name);
         player1_name.setText(applicationSettings.getPlayer1Name());
+        player1_name.setGravity(Gravity.CENTER);
 
         //Avatar Spinner
         avatarList = new AvatarList();
@@ -66,6 +68,7 @@ public class NameSelectionActivity extends BaseActivity {
         //Player 2 Name
         player2_name = (TextView) findViewById(R.id.name_Player2Name);
         player2_name.setText(applicationSettings.getPlayer2Name());
+        player2_name.setGravity(Gravity.CENTER);
 
         //Player 2 Avatar
         Spinner player2_avatar = (Spinner) findViewById(R.id.name_Player2Avatar);

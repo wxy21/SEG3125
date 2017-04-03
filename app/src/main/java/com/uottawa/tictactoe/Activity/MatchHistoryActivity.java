@@ -127,5 +127,8 @@ public class MatchHistoryActivity extends BaseActivity {
         date.addView(dateEntry);
         opponent.addView(opponentEntry);
         result.addView(resultEntry);
+
+
+        //System.out.println(date.g);
     }
 }

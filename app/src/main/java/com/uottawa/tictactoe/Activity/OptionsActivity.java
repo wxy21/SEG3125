@@ -1,5 +1,6 @@
 package com.uottawa.tictactoe.Activity;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 
@@ -43,6 +44,7 @@ public class OptionsActivity extends BaseActivity {
         // Player's Name
         player1Name = (TextView) findViewById(R.id.options_Player1Name);
         player1Name.setText(applicationSettings.getPlayer1Name());
+        player1Name.setGravity(Gravity.CENTER);
 
         //Avatar Spinner
         avatarList = new AvatarList();
