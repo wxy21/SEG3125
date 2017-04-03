@@ -17,9 +17,8 @@ import com.uottawa.tictactoe.R;
 
 import java.util.concurrent.Semaphore;
 
-public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickListener {
+public class Grid4x4BoardActivity extends AbstractGameActivity implements View.OnClickListener {
 
-    GameInterface game;
     TextView Grid4x4_board_0_0;
     TextView Grid4x4_board_0_1;
     TextView Grid4x4_board_0_2;
@@ -36,19 +35,6 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
     TextView Grid4x4_board_3_1;
     TextView Grid4x4_board_3_2;
     TextView Grid4x4_board_3_3;
-
-    LinearLayout player1Layout;
-    TextView player1Name;
-    ImageView player1Avatar;
-
-    LinearLayout player2Layout;
-    TextView player2Name;
-    ImageView player2Avatar;
-
-
-    ImageView StarPlayer1;
-    ImageView StarPlayer2;
-    ProgressBar thinkingBar;
 
     @Override
     protected void loadView() {
@@ -214,6 +200,7 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
 
                 if (game.isGameFinished()) {
                     matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+                    GameOver();
                 }
 
                 // Unlock
@@ -272,6 +259,8 @@ public class Grid4x4BoardActivity extends BaseActivity implements View.OnClickLi
 
                 if (applicationSettings.getBotDifficulty() <= 0)
                     thinkingBar.setVisibility(View.INVISIBLE);
+
+                hideElementsAtTheEndOfGame();
 
                 Grid4x4_board_0_0.setText(board[0][0].toString());
                 Grid4x4_board_0_1.setText(board[0][1].toString());
