@@ -25,7 +25,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:background="@drawable/long_rectangular"
             android:layout_height="55dp">
 
             <TextView
@@ -33,7 +33,6 @@
                 android:layout_width="111dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@drawable/small_rectangular"
                 android:layout_height="match_parent"
                 android:paddingTop="10dp"/>
 
@@ -43,7 +42,6 @@
                 android:layout_height="match_parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@drawable/small_rectangular"
                 android:paddingTop="10dp"
                 />
 
@@ -53,7 +51,6 @@
                 android:layout_height="match_parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@drawable/small_rectangular"
                 android:paddingTop="10dp"
                 android:layout_weight="0.60"
                 />
@@ -79,7 +76,6 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:id="@+id/matchHistory_date"
-                    android:background="@drawable/vertical_box"
                     android:layout_width="111dp"
                     android:layout_height="375dp">
 
@@ -89,7 +85,6 @@
                     android:orientation="vertical"
                     android:layout_height="375dp"
                     android:id="@+id/matchHistory_Opponent"
-                    android:background="@drawable/vertical_box"
                     android:layout_width="117dp">
 
                 </LinearLayout>
@@ -99,7 +94,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="375dp"
                     android:id="@+id/matchHistory_result"
-                    android:background="@drawable/vertical_box"
                     android:paddingLeft="5dp">
 
                 </LinearLayout>
