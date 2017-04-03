@@ -17,7 +17,6 @@ import com.uottawa.tictactoe.DataStorage.ApplicationSettings;
 import com.uottawa.tictactoe.DataStorage.MatchHistory;
 import com.uottawa.tictactoe.R;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -34,15 +33,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private AppCompatDelegate mDelegate;
 
-    private static MediaPlayer click_sound;
-    private  int soundVolume;
-    private String click_sound_command;
-    private float soundVolumeFloat;
+    protected static MediaPlayer click_sound;
+    protected  int soundVolume;
+    protected String click_sound_command;
+    protected float soundVolumeFloat;
 
-    private static MediaPlayer background_music;
-    private String background_music_command;
-    private int musicVolume;
-    private float musicVolumeFloat;
+    protected static MediaPlayer background_music;
+    protected String background_music_command;
+    protected int musicVolume;
+    protected float musicVolumeFloat;
 
     protected Thread updateScreenHandler;
     protected Semaphore gameMutex;
@@ -71,10 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void loadView();
-
-
-    protected void collectThemeElements() {
-    }
+    protected abstract void collectThemeElements();
 
     public void changeTheme() {
 
@@ -121,9 +117,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void clickSound() {
-        if (click_sound == null)
+        if (click_sound == null) {
             click_sound = MediaPlayer.create(this, R.raw.button_sound);
+        }
 
+        if (this.getClass() != OptionsActivity.class) {
+            soundVolume = applicationSettings.getSoundVolume();
+        }
         soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
 
         if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
@@ -138,13 +138,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    private void backgroundMusic() {
-        if (background_music == null)
+    protected void backgroundMusic() {
+        if (background_music == null) {
             background_music = MediaPlayer.create(this, R.raw.background_music);
-        background_music_command = applicationSettings.getBackgroundMusicCommand();
-        musicVolume = applicationSettings.getMusicVolume();
-        musicVolumeFloat = (float) (1 - (Math.log(100 - musicVolume) / Math.log(100)));
+        }
 
+        if (this.getClass() != OptionsActivity.class) {
+            musicVolume = applicationSettings.getMusicVolume();
+        }
+        background_music_command = applicationSettings.getBackgroundMusicCommand();
+        musicVolumeFloat = (float) (1 - (Math.log(100 - musicVolume) / Math.log(100)));
 
         if (background_music_command.equals("start") && !background_music.isPlaying()) {
             background_music.setVolume(musicVolumeFloat, musicVolumeFloat);
