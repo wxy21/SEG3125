@@ -1,6 +1,5 @@
 package com.uottawa.tictactoe.Activity;
 
-import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.*;
 
@@ -22,16 +21,13 @@ public class OptionsActivity extends BaseActivity {
     private int theme_position;
 
     private TextView player1Name;
-    private SeekBar soundVolume;
-    private SeekBar musicVolume;
+    private SeekBar soundVolumeSeek;
+    private SeekBar musicVolumeSeek;
 
     private ImageButton buttonSound;
     private int buttonSoundID;
     private ImageButton buttonMusic;
     private int buttonMusicID;
-
-    private int sound;
-    private int music;
 
     private String background_music_command;
     private String click_sound_command;
@@ -118,16 +114,16 @@ public class OptionsActivity extends BaseActivity {
         click_sound_command = applicationSettings.getClickSoundCommand();
 
         //Sound Volume
-        soundVolume = (SeekBar) findViewById(R.id.options_SoundVolume);
-        sound = applicationSettings.getSoundVolume();
-        soundVolume.setProgress(sound);
+        soundVolumeSeek = (SeekBar) findViewById(R.id.options_SoundVolume);
+        soundVolume = applicationSettings.getSoundVolume();
+        soundVolumeSeek.setProgress(soundVolume);
 
         changeSoundPicture();
 
-        soundVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        soundVolumeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sound = seekBar.getProgress();
+                soundVolume = seekBar.getProgress();
                 clickSound();
                 changeSoundPicture();
             }
@@ -144,18 +140,19 @@ public class OptionsActivity extends BaseActivity {
         });
 
         //Music Volume
-        musicVolume = (SeekBar) findViewById(R.id.options_MusicVolume);
-        music = applicationSettings.getMusicVolume();
-        musicVolume.setProgress(music);
+        musicVolumeSeek = (SeekBar) findViewById(R.id.options_MusicVolume);
+        musicVolume = applicationSettings.getMusicVolume();
+        musicVolumeSeek.setProgress(musicVolume);
 
         changeMusicPicture();
 
-        musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        musicVolumeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                music = seekBar.getProgress();
+                musicVolume = seekBar.getProgress();
                 clickSound();
                 changeMusicPicture();
+                backgroundMusic();
             }
 
             @Override
@@ -168,12 +165,10 @@ public class OptionsActivity extends BaseActivity {
 
             }
         });
-
-
     }
 
     private void changeSoundPicture(){
-        if(soundVolume.getProgress() == 0){
+        if(soundVolumeSeek.getProgress() == 0){
             buttonSoundID = R.drawable.sound_off;
             buttonSound.setImageResource(buttonSoundID);
             click_sound_command = "stop";
@@ -185,7 +180,7 @@ public class OptionsActivity extends BaseActivity {
     }
 
     private void changeMusicPicture(){
-        if(musicVolume.getProgress() == 0){
+        if(musicVolumeSeek.getProgress() == 0){
             buttonMusicID = R.drawable.sound_off;
             buttonMusic.setImageResource(buttonMusicID);
             background_music_command = "stop";
@@ -200,14 +195,14 @@ public class OptionsActivity extends BaseActivity {
         if(buttonSoundID == R.drawable.sound_on ){
             buttonSoundID = R.drawable.sound_off;
             buttonSound.setImageResource(buttonSoundID);
-            sound = 0;
-            soundVolume.setProgress(sound);
+            soundVolume = 0;
+            soundVolumeSeek.setProgress(soundVolume);
             click_sound_command = "stop";
         }else if(buttonSoundID == R.drawable.sound_off){
             buttonSoundID = R.drawable.sound_on;
             buttonSound.setImageResource(buttonSoundID);
-            sound = 50;
-            soundVolume.setProgress(sound);
+            soundVolume = 50;
+            soundVolumeSeek.setProgress(soundVolume);
             click_sound_command = "start";
         }
         clickSound();
@@ -218,33 +213,33 @@ public class OptionsActivity extends BaseActivity {
         if(buttonMusicID == R.drawable.sound_on ){
             buttonMusicID = R.drawable.sound_off;
             buttonMusic.setImageResource(buttonMusicID);
-            music = 0;
-            musicVolume.setProgress(music);
+            musicVolume = 0;
+            musicVolumeSeek.setProgress(musicVolume);
             background_music_command = "stop";
         }else if(buttonMusicID == R.drawable.sound_off){
             buttonMusicID = R.drawable.sound_on;
             buttonMusic.setImageResource(buttonMusicID);
-            music = 50;
-            musicVolume.setProgress(music);
+            musicVolume = 50;
+            musicVolumeSeek.setProgress(musicVolume);
             background_music_command = "start";
         }
         clickSound();
     }
 
     public void btnApply(View view){
-
         String player1NameStr = player1Name.getText().toString();
         int avatarId = avatarList.getAvatarList().get(avatar_position).getImageId();
         int themeSampleImageId = themeList.getThemeList().get(theme_position).getSampleImageId();
         int themeBackgroundId = themeList.getThemeList().get(theme_position).getBackgroundId();
         int themeColor = themeList.getThemeList().get(theme_position).getThemeColor();
 
-        clickSound();
-
         applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
-                sound, music, buttonSoundID, buttonMusicID, background_music_command, click_sound_command);
+                soundVolume, musicVolume, buttonSoundID, buttonMusicID, background_music_command, click_sound_command);
         changeTheme();
-        Toast.makeText(this, "Your Settings Have Been Applied!", Toast.LENGTH_LONG).show();
+        System.out.println(musicVolume);
+        backgroundMusic();
+        clickSound();
+        Toast.makeText(this, "Your Settings Have Been Applied!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
