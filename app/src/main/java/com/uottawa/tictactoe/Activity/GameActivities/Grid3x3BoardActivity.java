@@ -22,9 +22,8 @@ import com.uottawa.tictactoe.R;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
-public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickListener {
+public class Grid3x3BoardActivity extends AbstractGameActivity implements View.OnClickListener {
 
-    GameInterface game;
     TextView Grid3x3_board_0_0;
     TextView Grid3x3_board_0_1;
     TextView Grid3x3_board_0_2;
@@ -34,25 +33,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     TextView Grid3x3_board_2_0;
     TextView Grid3x3_board_2_1;
     TextView Grid3x3_board_2_2;
-
-    LinearLayout player1Layout;
-    TextView player1Name;
-    ImageView player1Avatar;
-
-    LinearLayout player2Layout;
-    TextView player2Name;
-    ImageView player2Avatar;
-
-    ImageView StarPlayer1;
-    ImageView StarPlayer2;
-    ProgressBar thinkingBar;
-
-    private String gameTitle;
-    private String gameMessage;
-
-    boolean player1HasWon = false;
-    boolean isATie = false;
-    boolean resetScreenWasShown = false;
 
     @Override
     protected void loadView() {
@@ -222,22 +202,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 if (applicationSettings.getBotDifficulty() <= 0)
                     thinkingBar.setVisibility(View.INVISIBLE);
 
-                if (game.isGameFinished() && resetScreenWasShown) {
-                    if (isATie) {
-                        player1Layout.setBackgroundColor(Color.GRAY);
-                        player2Layout.setBackgroundColor(Color.GRAY);
-                    } else if (player1HasWon) {
-                        player1Layout.setBackgroundColor(Color.GREEN);
-                        player2Layout.setBackgroundColor(Color.RED);
-                    } else {
-                        player1Layout.setBackgroundColor(Color.RED);
-                        player2Layout.setBackgroundColor(Color.GREEN);
-                    }
-
-                    StarPlayer1.setVisibility(View.INVISIBLE);
-                    StarPlayer2.setVisibility(View.INVISIBLE);
-                    thinkingBar.setVisibility(View.INVISIBLE);
-                }
+                hideElementsAtTheEndOfGame();
 
                 Grid3x3_board_0_0.setText(board[0][0].toString());
                 Grid3x3_board_0_1.setText(board[0][1].toString());
@@ -256,91 +221,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-    public void displayResetAlert(){
-        ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
-        AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
-        alertDialogbuilder
-                .setTitle("Confirm Restart")
-                .setMessage("Do You Want to Play Again?")
-                .setCancelable(false)
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        game.resetGame();
-                        player1HasWon = false;
-                        isATie = false;
-                        resetScreenWasShown = false;
-                        setGameClickable(true);
-                        updateScreen();
-                    }
-                })
-                .setPositiveButton("No", new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert = alertDialogbuilder.create();
-        alert.show();
-
-        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
-        View titleDivider = alert.findViewById(titleDividerId);
-        if (titleDivider != null)
-            titleDivider.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-    }
-
-    public void dialogTitle_Msg(String game_result, String opponent_name){
-        String name;
-        if(opponent_name == player1Name.getText().toString()){
-            name = player2Name.getText().toString();
-        }else{
-            name = player1Name.getText().toString();
-        }
-        if(game_result == "WIN"){
-            player1HasWon = true;
-            isATie = false;
-            gameTitle = "Congratulations!";
-            gameMessage = "Congratulation " + name + ", You Won!";
-        }else if(game_result == "LOSS"){
-            player1HasWon = false;
-            isATie = false;
-            gameTitle = "Ooops!";
-            gameMessage = "Sorry, " + name + ", You Lost!";
-        }else{
-            isATie = true;
-            gameTitle = "Tie!";
-            gameMessage = "Hmm...It's A Tie!";
-        }
-    }
-
-    public void displayResult(){
-        matchHistory.loadMatches();
-        List<MatchDetails> details = matchHistory.getMatchDetails();
-        MatchDetails currentMatch = details.get(details.size() - 1);
-        String gameResult= currentMatch.getResult().print();
-        String opponentName = currentMatch.getOpponentName();
-        dialogTitle_Msg(gameResult, opponentName);
-
-        ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
-        AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
-        alertDialogbuilder
-                .setTitle(gameTitle)
-                .setMessage(gameMessage)
-                .setCancelable(false)
-                .setNeutralButton("Ok", new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        displayResetAlert();
-                    }
-                });
-
-        AlertDialog alert = alertDialogbuilder.create();
-        alert.show();
-
-        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
-        View titleDivider = alert.findViewById(titleDividerId);
-        if (titleDivider != null)
-            titleDivider.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-    }
-
     @Override
     public void collectThemeElements() {
         content = R.id.content_3x3_grid;
@@ -353,18 +233,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_0));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_1));
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_2));
-    }
-
-    public void GameOver() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (game.isGameFinished()) {
-                    displayResult();
-                    resetScreenWasShown = true;
-                }
-            }
-        });
     }
 
     public void setGameClickable(final boolean clickable) {
