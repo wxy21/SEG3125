@@ -2,7 +2,6 @@ package com.uottawa.tictactoe.Activity.GameActivities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.media.MediaPlayer;
 import android.graphics.Color;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -51,7 +50,9 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     private String gameTitle;
     private String gameMessage;
 
-    private MatchDetails matchDetails;
+    boolean player1HasWon = false;
+    boolean isATie = false;
+    boolean resetScreenWasShown = false;
 
     @Override
     protected void loadView() {
@@ -137,7 +138,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 // Lock the game
                 boolean acquired = gameMutex.tryAcquire();
                 if (!acquired) {
-                    gameMutex.release();
                     return;
                 }
                 setGameClickable(false);
@@ -179,21 +179,15 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 }
 
                 if (game.isGameFinished()) {
-                    //setGameClickable(false);
                     matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
-                    //displayResult();
-                    setGameClickable(false);
-                    //return;
+                    GameOver();
+                    return;
                 }
 
                 // Unlock
                 setGameClickable(true);
             }
         });
-
-        if(game.isGameFinished() == true){
-            displayResult();
-        }
         backgroundThread.start();
     }
 
@@ -228,6 +222,23 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 if (applicationSettings.getBotDifficulty() <= 0)
                     thinkingBar.setVisibility(View.INVISIBLE);
 
+                if (game.isGameFinished() && resetScreenWasShown) {
+                    if (isATie) {
+                        player1Layout.setBackgroundColor(Color.GRAY);
+                        player2Layout.setBackgroundColor(Color.GRAY);
+                    } else if (player1HasWon) {
+                        player1Layout.setBackgroundColor(Color.GREEN);
+                        player2Layout.setBackgroundColor(Color.RED);
+                    } else {
+                        player1Layout.setBackgroundColor(Color.RED);
+                        player2Layout.setBackgroundColor(Color.GREEN);
+                    }
+
+                    StarPlayer1.setVisibility(View.INVISIBLE);
+                    StarPlayer2.setVisibility(View.INVISIBLE);
+                    thinkingBar.setVisibility(View.INVISIBLE);
+                }
+
                 Grid3x3_board_0_0.setText(board[0][0].toString());
                 Grid3x3_board_0_1.setText(board[0][1].toString());
                 Grid3x3_board_0_2.setText(board[0][2].toString());
@@ -245,8 +256,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-
-
     public void displayResetAlert(){
         ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
         AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
@@ -257,6 +266,9 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
                         game.resetGame();
+                        player1HasWon = false;
+                        isATie = false;
+                        resetScreenWasShown = false;
                         setGameClickable(true);
                         updateScreen();
                     }
@@ -284,12 +296,17 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
             name = player1Name.getText().toString();
         }
         if(game_result == "WIN"){
+            player1HasWon = true;
+            isATie = false;
             gameTitle = "Congratulations!";
             gameMessage = "Congratulation " + name + ", You Won!";
         }else if(game_result == "LOSS"){
+            player1HasWon = false;
+            isATie = false;
             gameTitle = "Ooops!";
             gameMessage = "Sorry, " + name + ", You Lost!";
         }else{
+            isATie = true;
             gameTitle = "Tie!";
             gameMessage = "Hmm...It's A Tie!";
         }
@@ -299,7 +316,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         matchHistory.loadMatches();
         List<MatchDetails> details = matchHistory.getMatchDetails();
         MatchDetails currentMatch = details.get(details.size() - 1);
-        //System.out.println(currentMatch.getResult());
         String gameResult= currentMatch.getResult().print();
         String opponentName = currentMatch.getOpponentName();
         dialogTitle_Msg(gameResult, opponentName);
@@ -339,18 +355,22 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         buttons.add((Button) findViewById(R.id.Grid3x3_board_2_2));
     }
 
+    public void GameOver() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (game.isGameFinished()) {
+                    displayResult();
+                    resetScreenWasShown = true;
+                }
+            }
+        });
+    }
+
     public void setGameClickable(final boolean clickable) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                /*if (game.isGameFinished()) {
-                    displayResult();
-
-                    //matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
-
-                }*/
-
-
                 ((Button) findViewById(R.id.Grid3x3_board_0_0)).setEnabled(clickable);
                 ((Button) findViewById(R.id.Grid3x3_board_0_1)).setEnabled(clickable);
                 ((Button) findViewById(R.id.Grid3x3_board_0_2)).setEnabled(clickable);
