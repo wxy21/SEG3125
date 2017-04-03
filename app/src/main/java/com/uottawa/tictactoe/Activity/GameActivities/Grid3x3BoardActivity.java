@@ -48,7 +48,7 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
     ImageView StarPlayer2;
     ProgressBar thinkingBar;
 
-    private String gameResult;
+    private String gameTitle;
     private String gameMessage;
 
     private MatchDetails matchDetails;
@@ -126,12 +126,13 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 }
             }
         });
+
         updateScreenHandler.start();
     }
 
     public void onClick(final View v) {
 
-        Thread backgroundThread = new Thread(new Runnable() {
+        final Thread backgroundThread = new Thread(new Runnable() {
             public void run() {
                 // Lock the game
                 boolean acquired = gameMutex.tryAcquire();
@@ -178,22 +179,27 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 }
 
                 if (game.isGameFinished()) {
+                    //setGameClickable(false);
+                    matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+                    //displayResult();
                     setGameClickable(false);
-                    return;
+                    //return;
                 }
 
                 // Unlock
                 setGameClickable(true);
             }
         });
+
+        if(game.isGameFinished() == true){
+            displayResult();
+        }
         backgroundThread.start();
     }
 
     public void Grid3x3_ResetButton(View view) {
         clickSound();
         displayResetAlert();
-        //game.resetGame();
-        //updateScreen();
     }
 
     public void updateScreen() {
@@ -233,8 +239,10 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 Grid3x3_board_2_2.setText(board[2][2].toString());
 
                 gameMutex.release();
+
             }
         });
+
     }
 
 
@@ -255,8 +263,6 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
                 })
                 .setPositiveButton("No", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id) {
-
-                        //Grid3x3BoardActivity.this.finish();
                         dialog.cancel();
                     }
                 });
@@ -270,22 +276,43 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
             titleDivider.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
     }
 
+    public void dialogTitle_Msg(String game_result, String opponent_name){
+        String name;
+        if(opponent_name == player1Name.getText().toString()){
+            name = player2Name.getText().toString();
+        }else{
+            name = player1Name.getText().toString();
+        }
+        if(game_result == "WIN"){
+            gameTitle = "Congratulations!";
+            gameMessage = "Congratulation " + name + ", You Won!";
+        }else if(game_result == "LOSS"){
+            gameTitle = "Ooops!";
+            gameMessage = "Sorry, " + name + ", You Lost!";
+        }else{
+            gameTitle = "Tie!";
+            gameMessage = "Hmm...It's A Tie!";
+        }
+    }
+
     public void displayResult(){
         matchHistory.loadMatches();
         List<MatchDetails> details = matchHistory.getMatchDetails();
         MatchDetails currentMatch = details.get(details.size() - 1);
-        System.out.println(currentMatch.getResult());
-        gameResult= currentMatch.getResult().print();
+        //System.out.println(currentMatch.getResult());
+        String gameResult= currentMatch.getResult().print();
+        String opponentName = currentMatch.getOpponentName();
+        dialogTitle_Msg(gameResult, opponentName);
 
         ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme_Sphinx);
         AlertDialog.Builder alertDialogbuilder = new AlertDialog.Builder(ctw);
         alertDialogbuilder
-                .setTitle(gameResult)
-                .setMessage("Msg")
+                .setTitle(gameTitle)
+                .setMessage(gameMessage)
                 .setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
-                        //displayResetAlert();
+                        displayResetAlert();
                     }
                 });
 
@@ -316,10 +343,13 @@ public class Grid3x3BoardActivity extends BaseActivity implements View.OnClickLi
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (game.isGameFinished()) {
-                    matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+                /*if (game.isGameFinished()) {
                     displayResult();
-                }
+
+                    //matchHistory.saveMatch(game.getMatchDetails((String) player2Name.getText()));
+
+                }*/
+
 
                 ((Button) findViewById(R.id.Grid3x3_board_0_0)).setEnabled(clickable);
                 ((Button) findViewById(R.id.Grid3x3_board_0_1)).setEnabled(clickable);
