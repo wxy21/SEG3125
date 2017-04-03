@@ -62,7 +62,7 @@ public class OptionsActivity extends BaseActivity {
         player1Avatar_option.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
-                clickSound();
+                clickSound(soundVolume);
                 avatar_position = parent.getSelectedItemPosition();
             }
 
@@ -89,7 +89,7 @@ public class OptionsActivity extends BaseActivity {
         applicationTheme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > parent, View view, int position, long id){
-                clickSound();
+                clickSound(soundVolume);
                 theme_position = parent.getSelectedItemPosition();
             }
 
@@ -126,7 +126,7 @@ public class OptionsActivity extends BaseActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 soundVolume = seekBar.getProgress();
-                clickSound();
+                clickSound(soundVolume);
                 changeSoundPicture();
             }
 
@@ -152,9 +152,9 @@ public class OptionsActivity extends BaseActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 musicVolume = seekBar.getProgress();
-                clickSound();
+                clickSound(soundVolume);
                 changeMusicPicture();
-                backgroundMusic();
+                backgroundMusic(musicVolume);
             }
 
             @Override
@@ -207,7 +207,7 @@ public class OptionsActivity extends BaseActivity {
             soundVolumeSeek.setProgress(soundVolume);
             click_sound_command = "start";
         }
-        clickSound();
+        clickSound(soundVolume);
 
     }
 
@@ -225,7 +225,7 @@ public class OptionsActivity extends BaseActivity {
             musicVolumeSeek.setProgress(musicVolume);
             background_music_command = "start";
         }
-        clickSound();
+        clickSound(soundVolume);
     }
 
     public void btnApply(View view){
@@ -238,9 +238,8 @@ public class OptionsActivity extends BaseActivity {
         applicationSettings.saveSettings(player1NameStr, avatarId, themeSampleImageId, themeBackgroundId, themeColor,
                 soundVolume, musicVolume, buttonSoundID, buttonMusicID, background_music_command, click_sound_command);
         changeTheme();
-        System.out.println(musicVolume);
-        backgroundMusic();
-        clickSound();
+        backgroundMusic(musicVolume);
+        clickSound(soundVolume);
         Toast.makeText(this, "Your Settings Have Been Applied!", Toast.LENGTH_SHORT).show();
     }
 

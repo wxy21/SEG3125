@@ -89,11 +89,11 @@ public class Grid4x4BoardActivity extends AbstractGameActivity implements View.O
 
             player2Name = (TextView) findViewById(R.id.Grid4x4_Player2Name);
             if (applicationSettings.getBotDifficulty() <= 1)
-                player2Name.setText("Easy Bot");
+                player2Name.setText("EasyBot");
             else if (applicationSettings.getBotDifficulty() == 2)
-                player2Name.setText("Medium Bot");
+                player2Name.setText("MedBot");
             else if (applicationSettings.getBotDifficulty() >= 3)
-                player2Name.setText("Hard Bot");
+                player2Name.setText("HardBot");
 
             player2Avatar = (ImageView) findViewById(R.id.Grid4x4_Player2Avatar);
             player2Avatar.setImageResource(R.drawable.avatar_bot);
@@ -194,7 +194,7 @@ public class Grid4x4BoardActivity extends AbstractGameActivity implements View.O
                 }
                 gameMutex.release();
 
-                if (game instanceof SinglePlayerGame) {
+                if (game instanceof SinglePlayerGame && !game.isPlayer1Turn()) {
                     ((SinglePlayerGame) game).markBoardAI();
                 }
 

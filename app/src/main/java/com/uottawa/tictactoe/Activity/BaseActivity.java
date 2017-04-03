@@ -31,8 +31,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ApplicationSettings applicationSettings;
     protected MatchHistory matchHistory;
 
-    private AppCompatDelegate mDelegate;
-
     protected static MediaPlayer click_sound;
     protected  int soundVolume;
     protected String click_sound_command;
@@ -116,14 +114,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    protected void clickSound() {
+    protected void clickSound(int volume) {
+        soundVolume = volume;
         if (click_sound == null) {
             click_sound = MediaPlayer.create(this, R.raw.button_sound);
         }
 
-        if (this.getClass() != OptionsActivity.class) {
-            soundVolume = applicationSettings.getSoundVolume();
-        }
         soundVolumeFloat = (float)(1 - (Math.log(100 - soundVolume)/Math.log(100)));
 
         if (click_sound_command.equals("start") && !click_sound.isPlaying()) {
@@ -138,14 +134,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void backgroundMusic() {
+    protected void clickSound() {
+        clickSound(applicationSettings.getMusicVolume());
+    }
+
+    protected void backgroundMusic(int volume) {
+        musicVolume = volume;
         if (background_music == null) {
             background_music = MediaPlayer.create(this, R.raw.background_music);
         }
 
-        if (this.getClass() != OptionsActivity.class) {
-            musicVolume = applicationSettings.getMusicVolume();
-        }
         background_music_command = applicationSettings.getBackgroundMusicCommand();
         musicVolumeFloat = (float) (1 - (Math.log(100 - musicVolume) / Math.log(100)));
 
@@ -160,5 +158,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             background_music.release();
             background_music = null;
         }
+    }
+
+    protected void backgroundMusic() {
+        backgroundMusic(applicationSettings.getMusicVolume());
     }
 }

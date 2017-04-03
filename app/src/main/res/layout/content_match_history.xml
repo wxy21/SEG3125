@@ -65,7 +65,9 @@
             android:layout_height="313dp"
             android:id="@+id/matchHistory_scroll"
             android:fillViewport="true"
-            android:layout_weight="0.68">
+            android:layout_weight="0.68"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="300dp">
 
             <LinearLayout
                 android:orientation="horizontal"
