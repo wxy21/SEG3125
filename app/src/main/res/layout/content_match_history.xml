@@ -30,23 +30,22 @@
 
             <TextView
                 android:text="Date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="111dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@android:drawable/gallery_thumb"
-                android:paddingTop="10dp"
-                android:layout_weight="0.78" />
+                android:background="@drawable/small_rectangular"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"/>
 
             <TextView
                 android:text="Opponent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@android:drawable/gallery_thumb"
+                android:background="@drawable/small_rectangular"
                 android:paddingTop="10dp"
-                android:layout_weight="0.24" />
+                />
 
             <TextView
                 android:text="Result"
@@ -54,9 +53,10 @@
                 android:layout_height="match_parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textAlignment="center"
-                android:background="@android:drawable/gallery_thumb"
+                android:background="@drawable/small_rectangular"
                 android:paddingTop="10dp"
-                android:layout_weight="0.60" />
+                android:layout_weight="0.60"
+                />
 
         </LinearLayout>
 
@@ -76,26 +76,29 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="107dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/matchHistory_date">
+                    android:id="@+id/matchHistory_date"
+                    android:background="@drawable/vertical_box"
+                    android:layout_width="111dp"
+                    android:layout_height="375dp">
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="123dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/matchHistory_Opponent">
+                    android:layout_height="375dp"
+                    android:id="@+id/matchHistory_Opponent"
+                    android:background="@drawable/vertical_box"
+                    android:layout_width="117dp">
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.40"
-                    android:id="@+id/matchHistory_result">
+                    android:layout_height="375dp"
+                    android:id="@+id/matchHistory_result"
+                    android:background="@drawable/vertical_box"
+                    android:paddingLeft="5dp">
 
                 </LinearLayout>
 
@@ -105,24 +108,29 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame">
+            android:layout_height="27dp"
+            android:background="@drawable/long_rectangular"
+            android:layout_weight="0.14">
 
             <TextView
                 android:text="Total:"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="0.83"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:id="@+id/matchHistory_total" />
+                android:id="@+id/matchHistory_total"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"/>
 
             <TextView
                 android:text="Wins:"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="1.15"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:id="@+id/matchHistory_wins" />
+                android:id="@+id/matchHistory_wins"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"/>
         </LinearLayout>
 
     </LinearLayout>
