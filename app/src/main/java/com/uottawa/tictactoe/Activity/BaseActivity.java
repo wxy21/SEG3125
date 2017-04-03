@@ -52,6 +52,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         applicationSettings = new ApplicationSettings(settings);
         applicationSettings.loadSettings();
 
+        soundVolume = applicationSettings.getSoundVolume();
+        click_sound_command = applicationSettings.getClickSoundCommand();
+
         matchHistory = new MatchHistory(settings);
         matchHistory.loadMatches();
 
@@ -63,8 +66,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         changeTheme();
         backgroundMusic();
 
-        soundVolume = applicationSettings.getSoundVolume();
-        click_sound_command = applicationSettings.getClickSoundCommand();
     }
 
     protected abstract void loadView();
@@ -104,6 +105,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         clickSound();
         Intent mainActivity = new Intent(this, MainActivity.class);
         startActivity(mainActivity);
+        finish();
     }
 
     @Override
@@ -161,6 +163,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void backgroundMusic() {
+        System.out.println(applicationSettings.getMusicVolume());
         backgroundMusic(applicationSettings.getMusicVolume());
     }
 }

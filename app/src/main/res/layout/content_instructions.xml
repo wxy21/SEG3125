@@ -11,11 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uottawa.tictactoe.Activity.RulesActivity"
-    tools:showIn="@layout/activity_rules"
+    tools:showIn="@layout/activity_instructions"
     android:background="@drawable/background1">
 
     <TextView
-        android:text="Rules"
+        android:text="How To Play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rules_title"

@@ -62,16 +62,4 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, RulesActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    public void onBackPressed() {
-        soundVolume = 0;
-        musicVolume = 0;
-        clickSound();
-        backgroundMusic();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
 }
