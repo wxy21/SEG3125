@@ -23,7 +23,7 @@
         android:textColor="@color/pink"
         android:textStyle="normal|bold"
         android:textAlignment="center"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="25dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -38,7 +38,7 @@
         android:textStyle="normal|bold"
         android:layout_below="@+id/grid_size_title"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="60dp"
         android:onClick="grid_btn3x3"/>
 
     <Button
@@ -52,7 +52,7 @@
         android:textStyle="normal|bold"
         android:layout_below="@+id/grid_size_btn_3x3"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="70dp"
         android:onClick="grid_btn4x4"/>
 
     <Button
@@ -66,7 +66,7 @@
         android:textColor="@android:color/white"
         android:layout_below="@+id/grid_size_btn_4x4"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="70dp"
         android:onClick="grid_btn5x5"/>
 
 </RelativeLayout>

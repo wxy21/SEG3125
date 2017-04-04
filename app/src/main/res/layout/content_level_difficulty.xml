@@ -23,7 +23,7 @@
         tools:textColor="@color/pink"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="25dp"
         android:background="@android:drawable/editbox_dropdown_light_frame"
         android:textAlignment="center"
         android:textStyle="normal|bold"
@@ -41,23 +41,7 @@
         android:textStyle="normal|bold"
         android:textColor="@android:color/white"
         android:layout_below="@+id/levelDifficulty_title"
-        android:layout_marginTop="81dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"/>
-
-    <Button
-        android:text="Medium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/levelDifficulty_btnMedium"
-        android:layout_weight="0.05"
-        android:onClick="btn_medium"
-        android:backgroundTint="@color/pink"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:layout_alignTop="@+id/levelDifficulty_btnEasy"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"/>
 
@@ -72,9 +56,24 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textStyle="normal|bold"
         android:textColor="@android:color/white"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/levelDifficulty_btnMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:text="Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/levelDifficulty_btnMedium"
+        android:layout_weight="0.05"
+        android:onClick="btn_medium"
+        android:backgroundTint="@color/pink"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/levelDifficulty_btnEasy"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

@@ -133,20 +133,22 @@ public abstract class AbstractGameActivity extends BaseActivity {
 
     public void hideElementsAtTheEndOfGame() {
         if (game.isGameFinished() && resetScreenWasShown) {
+            StarPlayer1.setVisibility(View.INVISIBLE);
+            StarPlayer2.setVisibility(View.INVISIBLE);
+            thinkingBar.setVisibility(View.INVISIBLE);
+
             if (isATie) {
                 player1Layout.setBackgroundColor(Color.GRAY);
                 player2Layout.setBackgroundColor(Color.GRAY);
             } else if (player1HasWon) {
                 player1Layout.setBackgroundColor(Color.GREEN);
                 player2Layout.setBackgroundColor(Color.RED);
+                StarPlayer1.setVisibility(View.VISIBLE);
             } else {
                 player1Layout.setBackgroundColor(Color.RED);
                 player2Layout.setBackgroundColor(Color.GREEN);
+                StarPlayer2.setVisibility(View.VISIBLE);
             }
-
-            StarPlayer1.setVisibility(View.INVISIBLE);
-            StarPlayer2.setVisibility(View.INVISIBLE);
-            thinkingBar.setVisibility(View.INVISIBLE);
         }
     }
 
