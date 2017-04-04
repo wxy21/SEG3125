@@ -137,7 +137,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void clickSound() {
-        clickSound(applicationSettings.getMusicVolume());
+        clickSound(applicationSettings.getSoundVolume());
     }
 
     protected void backgroundMusic(int volume) {
